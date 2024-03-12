@@ -4,7 +4,7 @@ $user = $_POST['user'];
 $password = $_POST['password'];
 
 include 'bd_connect.php';
-$query = "SELECT name, username, password, level FROM credent WHERE username = '$user'";
+$query = "SELECT name, username, password, level FROM users WHERE username = '$user'";
 
 $bd_data = mysqli_query($con, $query);
 $login = mysqli_fetch_assoc($bd_data);
@@ -20,7 +20,6 @@ if ($login['username'] == $user) {
 }
 
 if($level == 'R'){
-    //redirecionar para o software com permissões de recepcionista
     header('Location: main.php');
 } elseif($level == 'A'){
     header('Location: admin.php');
