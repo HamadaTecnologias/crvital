@@ -24,6 +24,8 @@ if($level == 'R'){
     header('Location: main.php');
 } elseif($level == 'A'){
     header('Location: admin.php');
+} elseif($level == 'F'){
+    header('Location: financial.php');
 } else {
     header('location:index.php?erro_pass=true');
     exit;
