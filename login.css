@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --red-logo: #9b1a2e;
+    --green-logo: #488b4a;
+    --roboto: "Roboto", sans-serif;
+}
+
+body {
+    background-image: url("assets/login-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 90px;
+    margin-right: 200px;
+    margin-top: 50px;
+}
+
+.img-logo {
+    width: 200px;
+    height: 200px;
+    margin-right: 100px;
+    margin-bottom: 25px;
+}
+
+.login-box {
+    background-color: #fff;
+    width: 400px;
+    height: 340px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+h1 {
+    padding: 25px;
+    text-align: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: var(--roboto);
+}
+
+.red-lyrics {
+    color: var(--red-logo);
+    font-weight: bolder;
+}
+
+form {
+    margin-left: 40px;
+    font-family: var(--roboto);
+}
+
+form > label {
+    font-size: 18px;
+    padding: 10px;
+}
+
+form > input {
+    width: 300px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #488b4a34;
+}
+
+button {
+    width: 300px;
+    padding: 6px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: var(--red-logo);
+    color: #fff;
+    font-size: 19px;
+    font-family: var(--roboto);
+    cursor: pointer;
+}
+
+.copywrite {
+    color: #898989;
+    font-size: 11px;
+    margin-left: 20px;
+    margin-top:2px;
+}
+
+button > img {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
