@@ -9,6 +9,7 @@ $query = "SELECT name, username, password, level FROM users WHERE username = '$u
 $bd_data = mysqli_query($con, $query);
 $login = mysqli_fetch_assoc($bd_data);
 $level = $login['level'];
+echo $login['username'];
 
 if ($login['username'] == $user) {
     if ($login['password'] == $password) {
@@ -20,11 +21,11 @@ if ($login['username'] == $user) {
 }
 
 if($level == 'R'){
-    header('Location: main.php');
+    header('Location:main.php');
 } elseif($level == 'A'){
-    header('Location: admin.php');
+    header('Location:admin.php');
 } elseif($level == 'F'){
-    header('Location: financial.php');
+    header('Location:financial.php');
 } else {
     header('location:index.php?erro_pass=true');
     exit;
