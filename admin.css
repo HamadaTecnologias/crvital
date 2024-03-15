@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --red-logo: #9b1a2e;
+    --green-logo: #488b4a;
+    --roboto: "Roboto", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--roboto);
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
