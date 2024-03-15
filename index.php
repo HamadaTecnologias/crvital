@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastrar Empresas</title>
 </head>
 <body>
 
 
-    <h1>cadastro empresas</h1>
+    <h1>Cadastro Empresas</h1>
         <form action="cadastrar_empresa.php" method="post">
             <label for="nome_empresa">Razão Social:</label>
             <input name="nome_empresa" id="nome_empresa" type="text">
@@ -27,12 +27,13 @@
 <br>
 <br>
 
-            <B>Metodo de Pagamento<B><br>
-            <select name=metodo_pagamento>
+            <B>Forma de Pagamento<B><br>
+            <select name=forma_pagamento>
             <option value=dinheiro>Dinheiro</option>
             <option value=boleto>Boleto</option>
             <option value=faturado>Faturamento</option>
             <option value=credito>Crédito em conta</option>
+            <option value=null>Avulso</option>
             </select>
 <br>
 <br>
@@ -53,14 +54,14 @@
     
         while($linha = mysqli_fetch_assoc($empresas)){
         echo "Razão Social: "  .$linha['nome_empresa'].  " | ";
-        echo "<a href='apagar.php?id=".$linha['id_empresa']."'>Apagar</a>". " | ";
-        echo "<a href='alterar.php?id=".$linha['id_empresa']."'>Alterar</a> <br>";
+        echo "<a href='apagar.php?id_empresa=".$linha['id_empresa']."'>Apagar</a>". " | ";
+        echo "<a href='alterar.php?id_empresa=".$linha['id_empresa']."'>Alterar</a> <br>";
             if($linha['status'] = true){
                 echo"Liberado";
-                echo "<a href='bloquear.php?id=".$linha['id_empresa']."'>Bloquear</a><br>";
+                echo "<a href='bloquear.php?id_empresa=".$linha['id_empresa']."'>Bloquear</a><br>";
             }else{ 
                 echo"Bloqueado";
-                echo "<a href='liberar.php?id=".$linha['id_empresa']."'>Liberar</a><br>";
+                echo "<a href='liberar.php?id_empresa=".$linha['id_empresa']."'>Liberar</a><br>";
             }
             
         }

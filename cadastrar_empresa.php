@@ -3,7 +3,7 @@
 $nome_empresa = $_POST["nome_empresa"];
 $cnpj= $_POST["cnpj"];
 $perfil= $_POST["perfil"];
-$metodo_pagamento= $_POST["metodo_pagamento"];
+$forma_pagamento= $_POST["forma_pagamento"];
 $erro = FALSE;
 
 
@@ -22,7 +22,7 @@ echo"<br>";
         echo "Selecione ao menos um perfil de credenciamento. <br>"; $erro=TRUE;
     }
     if(!$erro){
-        $query = "insert into empresa(nome_empresa,cnpj,perfil,forma_pagamento,status) values ('".$nome_empresa."','".$cnpj."','".$perfil."','".$metodo_pagamento."','".true."')";
+        $query = "insert into empresa(nome_empresa,cnpj,perfil,forma_pagamento,status) values ('".$nome_empresa."','".$cnpj."','".$perfil."','".$forma_pagamento."','".true."')";
         if(mysqli_query($con,$query)){
             echo "Empresa Cadastrada com sucesso";
         }else{
