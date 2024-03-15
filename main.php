@@ -9,25 +9,16 @@
 </head>
 <body>
     <div class="sidebar">
+        <a href="logout.php"><img class="logout-icon" src="assets/logout-icon.png"></a>
         <img class="img-logo" src="assets/crvital-logo.svg">
         <ul>
-            <li><a href="#"><img class="icons-main" src="assets/user-icon.png">Usuário</a></li>
-            <li><a href="#"><img class="icons-main" src="assets/attendance-icon.png">Atendimento</a></li>
-            <li><a href="#">Empresas</a></li>
-            <li><a href="#">Exames</a></li>
-            <li><a href="#">Médicos</li>
-            <li><a href="#">Relatório</li>
+            <li><a href="#"><img class="icons-main" src="assets/user-icon.png">Usuários</a></li>
+            <li><a href="#"><img class="icons-main" src="assets/calendar.png">Atendimentos</a></li>
+            <li><a href="#"><img class="icons-main" src="assets/company.png">Empresas</a></li>
+            <li><a href="#"><img class="icons-main" src="assets/stetoscope.png">Exames</a></li>
+            <li><a href="#"><img class="icons-main" src="assets/doctor.png">Médicos</li>
+            <li><a href="#"><img class="icons-main" src="assets/report.png">Relatórios</li>
         </ul>
-        <img class="logout-icon" src="assets/logout-icon.png">
     </div>
-        
-    <!-- <div class="content">
-        <div id="aba1">Conteúdo da Aba 1</div>
-        <div id="aba2">Conteúdo da Aba 2</div>
-        <div id="aba3">Conteúdo da Aba 3</div>
-        <div id="aba4">Conteúdo da Aba 4</div>
-        <div id="aba5">Conteúdo da Aba 5</div>
-    </div>  -->
-
 </body>
 </html>

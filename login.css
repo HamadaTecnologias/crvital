@@ -34,6 +34,11 @@ body {
     margin-bottom: 25px;
 }
 
+.img-logo:hover {
+    scale: 1.1;
+    transition: 0.2s;
+}
+
 .login-box {
     background-color: #fff;
     width: 400px;
