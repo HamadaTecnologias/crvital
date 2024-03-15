@@ -48,15 +48,21 @@
     <?php 
         include 'bd_connect.php';
         echo"<br>";
-        $query = "select nome_empresa,status from empresa";
+        $query = "select id_empresa,nome_empresa,status from empresa";
         $empresas = mysqli_query($con,$query);
     
         while($linha = mysqli_fetch_assoc($empresas)){
-        echo "Razão Social: "  .$linha['nome_empresa']. "   |   Status: ". $linha['status']."<br>";
-        
+        echo "Razão Social: "  .$linha['nome_empresa'].  " | ";
+        echo "<a href='apagar.php?id=".$linha['id_empresa']."'>Apagar</a>". " | ";
+        echo "<a href='alterar.php?id=".$linha['id_empresa']."'>Alterar</a> <br>";
             if($linha['status'] = true){
-                echo"Liberado <br>";
-            }else{ echo"Bloqueado <br>";}
+                echo"Liberado";
+                echo "<a href='bloquear.php?id=".$linha['id_empresa']."'>Bloquear</a><br>";
+            }else{ 
+                echo"Bloqueado";
+                echo "<a href='liberar.php?id=".$linha['id_empresa']."'>Liberar</a><br>";
+            }
+            
         }
     
         mysqli_close($con);
