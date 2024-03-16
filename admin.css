@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --red-logo: #9b1a2e;
+    --green-logo: #488b4a;
+    --roboto: "Roboto", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--roboto);
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.middle {
+    background-color: #488b4a6f;
+    display: flex;
+    margin-left: 100px;
+    border-radius: 10px;
+    padding: 20px;
+    height: auto;
+}
+
+.new-user {
+    margin-right: 100px;
+}
+
+h3 {
+    color: var(--red-logo);
+    font-family: var(--roboto);
+    padding: 15px;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.new-user-label {
+    font-size: 17px;
+    font-family: var(--roboto);
+    font-weight: bolder;
+    color: rgba(0, 0, 0, 0.807);
+    cursor: pointer;
+}
+
+.new-user-input {
+    width: 250px;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: white;
+    height: 10px;
+    cursor: pointer;
+}
+
+h4 {
+    color: var(--red-logo);
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: var(--roboto);
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-left: 5px;
+    margin-right: 5px;
+    transform: scale(1.2);
+    border: 1px solid black; 
+    cursor: pointer;
+}
+
+label {
+    font-size: 16px; 
+    color: black;
+    cursor: pointer;
+    margin-bottom: 10px;
+    line-height: 24px;
+}
+
+button {
+    width: 150px;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 50px;
+    border-radius: 5px;
+    background-color: var(--red-logo);
+    color: white;
+    font-size: 18px;
+    font-family: var(--roboto);
+    cursor: pointer;
+    border: none;
+    justify-content: center;
+}
+
+button:hover {
+    color: var(--green-logo);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 20px;
+  }
+  
+th, td {
+text-align: center;
+border: 1px solid black;
+padding: 10px;
+}
+
+th {
+background-color: var(--red-logo);
+color: white;
+}
+
+td a {
+    display: inline-block; 
+    text-decoration: none;
+    background-color: var(--red-logo);
+    border-radius: 10px;
+    padding: 5px; 
+    color: white;
+    max-width: 100%; 
+    box-sizing: border-box; 
+}
+
+td a:hover {
+    color: var(--green-logo);
+} 
+
+.block {
+    background-color: rgba(255, 255, 0, 0.566);
+    color: black;
+}
+
+.block:hover {
+    color: red;
+}
+
+.unblock {
+    background-color: var(--green-logo);
+    color: black;
+}
+
+.unblock:hover {
+    color: white;
+}
