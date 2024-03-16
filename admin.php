@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/crvital-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="main-sidebar.css">
-    <link rel="stylesheet" href="admin.css">
+    <!-- <link rel="stylesheet" href="admin.css">  -->
+    <link rel="stylesheet" href="admin-2.css">   
     <title>CrVital - Página do Administrador</title>
 </head>
 <body>
@@ -23,19 +24,20 @@
         </ul>
     </div>
 
-    <div>
-        <h3>Cadastrar Novo Usuário</h3>
+    <div class="middle">
+    <div class="new-user">
+        <h3>Cadastrar Novo Usuário:</h3>
         <form action="new_user.php" method="post">
-            <label for="new_user_username">Login:</label><br>
-            <input type="text" name="new_user_username" placeholder="Digite o usuário"><br>
+            <label class="new-user-label" for="new_user_username">Login:</label><br>
+            <input class="new-user-input" type="text" name="new_user_username" placeholder="Digite o usuário"><br>
 
-            <label for="new_user_full_name">Nome:</label><br>
-            <input type="text" name="new_user_full_name" placeholder="Digite seu nome completo"><br>
+            <label class="new-user-label" for="new_user_full_name">Nome:</label><br>
+            <input class="new-user-input" type="text" name="new_user_full_name" placeholder="Digite seu nome completo"><br>
 
-            <label for="new_user_password">Senha:</label><br>
-            <input type="password" name="new_user_password" placeholder="Digite sua senha"><br>
+            <label class="new-user-label" for="new_user_password">Senha:</label><br>
+            <input class="new-user-input" type="password" name="new_user_password" placeholder="Digite sua senha"><br>
 
-            <h4>Perfil de Usuário</h4>
+            <h4>Perfil de Usuário:</h4>
             <input type="radio" name="new_user_level" value="A"> 
             <label for="adm">Administrador</label><br>
 
@@ -49,8 +51,8 @@
         </form>
     </div>
 
-    <div>
-    <h3>Usuários Cadastrados</h3>
+    <div class="registred-users">
+    <h3>Usuários Cadastrados:</h3>
     <table>
         <tr>
             <th>Username</th>
@@ -82,7 +84,7 @@
         ?>
     </table>
     </div>
-
+    </div>
     </section>
 </body>
 </html>

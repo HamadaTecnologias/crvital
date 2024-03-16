@@ -13,11 +13,13 @@ $status = $login['status'];
 
 if ($login['username'] == $user_input) {
     if ($login['password'] == $password) {
-        if ($status == true){
+        if ($login['status'] == true) {
             session_start();
             $_SESSION['user'] = $user_input;
             $_SESSION['level'] = $level;
             $_SESSION['name'] = $login['name'];
+        } else {
+            throw new Exception('Usuário bloqueado');
         }
     }
 }
