@@ -14,11 +14,11 @@
         <a href="logout.php"><img class="logout-icon" src="assets/logout-icon.png"></a>
         <img class="img-logo" src="assets/crvital-logo.svg">
         <ul>
-            <li><a href="#"><img class="icons-main" src="assets/user-icon.png">Usuários</a></li>
+            <li><a href="admin.php"><img class="icons-main" src="assets/user-icon.png">Usuários</a></li>
             <li><a href="#"><img class="icons-main" src="assets/calendar.png">Atendimentos</a></li>
             <li><a href="#"><img class="icons-main" src="assets/company.png">Empresas</a></li>
             <li><a href="#"><img class="icons-main" src="assets/stetoscope.png">Exames</a></li>
-            <li><a href="#"><img class="icons-main" src="assets/doctor.png">Médicos</a></li>
+            <li><a href="doctor.php"><img class="icons-main" src="assets/doctor.png">Médicos</a></li>
             <li><a href="#"><img class="icons-main" src="assets/report.png">Relatórios</a></li>
         </ul>
     </div>
