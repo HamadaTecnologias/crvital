@@ -53,16 +53,25 @@
         $empresas = mysqli_query($con,$query);
     
         while($linha = mysqli_fetch_assoc($empresas)){
-            echo "Razão Social: "  .$linha['nome_empresa'].  " | ";
-            echo "<a href='apagar.php?id_empresa=".$linha['id_empresa']."'>Apagar</a>". " | ";
-            echo "<a href='alterar.php?id_empresa=".$linha['id_empresa']."'>Alterar</a> <br>";
+            echo "<tr>";
+            echo "<td>"."Razão Social: "  .$linha['nome_empresa'].  " </td> ";
+            echo "<td>"."<a href='apagar.php?id_empresa=".$linha['id_empresa']."'>Apagar</a>". " </td> ";
+            echo "<td>"."<a href='alterar.php?id_empresa=".$linha['id_empresa']."'>Alterar</a> </td>";
+            
             if($linha['status'] != false){
+             
                 echo"Liberado";
-                echo "<a href='bloquear.php?id_empresa=".$linha['id_empresa']."'>Bloquear</a><br>";
+                echo "<a href='bloquear.php?id_empresa=/".$linha['id_empresa']."'>Bloquear</a><br>";
+               
             }else{ 
+              
                 echo"Bloqueado";
                 echo "<a href='liberar.php?id_empresa=".$linha['id_empresa']."'>Liberar</a><br>";
+             
             }
+                
+           
+            echo"</tr>";
             
         }
     

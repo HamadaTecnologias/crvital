@@ -17,7 +17,7 @@
             <label for="v1">Valor 1</label>
             <input type="number" name="v1" id="v1" value="<?=$valor1?>">
             <label for="v2">Valor 2</label>
-            <input type="number" name="v2" id="v2" value="<?$valor2?>">
+            <input type="number" name="v2" id="v2" value="<?=$valor2?>">
             <input type="submit" value="Somar">
         </form>
 
