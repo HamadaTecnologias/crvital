@@ -28,6 +28,10 @@
         <form action="new_user.php" method="post">
             <label for="new_user_username">Login:</label><br>
             <input type="text" name="new_user_username" placeholder="Digite o usuário"><br>
+
+            <label for="new_user_full_name">Nome:</label><br>
+            <input type="text" name="new_user_full_name" placeholder="Digite seu nome completo"><br>
+
             <label for="new_user_password">Senha:</label><br>
             <input type="password" name="new_user_password" placeholder="Digite sua senha"><br>
 
@@ -46,7 +50,37 @@
     </div>
 
     <div>
-        <h3>Usuários Cadastrados</h3>
+    <h3>Usuários Cadastrados</h3>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Level</th>
+            <th colspan="3">Ações</th>
+        </tr>
+        <?php
+        include 'bd_connect.php';
+        $query = "SELECT * FROM users";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row['username'] . "</td>";
+                echo "<td>" . $row['name'] . "</td>";
+                echo "<td>" . $row['level'] . "</td>";
+                echo "<td><a href='delete_user.php?user=".$row['username']."'>Excluir</a></td>";
+                if($row['status']!= false){
+                    echo "<td><a href='block_user.php?user=".$row['username']."'>Bloquear</a></td>";
+                } else {
+                    echo "<td><a href='unblock_user.php?user=".$row['username']."'>Desbloquear</a></td>";
+                }
+                echo "</tr>";
+            }
+        } else {
+            echo "Erro ao recuperar os usuários.";
+        }
+        ?>
+    </table>
     </div>
 
     </section>
