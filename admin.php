@@ -71,9 +71,9 @@
                 echo "<td>" . $row['level'] . "</td>";
                 echo "<td><a href='delete_user.php?user=".$row['username']."'>Excluir</a></td>";
                 if($row['status']!= false){
-                    echo "<td><a href='block_user.php?user=".$row['username']."'>Bloquear</a></td>";
+                    echo "<td><a class='block' href='block_user.php?user=".$row['username']."'>Bloquear</a></td>";
                 } else {
-                    echo "<td><a href='unblock_user.php?user=".$row['username']."'>Desbloquear</a></td>";
+                    echo "<td><a class='unblock' href='unblock_user.php?user=".$row['username']."'>Desbloquear</a></td>";
                 }
                 echo "</tr>";
             }

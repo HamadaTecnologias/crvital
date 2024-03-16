@@ -108,24 +108,50 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-  }
-  
-  th, td {
     border: 1px solid black;
-    padding: 8px;
-    text-align: left;
+    padding: 20px;
   }
   
-  th {
-    background-color: var(--red-logo);
-    color: white;
-  }
-  
-  td a {
+th, td {
+text-align: center;
+border: 1px solid black;
+padding: 10px;
+}
+
+th {
+background-color: var(--red-logo);
+color: white;
+}
+
+td a {
+    display: inline-block; 
     text-decoration: none;
-  }
-  
-  td a:hover {
+    background-color: var(--red-logo);
+    border-radius: 10px;
+    padding: 5px; 
+    color: white;
+    max-width: 100%; 
+    box-sizing: border-box; 
+}
+
+td a:hover {
     color: var(--green-logo);
-  }
-  
+} 
+
+.block {
+    background-color: rgba(255, 255, 0, 0.566);
+    color: black;
+}
+
+.block:hover {
+    color: red;
+}
+
+.unblock {
+    background-color: var(--green-logo);
+    color: black;
+}
+
+.unblock:hover {
+    color: white;
+}
