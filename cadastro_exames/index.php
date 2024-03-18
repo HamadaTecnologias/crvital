@@ -32,8 +32,7 @@
         <br>
 
         <?php 
-            // Recebendo valores para alterar
-           
+            // RECEBENDO VALORES PARA ALTERAR
             $id_procedimento = $_GET['id_procedimento']??null;
             $alterar['nome_procedimento']=null;
             $alterar['valor']=null;
@@ -43,39 +42,59 @@
                 $alterar = mysqli_fetch_assoc($procedimento_para_alterar);
             }
         ?>
-
+        <!-- FORM PARA INSERIR E CONFIRMAR ALTERAÇÃO -->
         <form action="procedimentos.php" method="post">
+            <input style="visibility:hidden" name="id_empresa" id="id_empresa" type="number" value="<?=$id_empresa?>"><br>
             <label for="nome_procedimento">Procedimento:</label>
             <input name="nome_procedimento" id="nome_procedimento" type="text" value="<?=$alterar['nome_procedimento']?>">
             <label for="Valor">Valor:</label>
             <input name="valor" id="valor" type="text" value="<?=$alterar['valor']?>">
             <br>
             <br>
-            <button type="submit" value="cadastrar">cadastrar</button>
-            <button type="submit" value="<?=$id_procedimento?>">confirmar alteração</button>
+            <button type="submit" value="inserir">Inserir</button>
+            <button type="submit" value="<?=$id_procedimento?>">Confirmar Alteração</button>
         </form>
 
         <br>
         <br>
         <br>
 
-        <?php 
-        //Exibindo Procedimentos na tela
-        if ($id_empresa!=null) {
-            $query = "select id_procedimento,nome_procedimento,valor from procedimento where id_empresa=".$id_empresa;
-            $procedimentos = mysqli_query($con,$query);
-            while($linha = mysqli_fetch_assoc($procedimentos)){
-                echo "<tr>";
-                echo "<td>"."Procedimento: "  .$linha['nome_procedimento'].  " </td> ";
-                echo "<td>"."Valor: "  .$linha['valor'].  " </td> ";
-                echo "<td>"."<a href='apagar.php?id_procedimento=".$linha['id_procedimento']."'>Apagar</a>". " </td> ";
-                echo "<td>"."<a href='index.php?id_procedimento=".$linha['id_procedimento']."'>Alterar</a> </td>";
-                echo"</tr>";
-            }  
-        }
 
-        mysqli_close($con);
-    ?>
+        <!-- VERSÃO 2 DA EXIBIÇÃO DE PROCEDIMENTOS -->
+        <?php 
+            if ($id_empresa!=null) {
+                $query = "select id_procedimento,nome_procedimento,valor from procedimento where id_empresa=".$id_empresa;
+                $procedimentos = mysqli_query($con,$query);
+                while($linha = mysqli_fetch_assoc($procedimentos)){?>
+                    <table>
+                    <thead>
+                        <tr>
+                        <th scope="col">Procedimento</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Apagar</th>
+                        <th scope="col">Alterar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                <?= $linha['nome_procedimento']; ?>
+                            </th>
+                            <td><?=$linha['valor']; ?></td>
+                            <td>
+                                <a href='apagar.php?id_procedimento=<?= $linha['id_procedimento']?>'>Apagar</a>
+                            </td>
+                            <td>
+                                <a href='index.php?id_procedimento=<?=$linha['id_procedimento']?>&id_empresa=<?=$id_empresa?>'>Alterar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                <?php 
+                }  
+            }
+            mysqli_close($con);
+        ?>
 
 </body>
 </html>
