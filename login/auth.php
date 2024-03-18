@@ -27,7 +27,7 @@ if ($login['username'] == $user_input) {
 if($level == 'R'){
     header('Location:main.php');
 } elseif($level == 'A'){
-    header('Location:admin.php');
+    header('Location:../usuario/admin.php');
 } elseif($level == 'F'){
     header('Location:financial.php');
 } else {
