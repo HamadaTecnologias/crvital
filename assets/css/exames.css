@@ -17,4 +17,99 @@ body {
     font-family: var(--roboto);
 }
 
+.main{
+    margin-top: 10%;
+    background-color: #488b4a6f;
+    display: flex;
+    border-radius: 10px;
+    padding: 20px;
+    height: auto;
+    flex-direction: column;
+    gap: 50px;
+}
 
+.forms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+
+.dados-procedimentos label {
+    font-size: 17px;
+    font-family: var(--roboto);
+    font-weight: bolder;
+    color: rgba(0, 0, 0, 0.807);
+    cursor: pointer;
+
+}
+
+.dados-procedimentos input {
+    width: 250px;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: white;
+    height: 10px;
+    cursor: pointer;
+}
+
+.dados-procedimentos button {
+    padding: 6px;
+    border-radius: 5px;
+    background-color: var(--red-logo);
+    color: white;
+    font-size: 18px;
+    font-family: var(--roboto);
+    cursor: pointer;
+    border: none;
+    justify-content: center;
+}
+
+.dados-procedimentos button:hover {
+    color: var(--green-logo);
+}
+
+.exibicao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.exibicao table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 20px;
+  }
+  
+  .exibicao table th, td {
+text-align: center;
+border: 1px solid black;
+padding: 10px;
+}
+
+.exibicao table th {
+background-color: var(--red-logo);
+color: white;
+}
+
+.exibicao table td a {
+    display: inline-block; 
+    text-decoration: none;
+    background-color: var(--red-logo);
+    border-radius: 10px;
+    padding: 5px; 
+    color: white;
+    max-width: 100%; 
+    box-sizing: border-box; 
+}
+
+.exibicao table td a:hover {
+    color: var(--green-logo);
+} 
