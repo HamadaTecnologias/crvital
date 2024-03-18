@@ -7,10 +7,17 @@
     $valor= $_POST["valor"];
     $erro = FALSE;
     include 'bd_connect.php';
-
+    echo" procedimento para alterar: ".$id_procedimento;
+    echo"<br>";
+    echo"<br>";
     //tratar dados inseridos
     if(empty($nome_procedimento)){
         echo "Digite o nome do procedimento corretamente. <br>"; 
+        $erro=TRUE;
+    }
+
+    if(empty($valor)){
+        echo "Digite o valor do procedimento corretamente. <br>"; 
         $erro=TRUE;
     }
 

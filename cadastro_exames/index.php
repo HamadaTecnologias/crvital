@@ -10,6 +10,7 @@
         <br>
         <br> 
     <?php 
+        //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
         $id_empresa= $_GET['id_empresa']??null;
         include 'bd_connect.php';
     ?>
@@ -44,6 +45,7 @@
         ?>
         <!-- FORM PARA INSERIR E CONFIRMAR ALTERAÇÃO -->
         <form action="procedimentos.php" method="post">
+            <input style="visibility:hidden" name="id_procedimento" id="id_procedimento" type="number" value="<?=$id_procedimento?>">
             <input style="visibility:hidden" name="id_empresa" id="id_empresa" type="number" value="<?=$id_empresa?>"><br>
             <label for="nome_procedimento">Procedimento:</label>
             <input name="nome_procedimento" id="nome_procedimento" type="text" value="<?=$alterar['nome_procedimento']?>">
@@ -52,7 +54,7 @@
             <br>
             <br>
             <button type="submit" value="inserir">Inserir</button>
-            <button type="submit" value="<?=$id_procedimento?>">Confirmar Alteração</button>
+            <button type="submit" value="alterar">Confirmar Alteração</button>
         </form>
 
         <br>
@@ -63,6 +65,12 @@
         <!-- VERSÃO 2 DA EXIBIÇÃO DE PROCEDIMENTOS -->
         <?php 
             if ($id_empresa!=null) {
+                // DESCOBRINDO NOME DA EMPRESA
+                $query_empresa="select nome_empresa from empresa where id_empresa=".$id_empresa;
+                $n_empresa = mysqli_query($con,$query_empresa);
+                $linha_empresa = mysqli_fetch_assoc($n_empresa);
+                echo"A Empresa ".$linha_empresa['nome_empresa']." está selecionada <br>";
+                //BUSCANDO PROCEDIMENTOS DA EMPRESA
                 $query = "select id_procedimento,nome_procedimento,valor from procedimento where id_empresa=".$id_empresa;
                 $procedimentos = mysqli_query($con,$query);
                 while($linha = mysqli_fetch_assoc($procedimentos)){?>
