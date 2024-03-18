@@ -89,6 +89,8 @@
             include 'bd_connect.php';
         ?>
             <!-- SELETOR DE EMPRESAS -->
+        <div class="forms">
+            <div class="seletor-empresa">
             <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
                 <select name="id_empresa" id="id_empresa" required>
                     <option value="">Selecione uma empresa</option>
@@ -101,10 +103,8 @@
                 </select>
                 <button type="submit" value="selecionar">Selecionar</button>             
             </form>
-
-            <br>
-            <br>
-            <br>
+            </div>
+            
 
             <?php 
                 // RECEBENDO VALORES PARA ALTERAR
@@ -118,22 +118,19 @@
                 }
             ?>
             <!-- FORM PARA INSERIR E CONFIRMAR ALTERAÇÃO -->
+            <div class="dados-procedimentos">
             <form action="procedimentos.php" method="post">
-                <input style="visibility:hidden" name="id_procedimento" id="id_procedimento" type="number" value="<?=$id_procedimento?>">
-                <input style="visibility:hidden" name="id_empresa" id="id_empresa" type="number" value="<?=$id_empresa?>"><br>
-                <label for="nome_procedimento">Procedimento:</label>
-                <input name="nome_procedimento" id="nome_procedimento" type="text" value="<?=$alterar['nome_procedimento']?>">
-                <label for="Valor">Valor:</label>
-                <input name="valor" id="valor" type="text" value="<?=$alterar['valor']?>">
-                <br>
-                <br>
+                <input style="display:none" name="id_procedimento" id="id_procedimento" type="number" value="<?=$id_procedimento?>">
+                <input style="display:none" name="id_empresa" id="id_empresa" type="number" value="<?=$id_empresa?>">
+                <label for="nome_procedimento">Procedimento:</label><br>
+                <input name="nome_procedimento" id="nome_procedimento" placeholder="Digite o Procedimento" type="text" value="<?=$alterar['nome_procedimento']?>"><br>
+                <label for="Valor">Valor:</label><br>
+                <input name="valor" id="valor" placeholder="Digite o Valor" type="text"  value="<?=$alterar['valor']?>"><br><br>
                 <button type="submit" value="inserir">Inserir</button>
                 <button type="submit" value="alterar">Confirmar Alteração</button>
-            </form>    
-            <br>
-            <br>
-            <br>
-
+            </form> 
+            </div>   
+        </div>
 
             <!-- VERSÃO 2 DA EXIBIÇÃO DE PROCEDIMENTOS -->
             <?php 
@@ -141,11 +138,14 @@
                     // DESCOBRINDO NOME DA EMPRESA
                     $query_empresa="select nome_empresa from empresa where id_empresa=".$id_empresa;
                     $n_empresa = mysqli_query($con,$query_empresa);
-                    $linha_empresa = mysqli_fetch_assoc($n_empresa);
-                    echo"A Empresa ".$linha_empresa['nome_empresa']." está selecionada <br>";
+                    $linha_empresa = mysqli_fetch_assoc($n_empresa); 
                     //BUSCANDO PROCEDIMENTOS DA EMPRESA
                     $query = "select id_procedimento,nome_procedimento,valor from procedimento where id_empresa=".$id_empresa;
                     $procedimentos = mysqli_query($con,$query);?>
+                
+                <div class="exibicao">
+                <h3>A Empresa <?=$linha_empresa['nome_empresa']?> está selecionada</h3>
+                <br>
                     <table>
                         <thead>
                             <tr>
@@ -178,6 +178,7 @@
                             <?php } ?>
                         </tbody>
                     </table>
+                </div>
             <?php 
                 } 
                 mysqli_close($con);
