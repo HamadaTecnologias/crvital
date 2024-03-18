@@ -54,29 +54,51 @@
         <br>
         <br>
         <br>
-        <?php 
-        //Exibindo Empresas na tela
-        echo"<br>";
-        $query = "select id_empresa,nome_empresa,status from empresa";
-        $empresas = mysqli_query($con,$query);
-        while($linha = mysqli_fetch_assoc($empresas)){
-            echo "<tr>";
-            echo "<td>"."Razão Social: "  .$linha['nome_empresa'].  " </td> ";
-            echo "<td>"."<a href='apagar.php?id_empresa=".$linha['id_empresa']."'>Apagar</a>". " </td> ";
-            echo "<td>"."<a href='pagina_principal.php?id_empresa=".$linha['id_empresa']."'>Alterar</a> </td>";
-            if($linha['status'] != false){
-                echo"Liberado";
-                echo "<a href='bloquear.php?id_empresa=".$linha['id_empresa']."'>Bloquear</a><br>";
-            }else{ 
-                echo"Bloqueado";
-                echo "<a href='liberar.php?id_empresa=".$linha['id_empresa']."'>Liberar</a><br>";
-            } 
-            echo"</tr>";
-        }
-        mysqli_close($con);
-    ?>
 
-
-
+    <?php 
+            //Exibindo Empresas na tela
+            echo"<br>";
+            $query = "select id_empresa,nome_empresa,status from empresa";
+            $empresas = mysqli_query($con,$query);?>
+            <table>
+                <thead>
+                    <tr>
+                    <th scope="col">Razão Social</th>
+                    <th scope="col">Apagar</th>
+                    <th scope="col">Alterar</th>
+                    <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while($linha = mysqli_fetch_assoc($empresas)){ ?>
+                        <tr>
+                            <td>
+                                <?= $linha['nome_empresa']; ?>
+                            </td>
+                            <td>
+                                <a href='apagar.php?id_empresa=<?= $linha['id_empresa']?>'>Apagar</a>
+                            </td>
+                            <td>
+                                <a href='pagina_principal.php?id_empresa=<?=$linha['id_empresa']?>'>Alterar</a>
+                            </td>
+                            <?php if($linha['status'] != false){?>
+                                <td>
+                                    <p>Liberado  </p>
+                                </td> 
+                                <td>
+                                    <a href='bloquear.php?id_empresa=<?= $linha['id_empresa']?>'>Bloquear</a>
+                                </td>
+                            <?php }else{ ?>
+                                <td>  
+                                <p>Bloqueado  </p>
+                                </td>
+                                <td>
+                                <a href='liberar.php?id_empresa=<?= $linha['id_empresa']?>'>Liberarr</a>
+                                </td>
+                            <?php } ?>   
+                        </tr>
+                    <?php } 
+                        mysqli_close($con);
+                    ?>   
 </body>
 </html>

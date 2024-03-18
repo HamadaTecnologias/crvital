@@ -72,9 +72,8 @@
                 echo"A Empresa ".$linha_empresa['nome_empresa']." está selecionada <br>";
                 //BUSCANDO PROCEDIMENTOS DA EMPRESA
                 $query = "select id_procedimento,nome_procedimento,valor from procedimento where id_empresa=".$id_empresa;
-                $procedimentos = mysqli_query($con,$query);
-                while($linha = mysqli_fetch_assoc($procedimentos)){?>
-                    <table>
+                $procedimentos = mysqli_query($con,$query);?>
+                <table>
                     <thead>
                         <tr>
                         <th scope="col">Procedimento</th>
@@ -84,11 +83,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">
+                        <?php while($linha = mysqli_fetch_assoc($procedimentos)){ ?>
+                            <tr>
+                            <td scope="row">
                                 <?= $linha['nome_procedimento']; ?>
-                            </th>
-                            <td><?=$linha['valor']; ?></td>
+                            </td>
+                            <td>
+                                <?=$linha['valor']; ?>
+                            </td>
                             <td>
                                 <a href='apagar.php?id_procedimento=<?= $linha['id_procedimento']?>'>Apagar</a>
                             </td>
@@ -96,11 +98,12 @@
                                 <a href='index.php?id_procedimento=<?=$linha['id_procedimento']?>&id_empresa=<?=$id_empresa?>'>Alterar</a>
                             </td>
                         </tr>
+                        <?php } ?>
                     </tbody>
-                    </table>
-                <?php 
-                }  
-            }
+                </table>
+
+        <?php 
+            } 
             mysqli_close($con);
         ?>
 
