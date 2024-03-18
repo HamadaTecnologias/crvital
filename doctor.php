@@ -70,7 +70,7 @@
                 echo "<td>" . $row['nome_medico'] . "</td>";
                 echo "<td>" . $row['cpf'] . "</td>";
                 echo "<td>" . $row['categoria'] . "</td>";
-                echo "<td><a href='delete_doctor.php?id=".$row['id_medico']."'>Excluir</a></td>";
+                echo "<td><a href='delete_doctor.php?id_medico=".$row['id_medico']."'>Excluir</a></td>";
                 echo "</tr>";
             }
         } else {
