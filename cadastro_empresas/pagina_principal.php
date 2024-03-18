@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/minoro-sidebar.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
     <title>CrVital - Empresas</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
         <header class="sidebar-header">
             <button class="sidebar-header-button">
                 <span class="sidebar-header-button-span">
-                    <a href="logout.php"><img class="logout-icon" src="../assets/logout-icon.png"></a>
+                    <a href="../login/logout.php"><img class="logout-icon" src="../assets/logout-icon.png"></a>
                 </span>
             </button>
         </header>
@@ -21,7 +21,7 @@
             
             <button class="sidebar-nav-button">
                 <span class="sidebar-nav-button-span">
-                    <a href="#"><img class="icons-main" src="../assets/user-icon.png">
+                    <a href="../usuario/admin.php"><img class="icons-main" src="../assets/user-icon.png">
                     <span class="sidebar-nav-button-span2">
                         Usuários
                     </span>

@@ -17,17 +17,4 @@ body {
     font-family: var(--roboto);
 }
 
-.flex {
-    display: flex;
-    align-items: center;
-}
-
-.middle {
-    background-color: #488b4a6f;
-    display: flex;
-    border-radius: 10px;
-    padding: 20px;
-    height: auto;
-    margin: 10px;
-}
 
