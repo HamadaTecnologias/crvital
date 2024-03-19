@@ -4,8 +4,10 @@
     $query = "delete from procedimento where id_procedimento =".$id_procedimento;
 
     if (mysqli_query($con,$query)) {
-        echo"Procedimento excluído";
+        header('location: pagina_principal.php?excluido=true');
     } else {
-        echo"erro ao excluir Procedimento";
+        echo"Erro ao excluir o Procedimento<br>";
+        echo mysqli_error($con);
+        echo "<br>Contate o Suporte";
     }
 ?>
