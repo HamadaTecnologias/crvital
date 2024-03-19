@@ -62,7 +62,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-                        <a href="#"><img class="icons-main" src="../assets/doctor.png">
+                        <a href="../medico/doctor.php"><img class="icons-main" src="../assets/doctor.png">
                         <span class="sidebar-nav-button-span2">
                             Médicos
                         </span>
