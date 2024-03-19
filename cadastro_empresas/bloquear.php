@@ -5,7 +5,7 @@
     $query = "update empresa set status = false where id_empresa =".$id_empresa;
 
     if(mysqli_query($con,$query)){
-        echo "Empresa bloqueada com sucesso";
+        header('location:pagina_principal.php?bloqueado=true');
     }else{
         echo "Erro ao bloquear Emrpresa: <br>";
         echo mysqli_error($con);

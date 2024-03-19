@@ -4,7 +4,9 @@
     $query = "delete from empresa where id_empresa =".$id_empresa;
 
     if (mysqli_query($con,$query)) {
-        echo"contato excluído";
+
+        header('location: pagina_principal.php?excluido=true');
+
     } else {
         echo"erro ao excluir contato";
     }

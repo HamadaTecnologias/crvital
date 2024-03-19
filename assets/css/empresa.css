@@ -19,42 +19,41 @@ body {
 }
 
 .main{
-    margin-top: 10%;
+    margin-top: 5%;
     background-color: rgba(252, 252, 252, 0.8) ;
-    display: flex;
     border-radius: 10px;
-    padding: 100px;
-    height: auto;
-    flex-direction: column;
-    gap: 50px;
-    width: 80%;
-}
-
-.forms{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5%;
-}
-.seletor-empresa {
     padding: 50px;
-    background-color: rgba(131, 178, 132, 0.7);
-    border-radius: 10px;
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
-.seletor-empresa select {
-    width:500px;
-    height:30px;
-    font-family: var(--roboto);
-    font-size:22px;
-    border-radius: 10px;
-    }
-    
-.seletor-empresa select option {
-    font-size:20px;
-    border-radius: 10px;
-    } 
 
-.seletor-empresa button{
+
+.painel{
+    background-color: rgba(72, 139, 74, 0.25);
+    border: 0.8px solid black;
+    border-radius: 10px;
+    display: flex;
+    gap: 80px;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    padding: 20px;
+
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+button {
     padding: 6px;
     border-radius: 5px;
     background-color: var(--red-logo);
@@ -63,54 +62,67 @@ body {
     font-family: var(--roboto);
     cursor: pointer;
     border: none;
-    justify-content: center;
 }
-
-.seletor-empresa button:hover{
+button:hover {
     color: var(--green-logo);
 }
 
-.dados-procedimentos{
-    padding: 50px;
-    background-color: rgba(131, 178, 132, 0.7);
-    border-radius: 10px;
-    display: flex;
-    }
+.coluna{
+    flex: 1;
+}
 
-.dados-procedimentos label {
+.dados{
+display: flex;
+align-items: flex-start;
+flex-direction: column;
+}
+.dados label {
     font-size: 17px;
     font-family: var(--roboto);
     font-weight: bolder;
     color: rgba(0, 0, 0, 0.807);
     cursor: pointer;
-
 }
-
-.dados-procedimentos input {
-    width: 250px;
-    padding: 15px;
-    font-size: 15px;
-    border-radius: 5px;
-    margin: 10px;
-    background-color: white;
-    height: 10px;
-    cursor: pointer;
-}
-
-.dados-procedimentos button {
-    padding: 6px;
-    border-radius: 5px;
-    background-color: var(--red-logo);
-    color: white;
+.dados input {
+    width: 450px;
     font-size: 18px;
-    font-family: var(--roboto);
+    border-radius: 5px;
+    background-color: white;
+    height: 30px;
     cursor: pointer;
-    border: none;
-    margin-left: 12px;
 }
 
-.dados-procedimentos button:hover {
-    color: var(--green-logo);
+.dados select {
+    width:300px;
+    height:25px;
+    font-family: var(--roboto);
+    font-size:16px;
+    border-radius: 10px;
+    }
+
+.perfil{
+    background-color: rgba(252, 252, 252, 0.8) ;
+    padding: 10px;
+    border-radius: 10px;
+    height: 150px;
+    font-family: var(--roboto);
+    font-size:20px;
+
+}
+
+.perfil input[type="radio"] {
+    transform: scale(1.2);
+    border: 1px solid black; 
+    cursor: pointer;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 20px;
 }
 
 .exibicao{
@@ -121,6 +133,8 @@ body {
     background-color: rgba(131, 178, 132, 0.7);
     border-radius: 10px;
     padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 
 }
 

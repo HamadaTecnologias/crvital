@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/admin.css">   
-    <title>CrVital - Página Inicial</title>
+    <link rel="stylesheet" href="../assets/css/doctor.css">
+    <title>CrVital - Página Médicos</title>
 </head>
 <body>
     <aside class="sidebar">
@@ -32,9 +32,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-
                         <a href="../atendimento/atendimento.php"><img class="icons-main" src="../assets/calendar.png">
-
                         <span class="sidebar-nav-button-span2">
                             Atendimentos
                         </span>
@@ -64,9 +62,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-
                         <a href="../medico/doctor.php"><img class="icons-main" src="../assets/doctor.png">
-
                         <span class="sidebar-nav-button-span2">
                             Médicos
                         </span>
@@ -76,9 +72,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-
                         <a href="../relatorio/relatorio.php"><img class="icons-main" src="../assets/report.png">
-
                         <span class="sidebar-nav-button-span2">
                             Relatórios
                         </span>
@@ -89,64 +83,60 @@
         </aside>
 
         <main class="main">
-                <div class="new-user">
-                    <h3>Cadastrar Novo Usuário:</h3>
-                    <form action="new_user.php" method="post">
-                        <label class="new-user-label" for="new_user_username">Login:</label><br>
-                        <input class="new-user-input" type="text" name="new_user_username" placeholder="Digite o usuário"><br>
+                <div class="new-doctor">
+                <h3>Cadastrar Novo Médico:</h3>
+                <form action="new_doctor.php" method="post">
+                    <label class="new-doctor-label" for="new_doctor_username">Médico:</label><br>
+                    <input class="new-doctor-input" type="text" name="new_doctor_username" placeholder="Digite o nome"><br>
 
-                        <label class="new-user-label" for="new_user_full_name">Nome:</label><br>
-                        <input class="new-user-input" type="text" name="new_user_full_name" placeholder="Digite seu nome completo"><br>
+                    <label class="new-doctor-label" for="new_doctor_cpf">CPF:</label><br>
+                    <input class="new-doctor-input" type="text" name="new_doctor_cpf" placeholder="Digite o CPF"><br>
 
-                        <label class="new-user-label" for="new_user_password">Senha:</label><br>
-                        <input class="new-user-input" type="password" name="new_user_password" placeholder="Digite sua senha"><br>
+                    <label class="new-doctor-label" for="new_doctor_nis">NIS:</label><br>
+                    <input class="new-doctor-input" type="text" name="new_doctor_nis" placeholder="Digite o número do NIS"><br>
 
-                        <h4>Perfil de Usuário:</h4>
-                        <input type="radio" name="new_user_level" value="A"> 
-                        <label for="adm">Administrador</label><br>
+                    <label class="new-doctor-label" for="new_doctor_board">Conselho (SIGLA):</label><br>
+                    <input class="new-doctor-input" type="text" name="new_doctor_board" placeholder="Digite a sigla do conselho"><br>
 
-                        <input type="radio" name="new_user_level" value="R"> 
-                        <label for="recepc">Recepção</label><br> 
+                    <label class="new-doctor-label" for="new_doctor_register_board">Registro no Conselho</label><br>
+                    <input class="new-doctor-input" type="text" name="new_doctor_register_board" placeholder="Digite o registro do conselho"><br>
 
-                        <input type="radio" name="new_user_level" value="F"> 
-                        <label for="financ">Financeiro</label><br> 
+                    <label class="new-doctor-label" for="new_doctor_category">Categoria</label><br>
+                    <input class="new-doctor-input" type="text" name="new_doctor_category" placeholder="Digite a categoria"><br>
 
-                        <button type="submit">Cadastrar</button>
-                    </form>
+                    <button type="submit">Cadastrar</button>
+                </form>
                 </div>
 
-                <div class="registred-users">
-                    <h3>Usuários Cadastrados:</h3>
-                    <table>
-                        <tr>
-                            <th>Login</th>
-                            <th>Nome</th>
-                            <th>Permissão</th>
-                            <th colspan="3">Ações</th>
-                        </tr>
-                        <?php
-                        include 'bd_connect.php';
-                        $query = "SELECT * FROM users";
-                        $result = mysqli_query($con, $query);
-                        if ($result) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<tr>";
-                                echo "<td>" . $row['username'] . "</td>";
-                                echo "<td>" . $row['name'] . "</td>";
-                                echo "<td>" . $row['level'] . "</td>";
-                                echo "<td><a href='delete_user.php?user=".$row['username']."'>Excluir</a></td>";
-                                if($row['status']!= false){
-                                    echo "<td><a class='block' href='block_user.php?user=".$row['username']."'>Bloquear</a></td>";
-                                } else {
-                                    echo "<td><a class='unblock' href='unblock_user.php?user=".$row['username']."'>Desbloquear</a></td>";
-                                }
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "Erro ao recuperar os usuários.";
+                <div class="registred-doctors">
+                <h3>Médicos Cadastrados:</h3>
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Categoria</th>
+                        <th>Ações</th>
+                    </tr>
+                    <?php
+                    include 'bd_connect.php';
+                    $query = "SELECT id_medico, nome_medico, cpf, categoria FROM medico;";
+                    $result = mysqli_query($con, $query);
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $row['id_medico'] . "</td>";
+                            echo "<td>" . $row['nome_medico'] . "</td>";
+                            echo "<td>" . $row['cpf'] . "</td>";
+                            echo "<td>" . $row['categoria'] . "</td>";
+                            echo "<td><a href='delete_doctor.php?id_medico=".$row['id_medico']."'>Excluir</a></td>";
+                            echo "</tr>";
                         }
-                        ?>
-                    </table>
+                    } else {
+                        echo "Erro ao recuperar os usuários.";
+                    }
+                    ?>
+                </table>
                 </div>
         </main>
 
