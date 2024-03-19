@@ -32,7 +32,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-                        <a href="#"><img class="icons-main" src="../assets/calendar.png">
+                        <a href="../atendimento/atendimento.php"><img class="icons-main" src="../assets/calendar.png">
                         <span class="sidebar-nav-button-span2">
                             Atendimentos
                         </span>
@@ -72,7 +72,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-                        <a href="#"><img class="icons-main" src="../assets/report.png">
+                        <a href="../relatorio/relatorio.php"><img class="icons-main" src="../assets/report.png">
                         <span class="sidebar-nav-button-span2">
                             Relatórios
                         </span>
