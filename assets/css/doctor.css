@@ -11,30 +11,22 @@
     --roboto: "Roboto", sans-serif;
 }
 
-body {
-    margin: 0;
-    font-family: var(--roboto);
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-}
-
-.middle {
+.main{
+    margin-top: 10%;
     background-color: #488b4a6f;
     display: flex;
-    margin-left: 100px;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
     padding: 20px;
     height: auto;
 }
 
-.new-user {
+.new-doctor {
     margin-right: 100px;
 }
 
-h3 {
+.new-doctor h3 {
     color: var(--red-logo);
     font-family: var(--roboto);
     padding: 15px;
@@ -42,7 +34,7 @@ h3 {
     margin-bottom: 5px;
 }
 
-.new-user-label {
+.new-doctor-label {
     font-size: 17px;
     font-family: var(--roboto);
     font-weight: bolder;
@@ -50,7 +42,7 @@ h3 {
     cursor: pointer;
 }
 
-.new-user-input {
+.new-doctor-input {
     width: 250px;
     padding: 15px;
     font-size: 15px;
@@ -61,31 +53,7 @@ h3 {
     cursor: pointer;
 }
 
-h4 {
-    color: var(--red-logo);
-    margin-top: 10px;
-    font-size: 18px;
-    font-family: var(--roboto);
-    margin-bottom: 10px;
-}
-
-input[type="radio"] {
-    margin-left: 5px;
-    margin-right: 5px;
-    transform: scale(1.2);
-    border: 1px solid black; 
-    cursor: pointer;
-}
-
-label {
-    font-size: 16px; 
-    color: black;
-    cursor: pointer;
-    margin-bottom: 10px;
-    line-height: 24px;
-}
-
-button {
+.new-doctor button {
     width: 150px;
     padding: 10px;
     margin: 20px;
@@ -100,30 +68,30 @@ button {
     justify-content: center;
 }
 
-button:hover {
+.new-doctor button:hover {
     color: var(--green-logo);
 }
 
-table {
+.registred-doctors table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     border: 1px solid black;
     padding: 20px;
   }
-  
-th, td {
-text-align: center;
-border: 1px solid black;
-padding: 10px;
+
+  .registred-doctors table th, td {
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+    
+.registred-doctors table th {
+    background-color: var(--red-logo);
+    color: white;
 }
 
-th {
-background-color: var(--red-logo);
-color: white;
-}
-
-td a {
+.registred-doctors table td a {
     display: inline-block; 
     text-decoration: none;
     background-color: var(--red-logo);
@@ -134,24 +102,6 @@ td a {
     box-sizing: border-box; 
 }
 
-td a:hover {
+.registred-doctors table td a:hover {
     color: var(--green-logo);
-} 
-
-.block {
-    background-color: rgba(255, 255, 0, 0.566);
-    color: black;
-}
-
-.block:hover {
-    color: red;
-}
-
-.unblock {
-    background-color: var(--green-logo);
-    color: black;
-}
-
-.unblock:hover {
-    color: white;
 }

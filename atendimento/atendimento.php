@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/crvital-logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/minoro-sidebar.css">
+    <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
     <title>CrVital - Página Inicial</title>
 </head>
 <body>
@@ -12,16 +12,16 @@
             <header class="sidebar-header">
                 <button class="sidebar-header-button">
                     <span class="sidebar-header-button-span">
-                        <a href="logout.php"><img class="logout-icon" src="assets/logout-icon.png"></a>
+                        <a href="../login/logout.php"><img class="logout-icon" src="../assets/logout-icon.png"></a>
                     </span>
                 </button>
             </header>
-            <img class="img-logo" src="assets/crvital-logo.svg">
+            <img class="img-logo" src="../assets/crvital-logo.svg">
             <nav class="sidebar-nav">
                 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-                        <a href="#"><img class="icons-main" src="assets/user-icon.png">
+                        <a href="#"><img class="icons-main" src="../assets/user-icon.png">
                         <span class="sidebar-nav-button-span2">
                             Usuários
                         </span>
@@ -31,7 +31,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-                        <a href="#"><img class="icons-main" src="assets/calendar.png">
+                        <a href="#"><img class="icons-main" src="../assets/calendar.png">
                         <span class="sidebar-nav-button-span2">
                             Atendimentos
                         </span>
@@ -41,7 +41,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-                        <a href="cadastro_empresas/pagina_principal.php"><img class="icons-main" src="assets/company.png">
+                        <a href="../cadastro_empresas/pagina_principal.php"><img class="icons-main" src="../assets/company.png">
                         <span class="sidebar-nav-button-span2">
                             Empresas
                         </span>
@@ -51,7 +51,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-                        <a href="cadastro_exames/pagina_principal.php"><img class="icons-main" src="assets/stetoscope.png">
+                        <a href="../cadastro_exames/pagina_principal.php"><img class="icons-main" src="../assets/stetoscope.png">
                         <span class="sidebar-nav-button-span2">
                             Procedimentos
                         </span>
@@ -61,7 +61,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-                        <a href="#"><img class="icons-main" src="assets/doctor.png">
+                        <a href="#"><img class="icons-main" src="../assets/doctor.png">
                         <span class="sidebar-nav-button-span2">
                             Médicos
                         </span>
@@ -71,7 +71,7 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
-                        <a href="#"><img class="icons-main" src="assets/report.png">
+                        <a href="#"><img class="icons-main" src="../assets/report.png">
                         <span class="sidebar-nav-button-span2">
                             Relatórios
                         </span>

@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --red-logo: #9b1a2e;
+    --green-logo: #488b4a;
+    --roboto: "Roboto", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--roboto);
+    background-color: rgba(72, 139, 74, 0.25);
+}
+
+.main{
+    margin-top: 5%;
+    background-color: rgba(252, 252, 252, 0.8) ;
+    border-radius: 10px;
+    padding: 50px;
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.painel{
+    background-color: rgba(72, 139, 74, 0.25);
+    border: 0.8px solid black;
+    border-radius: 10px;
+    display: flex;
+    gap: 80px;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    padding: 20px;
+
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+button {
+    padding: 6px;
+    border-radius: 5px;
+    background-color: var(--red-logo);
+    color: white;
+    font-size: 18px;
+    font-family: var(--roboto);
+    cursor: pointer;
+    border: none;
+}
+button:hover {
+    color: var(--green-logo);
+}
+
+.coluna{
+    flex: 1;
+}
+
+.dados{
+display: flex;
+align-items: flex-start;
+flex-direction: column;
+}
+.dados label {
+    font-size: 17px;
+    font-family: var(--roboto);
+    font-weight: bolder;
+    color: rgba(0, 0, 0, 0.807);
+    cursor: pointer;
+}
+.dados input {
+    width: 450px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: white;
+    height: 30px;
+    cursor: pointer;
+}
+
+.dados select {
+    width:300px;
+    height:25px;
+    font-family: var(--roboto);
+    font-size:16px;
+    border-radius: 10px;
+    }
+
+.perfil{
+    background-color: rgba(252, 252, 252, 0.8) ;
+    padding: 10px;
+    border-radius: 10px;
+    height: 150px;
+    font-family: var(--roboto);
+    font-size:20px;
+
+}
+
+.perfil input[type="radio"] {
+    transform: scale(1.2);
+    border: 1px solid black; 
+    cursor: pointer;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.exibicao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(131, 178, 132, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+}
+
+.exibicao h3{
+    background-color: white;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.exibicao table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+    border: 0.8px solid black;
+    padding: 20px;
+    background-color: rgba(252, 252, 252, 0.8);
+
+  }
+  
+.exibicao table th, td {
+text-align: center;
+border: 0.8px solid black;
+padding: 10px;
+
+}
+
+.exibicao table th {
+background-color: var(--red-logo);
+color: white;
+}
+
+.exibicao table td a {
+    display: inline-block; 
+    text-decoration: none;
+    background-color: var(--red-logo);
+    border-radius: 10px;
+    padding: 5px; 
+    color: white;
+    max-width: 100%; 
+    box-sizing: border-box; 
+}
+
+.exibicao table td a:hover {
+    color: var(--green-logo);
+} 
