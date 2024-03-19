@@ -31,6 +31,13 @@ body {
     flex-direction: column;
 }
 
+/* h3{
+    padding: 4px;
+    background-color: #9b1a2e;
+    color: white;
+    border-radius: 5px;
+} */
+
 
 .painel{
     background-color: rgba(72, 139, 74, 0.25);

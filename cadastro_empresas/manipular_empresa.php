@@ -11,13 +11,16 @@
 
     //tratar dados inseridos
     if(strlen($cnpj)!=14){
-        echo "O CNPJ deve possuir 14 números <br>"; $erro=TRUE;
+        $erro=TRUE;
+        header('location:pagina_principal.php?cnpj=true');
     }
     if(empty($nome_empresa)){
-        echo "Digite a Razão Social corretamente. <br>"; $erro=TRUE;
+        $erro=TRUE;
+        header('location:pagina_principal.php?nome=true');
     }
     if(empty($perfil)){
-        echo "Selecione ao menos um perfil de credenciamento. <br>"; $erro=TRUE;
+       $erro=TRUE;
+        header('location:pagina_principal.php?perfil=true');
     }
     //criando array com os ids das empresas
     $query_valid="select id_empresa from empresa";

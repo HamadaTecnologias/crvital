@@ -95,9 +95,31 @@
             $empresa = mysqli_query($con,$query);
             $alterar = mysqli_fetch_assoc($empresa);
         }
-
     ?>
+    <?php 
+        //RECEBENDO DADOS DE ERROS
+        $cnpj_error = $_GET['cnpj']??null;
+        $nome_error = $_GET['nome']??null;
+        $perfil_error = $_GET['perfil']??null;
+    ?>
+
+
     <main class="main">
+    <?php 
+        if ($cnpj_error != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Confira os 14 números em CNPJ</h3>
+       <?php } ?> 
+
+       <?php 
+        if ($nome_error != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Digite a Razão Social</h3>
+       <?php } ?> 
+
+       <?php 
+        if ($perfil_error != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Por favor, selecione ao menos um perfil</h3>
+       <?php } ?> 
+
     <h1>Cadastro Empresas</h1>
     <div class="painel">
     <form action="manipular_empresa.php" method="post">
