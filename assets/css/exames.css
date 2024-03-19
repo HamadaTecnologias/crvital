@@ -15,17 +15,19 @@
 body {
     margin: 0;
     font-family: var(--roboto);
+    background-color: rgba(72, 139, 74, 0.25);
 }
 
 .main{
     margin-top: 10%;
-    background-color: #488b4a6f;
+    background-color: rgba(252, 252, 252, 0.8) ;
     display: flex;
     border-radius: 10px;
-    padding: 20px;
+    padding: 100px;
     height: auto;
     flex-direction: column;
     gap: 50px;
+    width: 80%;
 }
 
 .forms{
@@ -34,7 +36,46 @@ body {
     align-items: center;
     gap: 5%;
 }
+.seletor-empresa {
+    padding: 50px;
+    background-color: rgba(131, 178, 132, 0.7);
+    border-radius: 10px;
+}
+.seletor-empresa select {
+    width:500px;
+    height:30px;
+    font-family: var(--roboto);
+    font-size:22px;
+    border-radius: 10px;
+    }
+    
+.seletor-empresa select option {
+    font-size:20px;
+    border-radius: 10px;
+    } 
 
+.seletor-empresa button{
+    padding: 6px;
+    border-radius: 5px;
+    background-color: var(--red-logo);
+    color: white;
+    font-size: 18px;
+    font-family: var(--roboto);
+    cursor: pointer;
+    border: none;
+    justify-content: center;
+}
+
+.seletor-empresa button:hover{
+    color: var(--green-logo);
+}
+
+.dados-procedimentos{
+    padding: 50px;
+    background-color: rgba(131, 178, 132, 0.7);
+    border-radius: 10px;
+    display: flex;
+    }
 
 .dados-procedimentos label {
     font-size: 17px;
@@ -65,7 +106,7 @@ body {
     font-family: var(--roboto);
     cursor: pointer;
     border: none;
-    justify-content: center;
+    margin-left: 12px;
 }
 
 .dados-procedimentos button:hover {
@@ -77,21 +118,33 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgba(131, 178, 132, 0.7);
+    border-radius: 10px;
+    padding: 20px;
 
+}
+
+.exibicao h3{
+    background-color: white;
+    padding: 8px;
+    border-radius: 10px;
 }
 
 .exibicao table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    border: 1px solid black;
+    margin-top: 5px;
+    border: 0.8px solid black;
     padding: 20px;
+    background-color: rgba(252, 252, 252, 0.8);
+
   }
   
-  .exibicao table th, td {
+.exibicao table th, td {
 text-align: center;
-border: 1px solid black;
+border: 0.8px solid black;
 padding: 10px;
+
 }
 
 .exibicao table th {
