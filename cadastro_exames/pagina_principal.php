@@ -93,7 +93,7 @@
             <div class="seletor-empresa">
             <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
                 <select name="id_empresa" id="id_empresa" required>
-                    <option value="">Selecione uma empresa</option>
+                    <option value="">Selecione uma Empresa</option>
                     <?php
                         $query="select id_empresa,nome_empresa from empresa ORDER BY nome_empresa ASC";
                         $empresas = mysqli_query($con,$query);
@@ -101,6 +101,8 @@
                             <option value="<?=$linha['id_empresa'];?>"><?=$linha['nome_empresa'];?></option>
                     <?php } ?>  
                 </select>
+                <br>
+                <br>
                 <button type="submit" value="selecionar">Selecionar</button>             
             </form>
             </div>
@@ -162,7 +164,7 @@
                                     <?= $linha['nome_procedimento']; ?>
                                 </td>
                                 <td>
-                                    <?=$linha['valor']; ?>
+                                    <?="R$ ".$linha['valor']; ?>
                                 </td>
                                 <td>
                                     <a href='apagar.php?id_procedimento=<?= $linha['id_procedimento']?>'>

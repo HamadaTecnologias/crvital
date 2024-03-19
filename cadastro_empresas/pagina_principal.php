@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/empresa.css">
     <title>CrVital - Empresas</title>
 </head>
 <body>
@@ -31,7 +32,7 @@
 
              <button class="sidebar-nav-button">
                 <span class="sidebar-nav-button-span">
-                    <a href="#"><img class="icons-main" src="../assets/calendar.png">
+                    <a href="../atendimento/atendimento.php"><img class="icons-main" src="../assets/calendar.png">
                     <span class="sidebar-nav-button-span2">
                         Atendimentos
                     </span>
@@ -71,7 +72,7 @@
 
              <button class="sidebar-nav-button">
                 <span class="sidebar-nav-button-span">
-                    <a href="#"><img class="icons-main" src="../assets/report.png">
+                    <a href="../relatorio/relatorio.php"><img class="icons-main" src="../assets/report.png">
                     <span class="sidebar-nav-button-span2">
                         Relatórios
                     </span>
@@ -96,21 +97,15 @@
     ?>
     <main class="main">
     <h1>Cadastro Empresas</h1>
-        <form action="manipular_empresa.php" method="post">
-            <input style="visibility:hidden" name="id_empresa" id="id_empresa" type="number" value="<?=$id_empresa?>"><br>
+    <div class="painel">
+    <form action="manipular_empresa.php" method="post">
+        <div class="form">
+            <div class="dados coluba">
+            <input style="display:none" name="id_empresa" id="id_empresa" type="number" value="<?=$id_empresa?>"><br>
             <label for="nome_empresa">Razão Social:</label>
-            <input name="nome_empresa" id="nome_empresa" type="text" value="<?=$alterar['nome_empresa']?>">
+            <input name="nome_empresa" id="nome_empresa" type="text" value="<?=$alterar['nome_empresa']?>"><br>
             <label for="cnpj">CNPJ:</label>
-            <input name="cnpj" id="cnpj" type="text" value="<?=$alterar['cnpj']?>">
-            <br>
-            <br>
-            <B>Perfil</B><br>
-            <input type=radio name=perfil value="credenciamento"> Credenciamento
-            <input type=radio name=perfil value="faturamento"> Faturamento
-            <input type=radio name=perfil value="gestao"> Gestão
-            <input type=radio name=perfil value="avulso"> Avulso
-            <br>
-            <br>
+            <input name="cnpj" id="cnpj" type="text" value="<?=$alterar['cnpj']?>"><br>
             <B>Forma de Pagamento<B><br>
             <select name=forma_pagamento required>
             <option value="">Selecione a Forma de Pagamento</option>
@@ -119,22 +114,36 @@
             <option value=faturado>Faturamento</option>
             <option value=credito>Crédito em conta</option>
             <option value=null>Avulso</option>
-            </select>
-            <br>
-            <br>
-            <br>
-            <button type="submit" value="cadastrar">cadastrar</button>
-            <button type="submit" value="<?=$id_empresa?>">confirmar alteração</button>
+            </select><br>
+            </div>
+            <div class="perfil">
+            <label for="perfil">Perfil:</label><br>
+            <input type=radio name=perfil value="credenciamento"> 
+            <label for="perfil">Credenciamento</label><br>
+            
+            <input type=radio name=perfil value="faturamento"> 
+            <label for="perfil">Faturamento</label><br>
+            
+            <input type=radio name=perfil value="gestao">
+            <label for="perfil">Gestão</label><br>
+            
+            <input type=radio name=perfil value="avulso">
+            <label for="perfil">Avulso</label> <br>
+            </div>
+        </div>
+        <div class="button">
+        <br>
+        <button type="submit" value="cadastrar">Cadastrar</button>
+        <button type="submit" value="<?=$id_empresa?>">Confirmar Alteração</button>
+        </div>
+
         </form>
-        <br>
-        <br>
-        <br>
 
     <?php 
             //Exibindo Empresas na tela
-            echo"<br>";
             $query = "select id_empresa,nome_empresa,status from empresa";
             $empresas = mysqli_query($con,$query);?>
+            <div class="exibicao">
             <table>
                 <thead>
                     <tr>
@@ -151,30 +160,32 @@
                                 <?= $linha['nome_empresa']; ?>
                             </td>
                             <td>
-                                <a href='apagar.php?id_empresa=<?= $linha['id_empresa']?>'>Apagar</a>
+                                <a href='apagar.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                             <td>
-                                <a href='pagina_principal.php?id_empresa=<?=$linha['id_empresa']?>'>Alterar</a>
+                                <a href='pagina_principal.php?id_empresa=<?=$linha['id_empresa']?>'><i class="fa-solid fa-rotate"></i></a>
                             </td>
                             <?php if($linha['status'] != false){?>
                                 <td>
-                                    <p>Liberado  </p>
+                                    <p>Liberada</p>
                                 </td> 
                                 <td>
-                                    <a href='bloquear.php?id_empresa=<?= $linha['id_empresa']?>'>Bloquear</a>
+                                    <a href='bloquear.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
                                 </td>
                             <?php }else{ ?>
                                 <td>  
-                                <p>Bloqueado  </p>
+                                <p>Bloqueada</p>
                                 </td>
                                 <td>
-                                <a href='liberar.php?id_empresa=<?= $linha['id_empresa']?>'>Liberarr</a>
+                                <a href='liberar.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock-open"></i></a>
                                 </td>
                             <?php } ?>   
                         </tr>
+            </div>
                     <?php } 
                         mysqli_close($con);
                     ?>   
+    </div>
     </main>
     <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
