@@ -88,7 +88,23 @@
         </nav>
     </aside>
 
+    <?php 
+        //RECEBENDO DADOS DE ERROS
+        $valor_error = $_GET['valor']??null;
+        $nome_error = $_GET['nome']??null;
+    ?>
+
+
     <main class="main">
+    <?php 
+        if ($valor_error != false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Digite um Valor</h3>
+       <?php } ?> 
+
+       <?php 
+        if ($nome_error != false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Digite o Procedimento</h3>
+       <?php } ?> 
         <?php 
             //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
             $id_empresa= $_GET['id_empresa']??null;

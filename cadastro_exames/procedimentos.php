@@ -11,12 +11,12 @@
     echo"<br>";
     //tratar dados inseridos
     if(empty($nome_procedimento)){
-        echo "Digite o nome do procedimento corretamente. <br>"; 
+        header('location:pagina_principal.php?nome=true');
         $erro=TRUE;
     }
 
     if(empty($valor)){
-        echo "Digite o valor do procedimento corretamente. <br>"; 
+        header('location:pagina_principal.php?valor=true');
         $erro=TRUE;
     }
 
