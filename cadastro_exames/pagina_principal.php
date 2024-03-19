@@ -173,7 +173,7 @@
                                     <?="R$ ".$linha['valor']; ?>
                                 </td>
                                 <td>
-                                    <a href='apagar.php?id_procedimento=<?= $linha['id_procedimento']?>'>
+                                    <a href='apagar.php?id_procedimento=<?= $linha['id_procedimento']?>&id_empresa=<?=$id_empresa?>'>
                                     <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </td>
