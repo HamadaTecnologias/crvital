@@ -32,7 +32,9 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
+
                         <a href="../atendimento/atendimento.php"><img class="icons-main" src="../assets/calendar.png">
+
                         <span class="sidebar-nav-button-span2">
                             Atendimentos
                         </span>
@@ -62,7 +64,9 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
+
                         <a href="../medico/doctor.php"><img class="icons-main" src="../assets/doctor.png">
+
                         <span class="sidebar-nav-button-span2">
                             Médicos
                         </span>
@@ -72,7 +76,9 @@
 
                 <button class="sidebar-nav-button">
                     <span class="sidebar-nav-button-span">
+
                         <a href="../relatorio/relatorio.php"><img class="icons-main" src="../assets/report.png">
+
                         <span class="sidebar-nav-button-span2">
                             Relatórios
                         </span>
