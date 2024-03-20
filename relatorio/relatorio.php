@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <title>CrVital - Página Inicial</title>
+    <link rel="stylesheet" href="../assets/css/relatorio.css">
+    <title>CrVital - Página de Relatórios</title>
 </head>
 <body>
     <aside class="sidebar">
@@ -89,12 +90,13 @@
             </nav>
         </aside>
 
+        <div class="title">
+            <h3>Relatório</h3>
+        </div>
         <main class="main">
-
-            <h1>Conteudo Principal</h1>
-            <h1>Conteudo Principal</h1>
-            <h1>Conteudo Principal</h1>
-            <h1>Conteudo Principal</h1>
+            <div class="filter">
+                <h4>Filtros Principais</h4>
+            </div>
 
         </main>
 
