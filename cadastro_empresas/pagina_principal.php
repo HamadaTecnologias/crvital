@@ -124,19 +124,19 @@
     <div class="painel">
     <form action="manipular_empresa.php" method="post">
         <div class="form">
-            <div class="dados coluba">
+            <div class="dados coluna">
             <input style="display:none" name="id_empresa" id="id_empresa" type="number" value="<?=$id_empresa?>"><br>
             <label for="nome_empresa">Razão Social:</label>
-            <input name="nome_empresa" id="nome_empresa" type="text" value="<?=$alterar['nome_empresa']?>"><br>
+            <input placeholder="Digite a Razão Social" name="nome_empresa" id="nome_empresa" type="text" value="<?=$alterar['nome_empresa']?>"><br>
             <label for="cnpj">CNPJ:</label>
-            <input name="cnpj" id="cnpj" type="text" value="<?=$alterar['cnpj']?>"><br>
+            <input placeholder="Digite o CNPJ sem pontos" name="cnpj" id="cnpj" type="text" value="<?=$alterar['cnpj']?>"><br>
             <B>Forma de Pagamento<B><br>
             <select name=forma_pagamento required>
             <option value="">Selecione a Forma de Pagamento</option>
-            <option value=dinheiro>Dinheiro</option>
-            <option value=boleto>Boleto</option>
-            <option value=faturado>Faturamento</option>
-            <option value=credito>Crédito em conta</option>
+            <option value=Dinheiro>Dinheiro</option>
+            <option value=Boleto>Boleto</option>
+            <option value=Faturado>Faturamento</option>
+            <option value=Credito>Crédito em conta</option>
             <option value=null>Avulso</option>
             </select><br>
             </div>
