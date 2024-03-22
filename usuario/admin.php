@@ -134,11 +134,11 @@
                                 echo "<td>" . $row['username'] . "</td>";
                                 echo "<td>" . $row['name'] . "</td>";
                                 echo "<td>" . $row['level'] . "</td>";
-                                echo "<td><a href='delete_user.php?user=".$row['username']."'>Excluir</a></td>";
+                                echo "<td><a href='delete_user.php?user=".$row['username']."'><i class=\"fa-solid fa-trash-can\"></i></a></td>";
                                 if($row['status']!= false){
-                                    echo "<td><a class='block' href='block_user.php?user=".$row['username']."'>Bloquear</a></td>";
+                                    echo "<td><a class='block' href='block_user.php?user=".$row['username']."'><i class=\"fa-solid fa-lock-open\"></a></td>";
                                 } else {
-                                    echo "<td><a class='unblock' href='unblock_user.php?user=".$row['username']."'>Desbloquear</a></td>";
+                                    echo "<td><a class='unblock' href='unblock_user.php?user=".$row['username']."'><i class=\"fa-solid fa-lock\"></i></a></td>";
                                 }
                                 echo "</tr>";
                             }
@@ -149,6 +149,6 @@
                     </table>
                 </div>
         </main>
-
+<script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -10,18 +10,19 @@
     --red-logo: #9b1a2e;
     --green-logo: #488b4a;
     --roboto: "Roboto", sans-serif;
+    --body:#4ed28e50;
+    --sidebar:#61CE70;
 }
 
 body {
     margin: 0;
     font-family: var(--roboto);
-    background-color: rgba(72, 139, 74, 0.25);
 }
 
 .main{
     margin-top: 5%;
     background-color: rgba(252, 252, 252, 0.8) ;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 50px;
     width: 80%;
     height: auto;
@@ -40,9 +41,9 @@ body {
 
 
 .painel{
-    background-color: rgba(72, 139, 74, 0.25);
+    background-color:rgba(102, 102, 102, 0.37);
     border: 0.8px solid black;
-    border-radius: 10px;
+    border-radius: 4px;
     display: flex;
     gap: 80px;
     flex-direction: column;
@@ -62,7 +63,7 @@ body {
 
 button {
     padding: 6px;
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: var(--red-logo);
     color: white;
     font-size: 18px;
@@ -93,7 +94,7 @@ flex-direction: column;
 .dados input {
     width: 450px;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: white;
     height: 30px;
     cursor: pointer;
@@ -110,7 +111,7 @@ flex-direction: column;
 .perfil{
     background-color: rgba(252, 252, 252, 0.8) ;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 4px;
     height: 150px;
     font-family: var(--roboto);
     font-size:20px;
@@ -137,8 +138,8 @@ flex-direction: column;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(131, 178, 132, 0.7);
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
     padding: 20px;
     margin-top: 30px;
     margin-bottom: 20px;
@@ -148,7 +149,7 @@ flex-direction: column;
 .exibicao h3{
     background-color: white;
     padding: 8px;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .exibicao table {
@@ -177,7 +178,7 @@ color: white;
     display: inline-block; 
     text-decoration: none;
     background-color: var(--red-logo);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 5px; 
     color: white;
     max-width: 100%; 

@@ -6,7 +6,6 @@
     $database = 'crvital';
 
     $con = mysqli_connect($host, $user, $password, $database); //remover daqui se quiser logar que entrou no BD
-    echo $database;
 
     // if($con = mysqli_connect($host, $user, $password, $database)){
     //     echo "Database connected successfully!";

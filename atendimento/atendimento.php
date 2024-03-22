@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/atendimento.css">
     <title>CrVital - Página Inicial</title>
 </head>
 <body>

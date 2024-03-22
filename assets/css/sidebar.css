@@ -9,11 +9,14 @@
     --red-logo: #9b1a2e;
     --green-logo: #488b4a;
     --roboto: "Roboto", sans-serif;
+    --body:#4ed28e50;
+    --sidebar:#61CE70;
 }
 
 body {
     margin: 0;
     font-family: var(--roboto);
+    background-color: var(--body);
 }
 
 .icons-main {
@@ -50,7 +53,7 @@ body {
 }
 
 .sidebar {
-    background-color: var(--green-logo);
+    background-color: var(--sidebar);
     position: fixed;
     top: 0 ;
     display: flex;

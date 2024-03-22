@@ -129,7 +129,7 @@
                             echo "<td>" . $row['nome_medico'] . "</td>";
                             echo "<td>" . $row['cpf'] . "</td>";
                             echo "<td>" . $row['categoria'] . "</td>";
-                            echo "<td><a href='delete_doctor.php?id_medico=".$row['id_medico']."'>Excluir</a></td>";
+                            echo "<td><a href='delete_doctor.php?id_medico=".$row['id_medico']."'><i class=\"fa-solid fa-trash-can\"></i></a></td>";
                             echo "</tr>";
                         }
                     } else {
@@ -139,6 +139,6 @@
                 </table>
                 </div>
         </main>
-
+<script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>

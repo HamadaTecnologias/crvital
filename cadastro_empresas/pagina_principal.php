@@ -191,17 +191,11 @@
                             </td>
                             <?php if($linha['status'] != false){?>
                                 <td>
-                                    <p>Liberada</p>
-                                </td> 
-                                <td>
-                                    <a href='bloquear.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
+                                    <a href='bloquear.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock-open"></i></a>
                                 </td>
                             <?php }else{ ?>
-                                <td>  
-                                <p>Bloqueada</p>
-                                </td>
                                 <td>
-                                <a href='liberar.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock-open"></i></a>
+                                <a href='liberar.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
                                 </td>
                             <?php } ?>   
                         </tr>
