@@ -179,12 +179,15 @@
             </div>
 
             <div class="procedimentos">
-                <div class="disponiveis">
-
-                </div>
-                
-                <div class="selecionados">
-
+                <?php
+                    if ($id_empresa!=null) {
+                    $query="select id_procedimento,nome_procedimento,valor from procedimento WHERE id_empresa=".$id_empresa;
+                    $resultado = mysqli_query($con,$query);
+                    while($procedimento = mysqli_fetch_assoc($resultado)){?>
+                        <input type=checkbox name=procedimento value="<?=$procedimento['id_procedimento']?>"> 
+                        <label for="procedimento"><?=$procedimento['nome_procedimento']?></label><br>      
+                    <?php } ?>  
+                    <?php } ?> 
 
 
  <!-- FIM DO FORM DE CHECK-IN -->
