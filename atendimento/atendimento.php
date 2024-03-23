@@ -88,7 +88,7 @@
         ?>
         <main class="main">
 
-            <div class="empresa">
+            
                 <!-- FORM DE SELECT DE EMPRESA -->
                 <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
                     <select name="id_empresa" id="id_empresa" required>
@@ -102,7 +102,7 @@
                         </select>   
                     <button type="submit" value="selecionar">Selecionar</button>             
                 </form>
-
+            
             <!-- FORM DE CADASTRO DE ATENDIMENTO -->
             <form action="" method="post">
                 <!-- BUSCANDO DADOS DA EMPRESA SELECIONADA -->
@@ -111,19 +111,19 @@
                     $query_empresa="select nome_empresa,cnpj,perfil,forma_pagamento from empresa where id_empresa=".$id_empresa;
                     $dados_empresas = mysqli_query($con,$query_empresa);
                     $linha_empresa = mysqli_fetch_assoc($dados_empresas); ?>
-
+                <div class="empresa">
                     <!-- DADOS DA EMPRESA SELECIONADA  -->
                     <div class="dados_1">
-                        <h3>Empresa:</h3>
+                        <label for="nome_empresa">Empresa:</label>
                         <?=$linha_empresa['nome_empresa']?>
-                        <h3>Tipo Credenciamento:</h3>
+                        <label for="perfil">Perfil Credenciamento:</label>
                         <?=$linha_empresa['perfil']?>
                     </div>
                     <div class="dados_2">
-                        <h3>CNPJ:</h3>
+                        <label for="cnpj">CNPJ:</label>
                         <?=$linha_empresa['cnpj']?>
                         
-                        <h3>Método de Pagamento</h3>
+                        <label for="forma_pagamento">Método de Pagamento:</label>
                         <select name="forma_pagamento" id="forma_pagamento" required>
                             <option value="<?=$linha_empresa['forma_pagamento']?>"><?=$linha_empresa['forma_pagamento']?></option>
                             <option value=Dinheiro>Dinheiro</option>
@@ -154,7 +154,8 @@
                             <option value=Mudança%de%Risco%Ocupacional>Mudança de Risco Ocupacional</option>
                             <option value=Periódico>Periódico</option>
                             <option value=Retorno%ao%Trabalho>Retorno ao Trabalho</option>
-                        </select>
+                        </select> <br>
+                        <label for="id_medico">Profissional:</label><br>
                         <select name="id_medico" id="id_medico" required>
                             <option value="">Selecione um Profissional</option>
                             <?php
@@ -167,7 +168,7 @@
                     </div>
                     <script src="script.js"></script>
                     <div class="hora">
-                        <h3>Hora Check-in</h3>
+                        <label for="hora">Horario Check-in</label>
                          <span id="time">12:00:00</span>       
                         <input type="date" value="0000-00-00" />
                     </div>    
@@ -188,11 +189,25 @@
                         <label for="procedimento"><?=$procedimento['nome_procedimento']?></label><br>      
                     <?php } ?>  
                     <?php } ?> 
+            </div>
 
+            <div class="button">
+            <button type="submit" value="cadastrar">Iniciar Atendimento</button>
+            </div>
+            
 
  <!-- FIM DO FORM DE CHECK-IN -->
             </form>   
-            <div class="atendimentos-ativos"></div>
+            <div class="atendimentos-ativos">
+                <?php
+                    $atendimento['nome_paciente']??null;
+                    $query="select nome_paciente,id_medico,hora_checkin,hora_checkout from atendimento WHERE hora_checkout=null";
+                    $resultado = mysqli_query($con,$query);
+                    while($atendimento = mysqli_fetch_assoc($resultado)){?>
+                        <label for="procedimento"><?=$atendimento['nome_paciente']?></label><br>      
+                    <?php } ?> 
+
+            </div>
 
         </main>
 

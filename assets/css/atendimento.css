@@ -18,6 +18,36 @@ body {
     margin: 0;
     font-family: var(--roboto);
 }
+select {
+    width:800px;
+    height:25px;
+    font-family: var(--roboto);
+    font-size:17px;
+    border-radius: 4px;
+    margin-right: 20px;
+    }
+
+button {
+    padding: 6px;
+    border-radius: 4px;
+    background-color: var(--red-logo);
+    color: white;
+    font-size: 17px;
+    font-family: var(--roboto);
+    cursor: pointer;
+    border: none;
+}
+button:hover {
+    color: var(--green-logo);
+}
+
+label {
+    font-size: 17px;
+    font-family: var(--roboto);
+    font-weight: bolder;
+    color: rgba(0, 0, 0, 0.807);
+    cursor: pointer;
+}
 
 .main{
     margin-top: 5%;
@@ -30,4 +60,157 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 20px;
+}
+
+.empresa{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 6px;
+    padding: 20px;
+    gap: 30px;
+
+
+}
+
+
+.dados_1{
+    background-color: rgba(252, 252, 252, 0.8) ;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.dados_2{
+    background-color: rgba(252, 252, 252, 0.8) ;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+
+
+
+}
+.dados_2 select{
+    width:100px;
+    height:25px;
+    font-family: var(--roboto);
+    font-size:17px;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.atendimento{
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 4px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+
+}
+
+.tipo{
+    background-color: rgba(252, 252, 252, 0.8) ;
+    padding: 20px;
+    border-radius: 4px;
+
+}
+.tipo input[type="radio"] {
+    transform: scale(1.2);
+    border: 1px solid black; 
+    cursor: pointer;
+}
+
+.dados{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.dados select{
+    width:300px;
+    height:25px;
+    font-family: var(--roboto);
+    font-size:17px;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.hora{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 10px;
+    border: 0.8px solid black;
+    border-radius: 4px;
+}
+
+.hora span{
+    background-color: rgba(252, 252, 252, 0.8) ;
+    padding: 5px;
+    border-radius: 4px;
+
+
+}
+
+.colaborador{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    font-family: var(--roboto);
+    font-size:17px;
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 4px;
+    gap: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.colaborador input {
+    width: 600px;
+    font-size: 18px;
+    border-radius: 4px;
+    background-color: white;
+    height: 30px;
+    cursor: pointer;
+}
+
+
+
+.procedimentos{
+    display: flex;
+    flex-wrap: wrap;
+    font-family: var(--roboto);
+    font-size:17px;
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 4px;
+    gap: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    width: 800px;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.atendimentos-ativos{
+
 }
