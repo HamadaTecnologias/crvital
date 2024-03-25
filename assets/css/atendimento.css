@@ -257,25 +257,39 @@ label {
     cursor: pointer;
 }
 
-.procedimentos table {
+table {
     border-collapse: collapse;
     border: 0.8px solid black;
     padding: 20px;
     background-color: rgba(252, 252, 252, 0.8);
   }
   
-.procedimentos table th, td {
+ table th, td {
 text-align: center;
 border: 0.8px solid black;
 padding: 10px;
 
 }
 
-.procedimentos table th {
+table th {
 background-color: var(--red-logo);
 color: white;
 }
 
+table td a {
+    display: inline-block; 
+    text-decoration: none;
+    background-color: var(--red-logo);
+    border-radius: 10px;
+    padding: 5px; 
+    color: white;
+    max-width: 100%; 
+    box-sizing: border-box; 
+}
+
+table td a:hover {
+    color: var(--green-logo);
+} 
 
 .button{
     display: flex;
@@ -284,6 +298,6 @@ color: white;
     margin-top: 20px;
 }
 
-.atendimentos-ativos{
 
-}
+
+

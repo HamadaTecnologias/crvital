@@ -256,7 +256,7 @@
                             <?= $consulta['hora_checkin']; ?>
                             </td>
                             <td>
-                                <a href='cadastrar_atendimento.php?finalizar=true&id_atendimento='<?=$consulta['id_atendimento']?>>FINALIZAR</a>
+                            <a href='cadastrar_atendimento.php?finalizar=true&id_atendimento=<?= $consulta['id_atendimento']; ?>'>FINALIZAR</a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE
