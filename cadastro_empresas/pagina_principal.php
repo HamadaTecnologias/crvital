@@ -141,18 +141,23 @@
             </select><br>
             </div>
             <div class="perfil">
-            <label for="perfil">Perfil:</label><br>
+            <label for="perfil">Perfil:</label>
+            <label for="perfil">
             <input type=radio name=perfil value="credenciamento"> 
-            <label for="perfil">Credenciamento</label><br>
-            
-            <input type=radio name=perfil value="faturamento"> 
-            <label for="perfil">Faturamento</label><br>
-            
+            Credenciamento
+            </label>
+            <label for="perfil">
+            <input type=radio name=perfil value="faturamento">
+            Faturamento 
+            </label>
+            <label for="perfil">
             <input type=radio name=perfil value="gestao">
-            <label for="perfil">Gestão</label><br>
-            
+            Gestão
+            </label>
+            <label for="perfil">
             <input type=radio name=perfil value="avulso">
-            <label for="perfil">Avulso</label> <br>
+            Avulso
+            </label> 
             </div>
         </div>
         <div class="button">
@@ -208,6 +213,6 @@
             </div>
     </div>
     </main>
-    <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>
