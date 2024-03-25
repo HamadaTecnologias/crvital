@@ -124,13 +124,13 @@
                         <div class="dados_1">
                             <input style="display:none" name="id_empresa" type="number" value="<?=$id_empresa?>">
                             <label for="nome_empresa">Empresa:</label>
-                            <?=$linha_empresa['nome_empresa']?>
+                            <span><?=$linha_empresa['nome_empresa']?></span>
                             <label for="perfil">Perfil Credenciamento:</label>
-                            <?=$linha_empresa['perfil']?>
+                            <span><?=$linha_empresa['perfil']?></span>
                         </div>
                         <div class="dados_2">
                             <label for="cnpj">CNPJ:</label>
-                            <?=$linha_empresa['cnpj']?>
+                            <span><?=$linha_empresa['cnpj']?></span>
                             <label for="forma_pagamento">Método de Pagamento:</label>
                             <select name="forma_pagamento" required>
                                 <option value="<?=$linha_empresa['forma_pagamento']?>"><?=$linha_empresa['forma_pagamento']?></option>
@@ -145,15 +145,16 @@
                     <!-- DADOS ATENDIMENTO  -->
                     <div class="atendimento">
                         <div class="tipo">
-                            <label for="tipo_atendimento">Tipo Atendimento:</label><br>
-                            <input type=radio name=tipo_atendimento value="credenciado"> 
-                            <label for="tipo_atendimento">Credenciado</label><br>
-                            <input type=radio name=tipo_atendimento value="avulso"> 
-                            <label for="tipo_atendimento">Avulso</label><br>
+                            <label for="tipo_atendimento">Tipo Atendimento:</label>
+                            <label for="tipo_atendimento">
+                            <input type=radio name=tipo_atendimento value="credenciado">
+                            Credenciado</label>
+                            <label for="tipo_atendimento"><input type=radio name=tipo_atendimento value="avulso"> 
+                            Avulso</label>
                         </div>
                         <div class="dados_atendimento">
                             <div class="select_dados">    
-                            <label for="tipo_exame">Tipo Exame:</label><br>
+                            <label for="tipo_exame">Tipo Exame:</label>
                             <select name=tipo_exame required>
                                 <option value="">Selecione um tipo de Exame</option>
                                 <option value=Admissional>Admissional</option>
@@ -162,8 +163,8 @@
                                 <option value=Mudança%de%Risco%Ocupacional>Mudança de Risco Ocupacional</option>
                                 <option value=Periódico>Periódico</option>
                                 <option value=Retorno%ao%Trabalho>Retorno ao Trabalho</option>
-                            </select> <br>
-                            <label for="id_medico">Profissional:</label><br>
+                            </select>
+                            <label for="id_medico">Profissional:</label>
                             <select name="id_medico" id="id_medico" required>
                                 <option value="">Selecione um Profissional</option>
                                 <?php

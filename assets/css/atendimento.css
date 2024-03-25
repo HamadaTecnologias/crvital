@@ -94,6 +94,14 @@ label {
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    height: auto;
+}
+
+.dados_1 span{
+    border: 0.8px solid black;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 .dados_2{
@@ -102,9 +110,16 @@ label {
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    height: auto;
+}
+.dados_2 span{
+    border: 0.8px solid black;
+    padding: 5px;
+    border-radius: 4px;
 }
 .dados_2 select{
-    width:100px;
+    width:180px;
     height:25px;
     font-family: var(--roboto);
     font-size:17px;
@@ -118,7 +133,7 @@ label {
     background-color:rgba(102, 102, 102, 0.37);
     border: 0.8px solid black;
     border-radius: 4px;
-    gap: 20px;
+    gap: 12px;
     align-items: center;
     padding: 20px;
     margin-top: 20px;
@@ -128,6 +143,10 @@ label {
     background-color: rgba(252, 252, 252, 0.8) ;
     padding: 20px;
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: auto;
 }
 .tipo input[type="radio"] {
     transform: scale(1.2);
@@ -138,17 +157,24 @@ label {
 .dados_atendimento{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
     justify-content: center;
     align-items: center;
 }
 .dados_atendimento select{
-    width:200px;
+    width:250px;
     height:25px;
     font-family: var(--roboto);
     font-size:17px;
     border-radius: 4px;
     margin-right: 20px;
+}
+
+.select_dados{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: auto;
 }
 
 .hora{
