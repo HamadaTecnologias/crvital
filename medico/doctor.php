@@ -119,15 +119,27 @@
                         <th>Ações</th>
                     </tr>
                     <?php
+                    function formatCnpjCpf($value)
+                    {
+                      $CPF_LENGTH = 11;
+                      $cnpj_cpf = preg_replace("/\D/", '', $value);
+                      
+                      if (strlen($cnpj_cpf) === $CPF_LENGTH) {
+                        return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
+                      } 
+                      
+                      return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
+                    }
                     include 'bd_connect.php';
                     $query = "SELECT id_medico, nome_medico, cpf, categoria FROM medico;";
                     $result = mysqli_query($con, $query);
                     if ($result) {
                         while ($row = mysqli_fetch_assoc($result)) {
+                            $cpf = formatCnpjCpf($row['cpf']);
                             echo "<tr>";
                             echo "<td>" . $row['id_medico'] . "</td>";
                             echo "<td>" . $row['nome_medico'] . "</td>";
-                            echo "<td>" . $row['cpf'] . "</td>";
+                            echo "<td>" . $cpf . "</td>";
                             echo "<td>" . $row['categoria'] . "</td>";
                             echo "<td><a href='delete_doctor.php?id_medico=".$row['id_medico']."'><i class=\"fa-solid fa-trash-can\"></i></a></td>";
                             echo "</tr>";

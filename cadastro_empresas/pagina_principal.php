@@ -83,6 +83,29 @@
              </button>
         </nav>
     </aside>
+<style>
+.confirmar_exclusao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 4px;
+    padding: 15px;
+    gap: 5px;
+}
+.confirmar_exclusao a{
+    display: inline-block; 
+    text-decoration: none;
+    background-color: var(--red-logo);
+    border-radius: 8px;
+    padding: 5px; 
+    color: white;
+    max-width: 100%; 
+    box-sizing: border-box; 
+}
+</style>
 
     <?php
         //Recebendo dados para alterar 
@@ -101,26 +124,34 @@
         $cnpj_error = $_GET['cnpj']??null;
         $nome_error = $_GET['nome']??null;
         $perfil_error = $_GET['perfil']??null;
+        $apagar = $_GET['apagar']??false;
     ?>
 
 
     <main class="main">
-    <?php 
+        <?php 
         if ($cnpj_error != false) {?>
             <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Confira os 14 números em CNPJ</h3>
-       <?php } ?> 
+        <?php } ?> 
 
-       <?php 
+        <?php 
         if ($nome_error != false) {?>
             <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Digite a Razão Social</h3>
-       <?php } ?> 
+        <?php } ?> 
 
-       <?php 
+        <?php 
         if ($perfil_error != false) {?>
             <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Por favor, selecione ao menos um perfil</h3>
-       <?php } ?> 
+        <?php } ?> 
+        <?php 
+        if ($apagar != false) {?>
+        <div class="confirmar_exclusao">            
+            <h3>Deseja confirmar exclusão da empresa?</h3>
+            <a href='apagar.php?id_empresa=<?=$id_empresa?>'>CONFIRMAR</a>
+        </div>
+        <?php } ?> 
 
-    <h1>Cadastro Empresas</h1>
+    <h1>Nova Empresa</h1>
     <div class="painel">
     <form action="manipular_empresa.php" method="post">
         <div class="form">
@@ -141,18 +172,23 @@
             </select><br>
             </div>
             <div class="perfil">
-            <label for="perfil">Perfil:</label><br>
+            <label for="perfil">Perfil:</label>
+            <label for="perfil">
             <input type=radio name=perfil value="credenciamento"> 
-            <label for="perfil">Credenciamento</label><br>
-            
-            <input type=radio name=perfil value="faturamento"> 
-            <label for="perfil">Faturamento</label><br>
-            
+            Credenciamento
+            </label>
+            <label for="perfil">
+            <input type=radio name=perfil value="faturamento">
+            Faturamento 
+            </label>
+            <label for="perfil">
             <input type=radio name=perfil value="gestao">
-            <label for="perfil">Gestão</label><br>
-            
+            Gestão
+            </label>
+            <label for="perfil">
             <input type=radio name=perfil value="avulso">
-            <label for="perfil">Avulso</label> <br>
+            Avulso
+            </label> 
             </div>
         </div>
         <div class="button">
@@ -184,7 +220,7 @@
                                 <?= $linha['nome_empresa']; ?>
                             </td>
                             <td>
-                                <a href='apagar.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-trash-can"></i></a>
+                                <a href='pagina_principal.php?apagar=true&id_empresa=<?=$linha['id_empresa']?>'><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                             <td>
                                 <a href='pagina_principal.php?id_empresa=<?=$linha['id_empresa']?>'><i class="fa-solid fa-rotate"></i></a>
@@ -199,12 +235,15 @@
                                 </td>
                             <?php } ?>   
                         </tr>
-            </div>
-                    <?php } 
+                    <?php //FECHANDO WHILE
+                        } 
                         mysqli_close($con);
-                    ?>   
+                    ?>  
+                </tbody>
+            </table> 
+            </div>
     </div>
     </main>
-    <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
 body {
     background-image: url("../login-background.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;  
 }
 
 .container {
@@ -51,12 +51,11 @@ h1 {
     padding: 25px;
     text-align: center;
     justify-content: center;
-    text-transform: uppercase;
     font-family: var(--roboto);
 }
 
-.red-lyrics {
-    color: var(--red-logo);
+.green-lyrics {
+    color: var(--green-logo);
     font-weight: bolder;
 }
 
