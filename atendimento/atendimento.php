@@ -176,7 +176,7 @@
                                 <option value=Periódico>Periódico</option>
                                 <option value=Retorno%ao%Trabalho>Retorno ao Trabalho</option>
                             </select>
-                            <label for="id_medico">Profissional:</label>
+                            <label for="id_medico">Médico Examinador:</label>
                             <select name="id_medico" id="id_medico" required>
                                 <option value="">Selecione um Profissional</option>
                                 <?php
