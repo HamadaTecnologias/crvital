@@ -11,7 +11,7 @@
 
     <div class="container">
         <div>
-            <img class="img-logo" src="assets/crvital-logo.svg">
+            <img class="img-logo" src="assets/logo-crvital.png">
         </div>
         <div class="login-box">
             <h1 class="green-lyrics">Acesso ao Sistema</h1>
