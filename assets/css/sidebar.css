@@ -26,14 +26,6 @@ body {
     margin-right: 10px;
 }
 
-.img-logo {
-    width: 180px;
-    height: 270px;
-    margin-left: 25px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-    
-}
 
 .img-logo:hover {
     scale: 1.1;
@@ -59,11 +51,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    justify-content: center;
     width: 240px;
     height: 100%;
     padding: 40px 10px 30px 10px;
     border-right: 1px solid #2f3336;
     transition: all 0.4s;
+}
+
+.img-logo {
+    width: 180px;
+    height: 240px;
+    margin-left: 25px;
+    margin-top: 8px;
+    /* margin-bottom: 0px;    */
 }
 
 .sidebar a {
