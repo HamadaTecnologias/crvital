@@ -108,10 +108,22 @@
             
             <!-- IF PARA MOSTRAR CAMPOS CHECKIN -->
 <?php 
+    //FUNÇÃO PARA FORMATAR CNPJ
+    function formatCnpjCpf($value){
+        $CPF_LENGTH = 11;
+        $cnpj_cpf = preg_replace("/\D/", '', $value);
+        if (strlen($cnpj_cpf) === $CPF_LENGTH) {
+            return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
+        } 
+        return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
+    }
+    //FIM FUNÇÃO PARA FORAMTAR CNPJ
     if ($id_empresa!=null) {
             $query_empresa="select nome_empresa,cnpj,perfil,forma_pagamento from empresa where id_empresa=".$id_empresa;
             $dados_empresas = mysqli_query($con,$query_empresa);
-            $linha_empresa = mysqli_fetch_assoc($dados_empresas); ?>
+            $linha_empresa = mysqli_fetch_assoc($dados_empresas); 
+            $cnpj = formatCnpjCpf($linha_empresa['cnpj']) ;
+            ?>
 
             
             <div class="checkin">
@@ -130,7 +142,7 @@
                         </div>
                         <div class="dados_2">
                             <label for="cnpj">CNPJ:</label>
-                            <span><?=$linha_empresa['cnpj']?></span>
+                            <span><?=$cnpj?></span>
                             <label for="forma_pagamento">Método de Pagamento:</label>
                             <select name="forma_pagamento" required>
                                 <option value="<?=$linha_empresa['forma_pagamento']?>"><?=$linha_empresa['forma_pagamento']?></option>
@@ -228,7 +240,7 @@
 <!-- ATENDIMENTOS ATIVOS -->
             <div class="atendimentos_ativos">
             <?php 
-            $query_ativos = "select id_atendimento,nome_paciente,tipo_exame,hora_checkin from atendimento where hora_checkout=0";
+            $query_ativos = "SELECT id_atendimento,nome_paciente,tipo_exame,hora_checkin,nome_medico FROM atendimento INNER JOIN medico ON atendimento.id_medico = medico.id_medico WHERE hora_checkout=0;";
             $result = mysqli_query($con,$query_ativos);?>
             <table>
                 <thead>
@@ -247,7 +259,7 @@
                                 <?= $consulta['nome_paciente']; ?>
                             </td>
                             <td>
-                                <h4>em produção</h4>
+                            <?= $consulta['nome_medico']; ?>
                             </td>
                             <td>
                                 <?= $consulta['tipo_exame']; ?>

@@ -3,7 +3,10 @@ include "bd_connect.php";
 $id_empresa = $_POST['id_empresa']??null;
 $metodo_pagamento = $_POST['forma_pagamento']??null;
 $tipo_atendimento = $_POST['tipo_atendimento']??null;
-$tipo_exame = $_POST['tipo_exame']??null;
+//RETIRANDO % DO TIPO EXAME
+$tipo_exame_antes = $_POST['tipo_exame']??null;
+$tipo_exame = str_replace("%", " ", "$tipo_exame_antes");
+//FIM RETIRANDO % DO TIPO EXAME
 $id_medico = $_POST['id_medico']??null;
 $hora_checkout = null;
 $data = $_POST['data_atendimento']??null;
