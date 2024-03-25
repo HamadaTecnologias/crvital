@@ -224,7 +224,7 @@
 <!-- ATENDIMENTOS ATIVOS -->
             <div class="atendimentos_ativos">
             <?php 
-            $query_ativos = "select nome_paciente,tipo_exame,hora_checkin from atendimento where hora_checkout=0";
+            $query_ativos = "select id_atendimento,nome_paciente,tipo_exame,hora_checkin from atendimento where hora_checkout=0";
             $result = mysqli_query($con,$query_ativos);?>
             <table>
                 <thead>
@@ -252,7 +252,7 @@
                             <?= $consulta['hora_checkin']; ?>
                             </td>
                             <td>
-                                <a href='atendimento.php'>FINALIZAR</a>
+                                <a href='cadastrar_atendimento.php?finalizar=true&id_atendimento='<?=$consulta['id_atendimento']?>>FINALIZAR</a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE
