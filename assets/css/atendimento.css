@@ -208,6 +208,7 @@ label {
     padding: 20px;
     max-height: 850px;
     overflow: scroll;
+    overflow-x: hidden; 
 }
 
 .procedimentos::-webkit-scrollbar{
