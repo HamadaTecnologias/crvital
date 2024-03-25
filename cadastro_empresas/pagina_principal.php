@@ -151,7 +151,7 @@
         </div>
         <?php } ?> 
 
-    <h1>Cadastro Empresas</h1>
+    <h1>Nova Empresa</h1>
     <div class="painel">
     <form action="manipular_empresa.php" method="post">
         <div class="form">

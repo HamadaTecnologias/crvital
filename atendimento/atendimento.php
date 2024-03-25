@@ -240,21 +240,29 @@
 <!-- ATENDIMENTOS ATIVOS -->
             <div class="atendimentos_ativos">
             <?php 
-            $query_ativos = "SELECT id_atendimento,nome_paciente,tipo_exame,hora_checkin,nome_medico FROM atendimento INNER JOIN medico ON atendimento.id_medico = medico.id_medico WHERE hora_checkout=0;";
+            $query_ativos = "SELECT id_atendimento,nome_paciente,tipo_exame,hora_checkin,nome_medico,nome_empresa 
+            FROM atendimento 
+            INNER JOIN medico ON atendimento.id_medico = medico.id_medico 
+            INNER JOIN empresa ON atendimento.id_empresa = empresa.id_empresa 
+            WHERE hora_checkout=0;";
             $result = mysqli_query($con,$query_ativos);?>
             <table>
                 <thead>
                     <tr>
-                    <th scope="col">Consultas em Andamento</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Colaborador</th>
                     <th scope="col">Médico Atendente</th>
                     <th scope="col">Exame</th>
-                    <th scope="col">Hora Check-in</th>
+                    <th scope="col">Check-in</th>
                     <th scope="col">Finalizar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while($consulta = mysqli_fetch_assoc($result)){ ?>
                         <tr>
+                            <td>
+                                <?= $consulta['nome_empresa']; ?>
+                            </td>
                             <td>
                                 <?= $consulta['nome_paciente']; ?>
                             </td>
