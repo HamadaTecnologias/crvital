@@ -9,21 +9,28 @@
     --red-logo: #9b1a2e;
     --green-logo: #488b4a;
     --roboto: "Roboto", sans-serif;
+    --body:#4ed28e50;
+    --sidebar:#61CE70;
 }
 
 .main{
     margin-top: 10%;
-    background-color: #488b4a6f;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
     padding: 20px;
     height: auto;
+    background-color: rgba(252, 252, 252, 0.8) ;
+    border-radius: 4px;
+    width: 80%;
 }
 
 .new-doctor {
     margin-right: 100px;
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 4px;
+    padding: 20px;
 }
 
 .new-doctor h3 {
@@ -72,12 +79,20 @@
     color: var(--green-logo);
 }
 
+.registred-doctors{
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 4px;
+    padding: 20px;
+}
+
 .registred-doctors table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     border: 1px solid black;
     padding: 20px;
+    background-color: rgba(252, 252, 252, 0.8);
   }
 
   .registred-doctors table th, td {

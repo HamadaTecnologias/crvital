@@ -83,6 +83,29 @@
              </button>
         </nav>
     </aside>
+<style>
+.confirmar_exclusao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 4px;
+    padding: 15px;
+    gap: 5px;
+}
+.confirmar_exclusao a{
+    display: inline-block; 
+    text-decoration: none;
+    background-color: var(--red-logo);
+    border-radius: 8px;
+    padding: 5px; 
+    color: white;
+    max-width: 100%; 
+    box-sizing: border-box; 
+}
+</style>
 
     <?php
         //Recebendo dados para alterar 
@@ -95,42 +118,77 @@
             $empresa = mysqli_query($con,$query);
             $alterar = mysqli_fetch_assoc($empresa);
         }
-
     ?>
+    <?php 
+        //RECEBENDO DADOS DE ERROS
+        $cnpj_error = $_GET['cnpj']??null;
+        $nome_error = $_GET['nome']??null;
+        $perfil_error = $_GET['perfil']??null;
+        $apagar = $_GET['apagar']??false;
+    ?>
+
+
     <main class="main">
-    <h1>Cadastro Empresas</h1>
+        <?php 
+        if ($cnpj_error != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Confira os 14 números em CNPJ</h3>
+        <?php } ?> 
+
+        <?php 
+        if ($nome_error != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Digite a Razão Social</h3>
+        <?php } ?> 
+
+        <?php 
+        if ($perfil_error != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Por favor, selecione ao menos um perfil</h3>
+        <?php } ?> 
+        <?php 
+        if ($apagar != false) {?>
+        <div class="confirmar_exclusao">            
+            <h3>Deseja confirmar exclusão da empresa?</h3>
+            <a href='apagar.php?id_empresa=<?=$id_empresa?>'>CONFIRMAR</a>
+        </div>
+        <?php } ?> 
+
+    <h1>Nova Empresa</h1>
     <div class="painel">
     <form action="manipular_empresa.php" method="post">
         <div class="form">
-            <div class="dados coluba">
+            <div class="dados coluna">
             <input style="display:none" name="id_empresa" id="id_empresa" type="number" value="<?=$id_empresa?>"><br>
             <label for="nome_empresa">Razão Social:</label>
-            <input name="nome_empresa" id="nome_empresa" type="text" value="<?=$alterar['nome_empresa']?>"><br>
+            <input placeholder="Digite a Razão Social" name="nome_empresa" id="nome_empresa" type="text" value="<?=$alterar['nome_empresa']?>"><br>
             <label for="cnpj">CNPJ:</label>
-            <input name="cnpj" id="cnpj" type="text" value="<?=$alterar['cnpj']?>"><br>
+            <input placeholder="Digite o CNPJ sem pontos" name="cnpj" id="cnpj" type="text" value="<?=$alterar['cnpj']?>"><br>
             <B>Forma de Pagamento<B><br>
             <select name=forma_pagamento required>
             <option value="">Selecione a Forma de Pagamento</option>
-            <option value=dinheiro>Dinheiro</option>
-            <option value=boleto>Boleto</option>
-            <option value=faturado>Faturamento</option>
-            <option value=credito>Crédito em conta</option>
+            <option value=Dinheiro>Dinheiro</option>
+            <option value=Boleto>Boleto</option>
+            <option value=Faturado>Faturamento</option>
+            <option value=Credito>Crédito em conta</option>
             <option value=null>Avulso</option>
             </select><br>
             </div>
             <div class="perfil">
-            <label for="perfil">Perfil:</label><br>
+            <label for="perfil">Perfil:</label>
+            <label for="perfil">
             <input type=radio name=perfil value="credenciamento"> 
-            <label for="perfil">Credenciamento</label><br>
-            
-            <input type=radio name=perfil value="faturamento"> 
-            <label for="perfil">Faturamento</label><br>
-            
+            Credenciamento
+            </label>
+            <label for="perfil">
+            <input type=radio name=perfil value="faturamento">
+            Faturamento 
+            </label>
+            <label for="perfil">
             <input type=radio name=perfil value="gestao">
-            <label for="perfil">Gestão</label><br>
-            
+            Gestão
+            </label>
+            <label for="perfil">
             <input type=radio name=perfil value="avulso">
-            <label for="perfil">Avulso</label> <br>
+            Avulso
+            </label> 
             </div>
         </div>
         <div class="button">
@@ -162,33 +220,30 @@
                                 <?= $linha['nome_empresa']; ?>
                             </td>
                             <td>
-                                <a href='apagar.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-trash-can"></i></a>
+                                <a href='pagina_principal.php?apagar=true&id_empresa=<?=$linha['id_empresa']?>'><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                             <td>
                                 <a href='pagina_principal.php?id_empresa=<?=$linha['id_empresa']?>'><i class="fa-solid fa-rotate"></i></a>
                             </td>
                             <?php if($linha['status'] != false){?>
                                 <td>
-                                    <p>Liberada</p>
-                                </td> 
-                                <td>
-                                    <a href='bloquear.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
+                                    <a href='bloquear.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock-open"></i></a>
                                 </td>
                             <?php }else{ ?>
-                                <td>  
-                                <p>Bloqueada</p>
-                                </td>
                                 <td>
-                                <a href='liberar.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock-open"></i></a>
+                                <a href='liberar.php?id_empresa=<?= $linha['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
                                 </td>
                             <?php } ?>   
                         </tr>
-            </div>
-                    <?php } 
+                    <?php //FECHANDO WHILE
+                        } 
                         mysqli_close($con);
-                    ?>   
+                    ?>  
+                </tbody>
+            </table> 
+            </div>
     </div>
     </main>
-    <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>

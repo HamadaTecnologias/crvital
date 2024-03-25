@@ -6,6 +6,9 @@
     <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/exames.css"> 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <title>CrVital - Procedimentos</title>
 </head>
 <body>
@@ -88,7 +91,23 @@
         </nav>
     </aside>
 
+    <?php 
+        //RECEBENDO DADOS DE ERROS
+        $valor_error = $_GET['valor']??null;
+        $nome_error = $_GET['nome']??null;
+    ?>
+
+
     <main class="main">
+    <?php 
+        if ($valor_error != false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Digite um Valor</h3>
+       <?php } ?> 
+
+       <?php 
+        if ($nome_error != false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Digite o Procedimento</h3>
+       <?php } ?> 
         <?php 
             //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
             $id_empresa= $_GET['id_empresa']??null;
@@ -173,7 +192,7 @@
                                     <?="R$ ".$linha['valor']; ?>
                                 </td>
                                 <td>
-                                    <a href='apagar.php?id_procedimento=<?= $linha['id_procedimento']?>'>
+                                    <a href='apagar.php?id_procedimento=<?= $linha['id_procedimento']?>&id_empresa=<?=$id_empresa?>'>
                                     <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </td>
@@ -192,6 +211,11 @@
                 mysqli_close($con);
             ?>
     </main>
+    <script>
+        $(document).ready(function() {
+            $('#id_empresa').select2();
+        });
+    </script>
     <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>
