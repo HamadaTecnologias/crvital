@@ -21,10 +21,10 @@ if ($finalizar!=false) {
     echo"<br>";
     //EFETUANDO CHECKOUT
     // DEFININDO HORARIO CHECKOUT
-    $query_hora_saida="SELECT TIME_FORMAT(CURTIME(), '%h:%i')";
+    $query_hora_saida="SELECT TIME_FORMAT(CURTIME(), '%H:%i')";
     $result = mysqli_query($con,$query_hora_saida);
     $hora_saida = mysqli_fetch_assoc($result);
-    $hora_checkout = $hora_saida["TIME_FORMAT(CURTIME(), '%h:%i')"];
+    $hora_checkout = $hora_saida["TIME_FORMAT(CURTIME(), '%H:%i')"];
     //FIM HORARIO CHECKOUT
     $query_checkout = "UPDATE atendimento set hora_checkout='".$hora_checkout."'where id_atendimento =".$id_atendimento;
     if (mysqli_query($con,$query_checkout)) {
@@ -43,10 +43,10 @@ if ($finalizar!=false) {
 
 
     // DEFININDO HORARIO CHECKIN
-    $query_hora="SELECT TIME_FORMAT(CURTIME(), '%h:%i')";
+    $query_hora="SELECT TIME_FORMAT(CURTIME(), '%H:%i')";
     $result = mysqli_query($con,$query_hora);
     $hora = mysqli_fetch_assoc($result);
-    $hora_checkin = $hora["TIME_FORMAT(CURTIME(), '%h:%i')"];
+    $hora_checkin = $hora["TIME_FORMAT(CURTIME(), '%H:%i')"];
     //FIM
 
 
