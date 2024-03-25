@@ -62,18 +62,29 @@ label {
     flex-direction: column;
     gap: 20px;
 }
+.checkin{
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    gap: 20px;
+}
 
+.dados{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-around;
+}
 .empresa{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     background-color:rgba(102, 102, 102, 0.37);
     border: 0.8px solid black;
     border-radius: 6px;
     padding: 20px;
-    gap: 30px;
-
-
+    gap: 20px;
 }
 
 
@@ -83,8 +94,6 @@ label {
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-
-
 }
 
 .dados_2{
@@ -93,9 +102,6 @@ label {
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-
-
-
 }
 .dados_2 select{
     width:100px;
@@ -107,22 +113,21 @@ label {
 }
 
 .atendimento{
+    display: flex;
+    flex-direction: column;
     background-color:rgba(102, 102, 102, 0.37);
     border: 0.8px solid black;
     border-radius: 4px;
-    display: flex;
-    gap: 40px;
+    gap: 20px;
     align-items: center;
     padding: 20px;
     margin-top: 20px;
-
 }
 
 .tipo{
     background-color: rgba(252, 252, 252, 0.8) ;
     padding: 20px;
     border-radius: 4px;
-
 }
 .tipo input[type="radio"] {
     transform: scale(1.2);
@@ -130,14 +135,15 @@ label {
     cursor: pointer;
 }
 
-.dados{
+.dados_atendimento{
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     justify-content: center;
     align-items: center;
-
 }
-.dados select{
-    width:300px;
+.dados_atendimento select{
+    width:200px;
     height:25px;
     font-family: var(--roboto);
     font-size:17px;
@@ -180,7 +186,7 @@ label {
 }
 
 .colaborador input {
-    width: 600px;
+    width: 300px;
     font-size: 18px;
     border-radius: 4px;
     background-color: white;
@@ -200,9 +206,49 @@ label {
     border-radius: 4px;
     gap: 10px;
     padding: 20px;
-    margin-top: 20px;
-    width: 800px;
+    max-height: 850px;
+    overflow: scroll;
 }
+
+.procedimentos::-webkit-scrollbar{
+    width: 14px; 
+}
+
+.procedimentos::-webkit-scrollbar-track{
+    background:grey;
+}
+
+.procedimentos::-webkit-scrollbar-thumb{
+
+    background-color: var(--red-logo);   
+    border-radius: 20px;      
+}
+
+.procedimentos input[type="checkbox"] {
+    transform: scale(2.2);
+    border: 1px solid black; 
+    cursor: pointer;
+}
+
+.procedimentos table {
+    border-collapse: collapse;
+    border: 0.8px solid black;
+    padding: 20px;
+    background-color: rgba(252, 252, 252, 0.8);
+  }
+  
+.procedimentos table th, td {
+text-align: center;
+border: 0.8px solid black;
+padding: 10px;
+
+}
+
+.procedimentos table th {
+background-color: var(--red-logo);
+color: white;
+}
+
 
 .button{
     display: flex;

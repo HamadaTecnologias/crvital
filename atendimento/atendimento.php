@@ -104,7 +104,7 @@
                 </form>
             
             <!-- FORM DE CADASTRO DE ATENDIMENTO -->
-            <form action="" method="post">
+            <form action="cadastrar_atendimento.php" method="post">
                 <!-- BUSCANDO DADOS DA EMPRESA SELECIONADA -->
                 <?php 
                 if ($id_empresa!=null) {
@@ -114,6 +114,7 @@
                 <div class="empresa">
                     <!-- DADOS DA EMPRESA SELECIONADA  -->
                     <div class="dados_1">
+                        <input style="display:none" name="id_empresa" type="number" value="<?=$id_empresa?>">
                         <label for="nome_empresa">Empresa:</label>
                         <?=$linha_empresa['nome_empresa']?>
                         <label for="perfil">Perfil Credenciamento:</label>
@@ -124,7 +125,7 @@
                         <?=$linha_empresa['cnpj']?>
                         
                         <label for="forma_pagamento">Método de Pagamento:</label>
-                        <select name="forma_pagamento" id="forma_pagamento" required>
+                        <select name="forma_pagamento" required>
                             <option value="<?=$linha_empresa['forma_pagamento']?>"><?=$linha_empresa['forma_pagamento']?></option>
                             <option value=Dinheiro>Dinheiro</option>
                             <option value=Boleto>Boleto</option>
@@ -170,7 +171,7 @@
                     <div class="hora">
                         <label for="hora">Horario Check-in</label>
                          <span id="time">12:00:00</span>       
-                        <input type="date" value="0000-00-00" />
+                        <input name="data_atendimento" type="date" value="0000-00-00" />
                     </div>    
                 </div>
             </div> 
@@ -180,15 +181,28 @@
             </div>
 
             <div class="procedimentos">
-                <?php
+                <?php 
                     if ($id_empresa!=null) {
-                    $query="select id_procedimento,nome_procedimento,valor from procedimento WHERE id_empresa=".$id_empresa;
-                    $resultado = mysqli_query($con,$query);
+                    $query="select id_procedimento,nome_procedimento from procedimento WHERE id_empresa=".$id_empresa;
+                    $resultado = mysqli_query($con,$query);?>
+                <table>
+                <thead>
+                    <tr>
+                    <th scope="col">Procedimentos</th>
+                    <th scope="col">Adicionar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
                     while($procedimento = mysqli_fetch_assoc($resultado)){?>
-                        <input type=checkbox name=procedimento value="<?=$procedimento['id_procedimento']?>"> 
-                        <label for="procedimento"><?=$procedimento['nome_procedimento']?></label><br>      
+                    <tr>
+                       <td><label for="id_procedimento"><?=$procedimento['nome_procedimento']?></label></td>
+                       <td><input type="checkbox" name="id_procedimento[]" value="<?=$procedimento['id_procedimento']?>"></td>
+                    </tr>     
                     <?php } ?>  
                     <?php } ?> 
+                </tbody>
+                </table>
             </div>
 
             <div class="button">

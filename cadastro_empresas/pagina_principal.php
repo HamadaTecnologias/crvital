@@ -199,10 +199,13 @@
                                 </td>
                             <?php } ?>   
                         </tr>
-            </div>
-                    <?php } 
+                    <?php //FECHANDO WHILE
+                        } 
                         mysqli_close($con);
-                    ?>   
+                    ?>  
+                </tbody>
+            </table> 
+            </div>
     </div>
     </main>
     <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
