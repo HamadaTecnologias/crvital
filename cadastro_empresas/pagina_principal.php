@@ -106,7 +106,7 @@
 
     <?php
         //Recebendo dados para alterar 
-        include 'bd_connect.php';
+        include "../bd_connect.php";
         $id_empresa = $_GET['id_empresa']??null;
         $alterar['nome_empresa']=null;
         $alterar['cnpj']=null;

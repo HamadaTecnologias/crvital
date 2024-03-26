@@ -1,4 +1,5 @@
 <?php 
+include "../bd_connect.php";
 $filtro_principal = $_POST['filtro_principal'];
 $data_inicio = $_POST['data_inicio'];
 $data_fim = $_POST['data_fim'];

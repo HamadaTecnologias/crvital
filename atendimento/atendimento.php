@@ -84,7 +84,7 @@
             </nav>
         </aside>
         <?php 
-            include 'bd_connect.php';
+            include "../bd_connect.php";
             //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
             $id_empresa= $_GET['id_empresa']??null;
         ?>

@@ -104,7 +104,7 @@
         <?php 
             //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
             $id_empresa= $_GET['id_empresa']??null;
-            include 'bd_connect.php';
+            include "../bd_connect.php";
         ?>
             <!-- SELETOR DE EMPRESAS -->
         <div class="forms">

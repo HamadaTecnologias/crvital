@@ -86,7 +86,7 @@
 
     <main class="main">
         <?php 
-            include "bd_connect.php";
+            include "../bd_connect.php";
         ?>
 
         <h1>Relatórios</h1>

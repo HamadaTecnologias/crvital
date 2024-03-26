@@ -1,5 +1,5 @@
 <?php 
-include "bd_connect.php";
+include "../bd_connect.php";
 $id_empresa = $_POST['id_empresa']??null;
 $metodo_pagamento = $_POST['forma_pagamento']??null;
 $tipo_atendimento = $_POST['tipo_atendimento']??null;

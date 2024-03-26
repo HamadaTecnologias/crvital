@@ -7,7 +7,7 @@
     $perfil= $_POST["perfil"];
     $forma_pagamento= $_POST["forma_pagamento"];
     $erro = FALSE;
-    include 'bd_connect.php';
+    include "../bd_connect.php";
 
     //tratar dados inseridos
     if(strlen($cnpj)!=14){

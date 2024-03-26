@@ -3,7 +3,7 @@
 $user_input = $_POST['user'];
 $password = $_POST['password'];
 
-include 'bd_connect.php';
+include "../bd_connect.php";
 $query = "SELECT name, username, password, level, status FROM users WHERE username = '$user_input'";
 
 $bd_data = mysqli_query($con, $query);

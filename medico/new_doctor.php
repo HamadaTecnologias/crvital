@@ -1,5 +1,5 @@
 <?php
-include 'bd_connect.php';
+include "../bd_connect.php";
 
 $new_doctor = $_POST['new_doctor_username'];
 $new_cpf = $_POST['new_doctor_cpf'];

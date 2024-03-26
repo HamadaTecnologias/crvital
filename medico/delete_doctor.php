@@ -1,5 +1,5 @@
 <?php
-include 'bd_connect.php';
+include "../bd_connect.php";
 $id_medico = $_GET['id_medico'];
 
 $query = "DELETE FROM medico WHERE id_medico = '$id_medico'";
