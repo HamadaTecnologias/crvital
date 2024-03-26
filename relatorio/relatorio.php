@@ -113,6 +113,7 @@
             <div class="secondary-filters">
                 <h3>Filtro por Empresa:</h3>
             </div>
+        </form>
     </main>
 
 
