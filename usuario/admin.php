@@ -17,7 +17,7 @@
                     </span>
                 </button>
             </header>
-            <img class="img-logo" src="../assets/crvital-logo.svg">
+            <img class="img-logo" src="../assets/logo-crvital.png">
             <nav class="sidebar-nav">
                 
                 <button class="sidebar-nav-button">

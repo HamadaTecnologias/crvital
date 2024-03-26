@@ -22,16 +22,17 @@
     height: auto;
     background-color: rgba(252, 252, 252, 0.8) ;
     border-radius: 4px;
-    width: 80%;
+    width: 70%;
+    margin-left: 23.8%;
 }
 
 .new-user {
-    margin-right: 100px;
+    margin-right: 40px;
     background-color:rgba(102, 102, 102, 0.37);
     border: 0.8px solid black;
     border-radius: 4px;
     padding: 20px;
-}
+} 
 
 .new-user h3 {
     color: var(--red-logo);
