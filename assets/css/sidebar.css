@@ -26,18 +26,6 @@ body {
     margin-right: 10px;
 }
 
-
-.img-logo:hover {
-    scale: 1.1;
-    transition: 0.2s;
-}
-
-.logout-icon {
-    margin: -6px -6px -6px -9px;
-    width: 40px;
-    height: 40px; 
-}
-
 .logout-icon:hover {
     scale: 1.1;
     transition: 0.2s;
@@ -50,21 +38,28 @@ body {
     top: 0 ;
     display: flex;
     flex-direction: column;
-    align-items: baseline;
+    align-items: flex-start;
     justify-content: center;
     width: 240px;
     height: 100%;
-    padding: 40px 10px 30px 10px;
+    padding: 40px 10px 30px 25px;
     border-right: 1px solid #2f3336;
     transition: all 0.4s;
 }
 
 .img-logo {
-    width: 180px;
-    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 235px;
     margin-left: 25px;
     margin-top: 8px;
-    /* margin-bottom: 0px;    */
+}
+
+.img-logo:hover {
+    scale: 1.1;
+    transition: 0.2s;
 }
 
 .sidebar a {
@@ -92,7 +87,7 @@ body {
     align-items: center;
     gap: 12px;
     height: 48px;
-    width: 85%;
+    width: 180px;
     padding: 0 16px 0 12px;
     border-radius: 10px;
     line-height: 1;
@@ -121,6 +116,11 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+.sidebar-nav-button-span2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* responsividade sidebar */
