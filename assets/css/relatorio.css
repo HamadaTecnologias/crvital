@@ -144,9 +144,10 @@ main button:hover {
     background-color: var(--green-logo);
 }
 
-button > img {
+main button > img {
     width: 25px;
     height: 25px;
     margin-right: 10px;
     vertical-align: middle;
 }
+ 
