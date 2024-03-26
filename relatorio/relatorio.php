@@ -90,14 +90,31 @@
             </nav>
         </aside>
 
+    <main class="main">
+        <div class="report-title">
+            <h1>Relatórios</h1>
+        </div>
+        <form class="flex-form" action="">
+            <div class="main-filters">
+                <h3>Filtros Principais:</h3>
+                <input type="radio" name="new_report_option" value="empresa">
+                <label class="new-report-label" for="empresa">Empresa</label><br>
+                <input type="radio" name="new_report_option" value="periodo">
+                <label class="new-report-label" for="periodo">Período</label><br>
+                <input type="radio" name="new_report_option" value="medico">
+                <label class="new-report-label" for="medico">Médico</label>
+            </div>
+            <div class="date">
+                <label class="beggining" for="start_date">Data de Início:</label><br>
+                <input class="input-date" name="start-date" type="date" value="0000-00-00" /><br>
+                <label class="end" for="end_date">Data do Fim:</label><br>
+                <input class="input-date" name="end-date" type="date" value="0000-00-00" />
+            </div>
+            <div class="secondary-filters">
+                <h3>Filtro por Empresa:</h3>
+            </div>
+    </main>
 
-        <main class="main">
-            <div class="report-title">
-                <h2>Relatórios</h2>
-            </div>
-            <div class="report-main">
-            </div>
-        </main>
 
 </body>
 </html>

@@ -90,7 +90,7 @@
                     <input class="new-doctor-input" type="text" name="new_doctor_username" placeholder="Digite o nome"><br>
 
                     <label class="new-doctor-label" for="new_doctor_cpf">CPF:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_cpf" placeholder="Digite o CPF"><br>
+                    <input class="new-doctor-input" type="text" name="new_doctor_cpf" placeholder="Digite o CPF (somente números)"><br>
 
                     <label class="new-doctor-label" for="new_doctor_nis">NIS:</label><br>
                     <input class="new-doctor-input" type="text" name="new_doctor_nis" placeholder="Digite o número do NIS"><br>
