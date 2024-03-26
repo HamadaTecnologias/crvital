@@ -6,6 +6,9 @@
     <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/relatorio.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <title>CrVital - Página Inicial</title>
 </head>
 <body>
@@ -91,6 +94,9 @@
         </aside>
 
     <main class="main">
+        <?php 
+            include "bd_connect.php";
+        ?>
         <div class="report-title">
             <h1>Relatórios</h1>
         </div>
@@ -111,11 +117,43 @@
                 <input class="input-date" name="end-date" type="date" value="0000-00-00" />
             </div>
             <div class="secondary-filters">
-                <h3>Filtro por Empresa:</h3>
+                <div class="select_empresa">
+                    <h3>Filtro por Empresa:</h3>
+                    <select name="id_empresa" id="id_empresa" required>
+                        <option value="">Selecione uma Empresa</option>
+                        <?php
+                            $query="select id_empresa,nome_empresa from empresa ORDER BY nome_empresa ASC";
+                            $result = mysqli_query($con,$query);
+                            while($empresa = mysqli_fetch_assoc($result)){?>
+                                <option value="<?=$empresa['id_empresa'];?>"><?=$empresa['nome_empresa'];?></option>
+                        <?php } ?>  
+                    </select>
+                </div>
+                <div class="select_medico">
+                <h3>Filtro por Médico:</h3>
+                    <select name="id_medico" id="id_medico" required>
+                        <option value="">Selecione um Médico</option>
+                        <?php
+                            $query="select id_medico,nome_medico from medico ORDER BY nome_medico ASC";
+                            $result = mysqli_query($con,$query);
+                            while($medico = mysqli_fetch_assoc($result)){?>
+                                <option value="<?=$medico['id_medico'];?>"><?=$medico['nome_medico'];?></option>
+                        <?php } ?>  
+                    </select>
+                </div>
             </div>
         </form>
     </main>
 
-
+<script>
+    $(document).ready(function() {
+        $('#id_empresa').select2();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#id_medico').select2();
+    });
+</script>
 </body>
 </html>
