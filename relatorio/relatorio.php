@@ -126,7 +126,7 @@
                 <div class="select_empresa">
                     <h3>Filtro por Empresa:</h3>
                     <select name="id_empresa" id="id_empresa">
-                        <option value="">Selecione uma Empresa</option>
+                        <option value="">Selecione uma Empresa (pode ser nulo)</option>
                         <?php
                             $query="select id_empresa,nome_empresa from empresa ORDER BY nome_empresa ASC";
                             $result = mysqli_query($con,$query);
@@ -138,7 +138,7 @@
                 <div class="select_medico">
                     <h3>Filtro por Médico:</h3>
                     <select name="id_medico" id="id_medico">
-                        <option value="">Selecione um Médico</option>
+                        <option value="">Selecione um Médico (pode ser nulo)</option>
                         <?php
                             $query="select id_medico,nome_medico from medico ORDER BY nome_medico ASC";
                             $result = mysqli_query($con,$query);
