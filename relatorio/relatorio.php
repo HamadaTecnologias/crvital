@@ -97,29 +97,35 @@
         <?php 
             include "bd_connect.php";
         ?>
-        <div class="report-title">
-            <h1>Relatórios</h1>
-        </div>
-        <form class="flex-form" action="">
+
+        <h1>Relatórios</h1>
+
+       <div class="filtros">
+        <form action="gerar_relatorio.php" method="post">
             <div class="main-filters">
-                <h3>Filtros Principais:</h3>
-                <input type="radio" name="new_report_option" value="empresa">
-                <label class="new-report-label" for="empresa">Empresa</label><br>
-                <input type="radio" name="new_report_option" value="periodo">
-                <label class="new-report-label" for="periodo">Período</label><br>
-                <input type="radio" name="new_report_option" value="medico">
-                <label class="new-report-label" for="medico">Médico</label>
-            </div>
-            <div class="date">
-                <label class="beggining" for="start_date">Data de Início:</label><br>
-                <input class="input-date" name="start-date" type="date" value="0000-00-00" /><br>
-                <label class="end" for="end_date">Data do Fim:</label><br>
-                <input class="input-date" name="end-date" type="date" value="0000-00-00" />
+                <div class="radio_filtro">
+                    <h3>Filtros Principais:</h3>
+                    <label class="new-report-label" for="empresa">
+                    <input type="radio" name="new_report_option" value="empresa">
+                    Empresa</label>
+                    <label class="new-report-label" for="periodo">
+                    <input type="radio" name="new_report_option" value="periodo">
+                    Período</label>
+                    <label class="new-report-label" for="medico">
+                    <input type="radio" name="new_report_option" value="medico">
+                    Médico</label>
+                </div>
+                <div class="date">
+                    <label class="beggining" for="start_date">Data de Início:</label>
+                    <input class="input-date" name="start-date" type="date" value="0000-00-00"/>
+                    <label class="end" for="end_date">Data do Fim:</label>
+                    <input class="input-date" name="end-date" type="date" value="0000-00-00"/>
+                </div>
             </div>
             <div class="secondary-filters">
                 <div class="select_empresa">
                     <h3>Filtro por Empresa:</h3>
-                    <select name="id_empresa" id="id_empresa" required>
+                    <select name="id_empresa" id="id_empresa">
                         <option value="">Selecione uma Empresa</option>
                         <?php
                             $query="select id_empresa,nome_empresa from empresa ORDER BY nome_empresa ASC";
@@ -130,8 +136,8 @@
                     </select>
                 </div>
                 <div class="select_medico">
-                <h3>Filtro por Médico:</h3>
-                    <select name="id_medico" id="id_medico" required>
+                    <h3>Filtro por Médico:</h3>
+                    <select name="id_medico" id="id_medico">
                         <option value="">Selecione um Médico</option>
                         <?php
                             $query="select id_medico,nome_medico from medico ORDER BY nome_medico ASC";
@@ -142,8 +148,10 @@
                     </select>
                 </div>
             </div>
-        </form>
-    </main>
+    </div>
+    <button type="submit">Gerar Relatório</button>
+    </form>
+</main>
 
 <script>
     $(document).ready(function() {

@@ -22,11 +22,12 @@
     height: auto;
     background-color: rgba(252, 252, 252, 0.8) ;
     border-radius: 4px;
-    width: 80%;
+    width: 70%;
+    margin-left: 23.8%;
 }
 
 .new-doctor {
-    margin-right: 100px;
+    margin-right: 50px;
     background-color:rgba(102, 102, 102, 0.37);
     border: 0.8px solid black;
     border-radius: 4px;
