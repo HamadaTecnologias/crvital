@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <title>CrVital - Página Inicial</title>
+    <title>Relatórios</title>
 </head>
 <body>
     <aside class="sidebar">
@@ -126,7 +126,7 @@
                 <div class="select_empresa">
                     <h3>Filtro por Empresa:</h3>
                     <select name="id_empresa" id="id_empresa">
-                        <option value="">Selecione uma Empresa</option>
+                        <option value="">Selecione uma Empresa (pode ser nulo)</option>
                         <?php
                             $query="select id_empresa,nome_empresa from empresa ORDER BY nome_empresa ASC";
                             $result = mysqli_query($con,$query);
@@ -138,7 +138,7 @@
                 <div class="select_medico">
                     <h3>Filtro por Médico:</h3>
                     <select name="id_medico" id="id_medico">
-                        <option value="">Selecione um Médico</option>
+                        <option value="">Selecione um Médico (pode ser nulo)</option>
                         <?php
                             $query="select id_medico,nome_medico from medico ORDER BY nome_medico ASC";
                             $result = mysqli_query($con,$query);
@@ -149,7 +149,7 @@
                 </div>
             </div>
     </div>
-    <button type="submit">Gerar Relatório</button>
+    <button type="submit"><img src="../assets/download.png">Gerar Relatório</button>
     </form>
 </main>
 
