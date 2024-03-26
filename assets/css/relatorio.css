@@ -16,12 +16,14 @@
 body {
     margin: 0;
     font-family: var(--roboto);
+}
 
-
+h1 {
+    margin-bottom: 20px;
 }
 
 .main{
-    margin-top: 5%;
+    margin-top: 3%;
     background-color: rgba(252, 252, 252, 0.8) ;
     border-radius: 10px;
     padding: 50px;
@@ -42,7 +44,7 @@ body {
     background-color:rgba(7, 151, 50, 0.37);
     border: 0.8px solid black;
     border-radius: 4px;
-    padding: 30px;
+    padding: 40px;
     gap: 40px;
 }
 
@@ -53,7 +55,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    padding: 15px;
+    padding: 17px;
 }
 
 .radio_filtro{
@@ -97,10 +99,6 @@ h3 {
     font-weight: bolder;
 }
 
-/* .input-date {
-
-} */
-
 .end {
     font-size: 18px;
     font-weight: bolder;
@@ -123,34 +121,32 @@ h3 {
     gap: 20px;
 }
 
-/* .select_empresa{
-
-}
-
-
-.select_medico{
-
-} */
-
 select{
     width: 400px;
     font-family: var(--roboto);
     font-size:18px;
-    border-radius: 10px;
+    border-radius: 10px; 
 }
 
-
 main button {
-    margin-top: 20px;
-    padding: 6px;
-    border-radius: 4px;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 8px;
     background-color: var(--red-logo);
     color: white;
-    font-size: 18px;
+    font-size: 19px;
     font-family: var(--roboto);
     cursor: pointer;
     border: none;
 }
+
 main button:hover {
     background-color: var(--green-logo);
+}
+
+button > img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
 }
