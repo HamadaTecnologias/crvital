@@ -106,20 +106,20 @@
                 <div class="radio_filtro">
                     <h3>Filtros Principais:</h3>
                     <label class="new-report-label" for="empresa">
-                    <input type="radio" name="new_report_option" value="empresa">
+                    <input type="radio" name="filtro_principal" value="empresa">
                     Empresa</label>
                     <label class="new-report-label" for="periodo">
-                    <input type="radio" name="new_report_option" value="periodo">
+                    <input type="radio" name="filtro_principal" value="periodo">
                     Período</label>
                     <label class="new-report-label" for="medico">
-                    <input type="radio" name="new_report_option" value="medico">
+                    <input type="radio" name="filtro_principal" value="medico">
                     Médico</label>
                 </div>
                 <div class="date">
                     <label class="beggining" for="start_date">Data de Início:</label>
-                    <input class="input-date" name="start-date" type="date" value="0000-00-00"/>
+                    <input class="input-date" name="data_inicio" type="date" value="0000-00-00"/>
                     <label class="end" for="end_date">Data do Fim:</label>
-                    <input class="input-date" name="end-date" type="date" value="0000-00-00"/>
+                    <input class="input-date" name="data_fim" type="date" value="0000-00-00"/>
                 </div>
             </div>
             <div class="secondary-filters">
