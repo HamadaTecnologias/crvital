@@ -9,76 +9,75 @@
     <title>Médicos</title>
 </head>
 <body>
-    <aside class="sidebar">
+<aside class="sidebar">
             <header class="sidebar-header">
-                <button class="sidebar-header-button">
-                    <span class="sidebar-header-button-span">
-                        <a href="../login/logout.php"><img class="logout-icon" src="../assets/logout-icon.png"></a>
-                    </span>
-                </button>
+                <img class="img-logo" src="../assets/logo-crvital.png">
             </header>
-            <img class="img-logo" src="../assets/logo-crvital.png">
-            <nav class="sidebar-nav">
-                
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-                        <a href="../usuario/admin.php"><img class="icons-main" src="../assets/user-icon.png">
-                        <span class="sidebar-nav-button-span2">
-                            Usuários
+            
+            <nav class="sidebar-nav"> 
+                <a href="../usuario/admin.php">
+                    <button class="sidebar-nav-button">
+                        <span class="sidebar-nav-button-span">                      
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/user-icon.png">Usuários
+                            </span>                       
                         </span>
-                        </a>
-                    </span>
-                </button>
-
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-                        <a href="../atendimento/atendimento.php"><img class="icons-main" src="../assets/calendar.png">
-                        <span class="sidebar-nav-button-span2">
-                            Atendimentos
+                    </button>
+                </a>
+                <a href="../atendimento/atendimento.php">
+                    <button class="sidebar-nav-button">
+                        <span class="sidebar-nav-button-span">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/calendar.png">Atendimentos
+                            </span>                       
                         </span>
-                        </a>
-                    </span>
-                </button>
-
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-                        <a href="../cadastro_empresas/pagina_principal.php"><img class="icons-main" src="../assets/company.png">
-                        <span class="sidebar-nav-button-span2">
-                            Empresas
+                    </button>
+                </a>
+                <a href="../cadastro_empresas/pagina_principal.php">
+                    <button class="sidebar-nav-button">
+                        <span class="sidebar-nav-button-span">                      
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/company.png">Empresas
+                            </span>                       
                         </span>
-                        </a>
-                    </span>
-                </button>
-
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-                        <a href="../cadastro_exames/pagina_principal.php"><img class="icons-main" src="../assets/stetoscope.png">
-                        <span class="sidebar-nav-button-span2">
-                            Procedimentos
+                    </button>
+                </a>
+                <a href="../cadastro_exames/pagina_principal.php">
+                    <button class="sidebar-nav-button">
+                        <span class="sidebar-nav-button-span">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
+                            </span>
                         </span>
-                        </a>
-                    </span>
-                </button>
-
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-                        <a href="../medico/doctor.php"><img class="icons-main" src="../assets/doctor.png">
-                        <span class="sidebar-nav-button-span2">
-                            Médicos
+                    </button>
+                </a>
+                <a href="../medico/doctor.php">
+                    <button class="sidebar-nav-button">
+                        <span class="sidebar-nav-button-span">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/doctor.png">Médicos
+                            </span>
                         </span>
-                        </a>
-                    </span>
-                </button>
-
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-                        <a href="../relatorio/relatorio.php"><img class="icons-main" src="../assets/report.png">
-                        <span class="sidebar-nav-button-span2">
-                            Relatórios
+                    </button>
+                </a>
+                <a href="../relatorio/relatorio.php">
+                    <button class="sidebar-nav-button">
+                        <span class="sidebar-nav-button-span">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/report.png">Relatórios            
+                            </span>
                         </span>
-                        </a>
-                    </span>
-                </button>
+                    </button>
+                </a>
+                <a href="../login/logout.php">
+                    <button class="sidebar-nav-button">
+                        <span class="sidebar-nav-button-span">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/logout-icon.png">Logout
+                            </span>
+                        </span>
+                    </button>
+                </a>
             </nav>
         </aside>
 
