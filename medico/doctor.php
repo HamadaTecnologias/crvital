@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/doctor.css">
-    <title>CrVital - Página Médicos</title>
+    <title>Médicos</title>
 </head>
 <body>
     <aside class="sidebar">
