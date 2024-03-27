@@ -33,7 +33,7 @@ body {
 }
 
 .sidebar {
-    background-color: var(--sidebar);
+    background-color: var(--green-logo);
     position: fixed;
     top: 0 ;
     display: flex;

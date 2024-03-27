@@ -119,7 +119,7 @@
                             <th colspan="3">Ações</th>
                         </tr>
                         <?php
-                        include 'bd_connect.php';
+                        include '../bd_connect.php';
                         $query = "SELECT * FROM users";
                         $result = mysqli_query($con, $query);
                         if ($result) {
