@@ -155,15 +155,11 @@
                     <!-- FIM DADOS DA EMPRESA SELECIONADA  -->
                     <!-- DADOS ATENDIMENTO  -->
                     <div class="atendimento">
-                        <div class="tipo">
-                            <label for="tipo_atendimento">Tipo Atendimento:</label>
-                            <label for="tipo_atendimento">
-                            <input type=radio name=tipo_atendimento value="credenciado">
-                            Credenciado</label>
-                            <label for="tipo_atendimento"><input type=radio name=tipo_atendimento value="avulso"> 
-                            Avulso</label>
-                        </div>
                         <div class="dados_atendimento">
+                            <div class="colaborador">
+                                <label for="nome_paciente">Colaborador:</label>
+                                <input placeholder="Digite o nome do Colaborador" name="nome_paciente" type="text" value="">
+                            </div>
                             <div class="select_dados">    
                             <label for="tipo_exame">Tipo Exame:</label>
                             <select name=tipo_exame required>
@@ -186,17 +182,11 @@
                                 <?php } ?>  
                             </select>
                             </div>
-                            <script src="script.js"></script>
-                            <div class="hora">
-                                <label for="hora">Horario Check-in</label>
-                                <span id="time">12:00:00</span>       
-                                <input name="data_atendimento" type="date" value="0000-00-00" />
-                            </div> 
+                            <div class="data_atendimento">
+                                <input name="data_atendimento" type="date" value="0000-00-00" required />
+                                <span class="validity"></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="colaborador">
-                        <label for="nome_paciente">Colaborador:</label>
-                        <input placeholder="Digite o nome do Colaborador" name="nome_paciente" type="text" value="">
                     </div>
                 </div>
                 <!-- FIM DADOS ATENDIMENTO  -->

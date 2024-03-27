@@ -1,9 +1,9 @@
 <?php
 
     $host = 'localhost';
-    $user = 'root';
-    $password = '';
-    $database = 'crvital';
+    $user = 'crvitalcom_atendimento';
+    $password = 'SFJ5MG9HW3vnhTxxDg9U';
+    $database = 'crvitalcom_atendimento';
 
     $con = mysqli_connect($host, $user, $password, $database); //remover daqui se quiser logar que entrou no BD
 
