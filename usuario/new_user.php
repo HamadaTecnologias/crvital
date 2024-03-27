@@ -1,5 +1,5 @@
 <?php
-include 'bd_connect.php';
+include '../bd_connect.php';
 
 $new_user = $_POST['new_user_username'];
 $new_name = $_POST['new_user_full_name'];
