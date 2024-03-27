@@ -40,7 +40,13 @@ body {
     border-radius: 5px;
 } */
 
-
+.atual {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    color: #fff;
+    margin-left: 45px;
+}
 .painel{
     background-color:rgba(102, 102, 102, 0.37);
     border: 0.8px solid black;

@@ -32,6 +32,14 @@ body {
     margin-left: 20.8%;
 }
 
+.atual {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    color: #fff;
+    margin-left: 5px;
+}
+
 .forms{
     display: flex;
     justify-content: center;

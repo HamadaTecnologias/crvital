@@ -57,6 +57,7 @@
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/doctor.png">Médicos
                             </span>
+                            <i class="atual fa-solid fa-location-dot"></i> 
                         </span>
                     </button>
                 </a>

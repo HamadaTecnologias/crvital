@@ -32,10 +32,12 @@
                         <span class="sidebar-nav-button-span">
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/calendar.png">Atendimentos
-                            </span>                       
+                            </span>  
+                            <i class="atual fa-solid fa-location-dot"></i>                   
                         </span>
                     </button>
                 </a>
+            
                 <a href="../cadastro_empresas/pagina_principal.php">
                     <button class="sidebar-nav-button">
                         <span class="sidebar-nav-button-span">                      
@@ -283,5 +285,6 @@
         $('#id_empresa').select2();
     });
 </script>
+<script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>

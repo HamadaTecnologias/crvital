@@ -38,7 +38,8 @@
                         <span class="sidebar-nav-button-span">                      
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/company.png">Empresas
-                            </span>                       
+                            </span>  
+                            <i class="atual fa-solid fa-location-dot"></i>                      
                         </span>
                     </button>
                 </a>

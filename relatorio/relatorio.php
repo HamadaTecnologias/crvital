@@ -69,6 +69,7 @@
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/report.png">Relatórios            
                             </span>
+                            <i class="atual fa-solid fa-location-dot"></i> 
                         </span>
                     </button>
                 </a>
@@ -154,5 +155,6 @@
         $('#id_medico').select2();
     });
 </script>
+<script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>

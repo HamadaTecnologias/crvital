@@ -25,6 +25,13 @@
     width: 70%;
     margin-left: 23.8%;
 }
+.atual {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    color: #fff;
+    margin-left: 55px;
+}
 
 .new-doctor {
     margin-right: 50px;
