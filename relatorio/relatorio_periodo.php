@@ -56,12 +56,21 @@
                 </thead>
                 <tbody>
                     <?php 
-                        $query = "SELECT A.data,A.nome_paciente,P.nome_procedimento,P.valor,E.nome_empresa,E.perfil,E.cnpj FROM atendimento A
+                        $query = "SELECT A.id_atendimento,A.data,A.nome_paciente,P.nome_procedimento,P.valor,E.nome_empresa,E.perfil,E.cnpj 
+                        FROM atendimento A
                         INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
                         INNER JOIN procedimento P ON  P.id_procedimento=AP.id_procedimento
-                        INNER JOIN empresa E ON E.id_empresa=E.id_empresa
+                        INNER JOIN empresa E ON E.id_empresa=P.id_empresa
                         WHERE  A.data BETWEEN '".$data_inicio."' and '".$data_fim."'
                         ORDER BY E.nome_empresa ASC, A.data ASC;";
+
+                        $query_procedimento = "SELECT P.nome_procedimento,P.valor 
+                        FROM atendimento A
+                        INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
+                        INNER JOIN procedimento P ON p.ide_procedimento=AP.id_procedimento
+                        INNER JOIN empresa E ON E.id_empresa=P.id_empresa
+                        WHERE A.id_atendimento=".$linha['id_atendimento']." AND A.data BETWEEN '".$data_inicio."' and '".$data_fim."' ORDER BY E.nome_empresa ASC, A.data ASC;";
+
                         $result = mysqli_query($con,$query);
                         while($linha = mysqli_fetch_assoc($result)){ ?>
                         <tr>
