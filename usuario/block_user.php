@@ -1,5 +1,5 @@
 <?php
-include 'bd_connect.php';
+include '../bd_connect.php';
 
 $username = $_GET['user'];
 $query = "UPDATE users SET status = false WHERE username = '$username'";

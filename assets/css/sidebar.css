@@ -33,7 +33,7 @@ body {
 }
 
 .sidebar {
-    background-color: var(--sidebar);
+    background-color: var(--green-logo);
     position: fixed;
     top: 0 ;
     display: flex;
@@ -100,6 +100,7 @@ body {
     background: rgba(255, 255, 255, 0.08);
 }
 
+
 .sidebar button i {
     position: relative;
     font-size: 28px;
@@ -108,8 +109,8 @@ body {
 
 .sidebar button span {
     font-size: 17px;
-    color: #fff;
 }
+
 
 .sidebar > nav {
     flex: 1 1 auto;
@@ -122,6 +123,8 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+
 
 /* responsividade sidebar */
 
@@ -156,7 +159,7 @@ body {
     overflow: hidden;
 }
 
-@media screen and (max-width:1890px) {
+/* @media screen and (max-width:1890px) {
     .main {
         margin-left: 300px;
     }
@@ -185,4 +188,4 @@ body {
         transition: margin 0.4s;
         margin-left: 78px;
     }
-}
+} */

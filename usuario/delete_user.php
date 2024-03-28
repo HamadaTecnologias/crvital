@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-    include 'bd_connect.php';
+    include '../bd_connect.php';
     $username = $_GET['user'];
 
     $query = "DELETE FROM users WHERE username = '$username'";

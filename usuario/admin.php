@@ -20,7 +20,8 @@
                         <span class="sidebar-nav-button-span">                      
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/user-icon.png">Usuários
-                            </span>                       
+                            </span>   
+                            <i class="atual fa-solid fa-location-dot"></i>                     
                         </span>
                     </button>
                 </a>
@@ -119,7 +120,7 @@
                             <th colspan="3">Ações</th>
                         </tr>
                         <?php
-                        include 'bd_connect.php';
+                        include '../bd_connect.php';
                         $query = "SELECT * FROM users";
                         $result = mysqli_query($con, $query);
                         if ($result) {

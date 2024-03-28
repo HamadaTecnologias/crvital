@@ -6,7 +6,7 @@
     $nome_procedimento = $_POST["nome_procedimento"];
     $valor= $_POST["valor"];
     $erro = FALSE;
-    include 'bd_connect.php';
+    include "../bd_connect.php";
     echo"<br>";
     echo"<br>";
     //tratar dados inseridos

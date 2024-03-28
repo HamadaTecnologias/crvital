@@ -51,6 +51,7 @@
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
                             </span>
+                            <i class="atual fa-solid fa-location-dot"></i> 
                         </span>
                     </button>
                 </a>
@@ -104,7 +105,7 @@
         <?php 
             //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
             $id_empresa= $_GET['id_empresa']??null;
-            include 'bd_connect.php';
+            include "../bd_connect.php";
         ?>
             <!-- SELETOR DE EMPRESAS -->
         <div class="forms">
@@ -156,15 +157,26 @@
             <?php 
                 if ($id_empresa!=null) {
                     // DESCOBRINDO NOME DA EMPRESA
-                    $query_empresa="select nome_empresa from empresa where id_empresa=".$id_empresa;
+                    $query_empresa="select nome_empresa,cnpj from empresa where id_empresa=".$id_empresa;
                     $n_empresa = mysqli_query($con,$query_empresa);
                     $linha_empresa = mysqli_fetch_assoc($n_empresa); 
                     //BUSCANDO PROCEDIMENTOS DA EMPRESA
                     $query = "select id_procedimento,nome_procedimento,valor from procedimento where id_empresa=".$id_empresa;
-                    $procedimentos = mysqli_query($con,$query);?>
+                    $procedimentos = mysqli_query($con,$query);
+                    function formatCnpjCpf($value){
+                        $CPF_LENGTH = 11;
+                        $cnpj_cpf = preg_replace("/\D/", '', $value);
+                        if (strlen($cnpj_cpf) === $CPF_LENGTH) {
+                            return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
+                        } 
+                        return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
+                    }
+                    $cnpj = formatCnpjCpf($linha_empresa['cnpj']) ;
+                    ?>
                 
                 <div class="exibicao">
-                <h3>A Empresa <?=$linha_empresa['nome_empresa']?> está selecionada</h3>
+                <h3><?=$linha_empresa['nome_empresa']?></h3>
+                <h3><?=$cnpj?></h3>
                 <br>
                     <table>
                         <thead>

@@ -1,5 +1,5 @@
 <?php 
-    include 'bd_connect.php';
+   include "../bd_connect.php";
     $id_empresa=$_GET["id_empresa"];
     $id_procedimento = $_GET['id_procedimento'];
     $query = "delete from procedimento where id_procedimento =".$id_procedimento;

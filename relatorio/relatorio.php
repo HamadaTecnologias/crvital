@@ -69,6 +69,7 @@
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/report.png">Relatórios            
                             </span>
+                            <i class="atual fa-solid fa-location-dot"></i> 
                         </span>
                     </button>
                 </a>
@@ -86,13 +87,13 @@
 
     <main class="main">
         <?php 
-            include "bd_connect.php";
+            include "../bd_connect.php";
         ?>
 
         <h1>Relatórios</h1>
 
        <div class="filtros">
-        <form action="gerar_relatorio.php" method="post">
+        <form action="filtro.php" method="post">
             <div class="main-filters">
                 <div class="radio_filtro">
                     <h3>Filtros Principais:</h3>
@@ -154,5 +155,6 @@
         $('#id_medico').select2();
     });
 </script>
+<script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>

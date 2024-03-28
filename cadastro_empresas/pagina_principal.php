@@ -38,7 +38,8 @@
                         <span class="sidebar-nav-button-span">                      
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/company.png">Empresas
-                            </span>                       
+                            </span>  
+                            <i class="atual fa-solid fa-location-dot"></i>                      
                         </span>
                     </button>
                 </a>
@@ -106,7 +107,7 @@
 
     <?php
         //Recebendo dados para alterar 
-        include 'bd_connect.php';
+        include "../bd_connect.php";
         $id_empresa = $_GET['id_empresa']??null;
         $alterar['nome_empresa']=null;
         $alterar['cnpj']=null;

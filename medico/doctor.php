@@ -57,6 +57,7 @@
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/doctor.png">Médicos
                             </span>
+                            <i class="atual fa-solid fa-location-dot"></i> 
                         </span>
                     </button>
                 </a>
@@ -129,7 +130,7 @@
                       
                       return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
                     }
-                    include 'bd_connect.php';
+                    include "../bd_connect.php";
                     $query = "SELECT id_medico, nome_medico, cpf, categoria FROM medico;";
                     $result = mysqli_query($con, $query);
                     if ($result) {
