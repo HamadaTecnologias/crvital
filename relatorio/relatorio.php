@@ -93,7 +93,7 @@
         <h1>Relatórios</h1>
 
        <div class="filtros">
-        <form action="gerar_relatorio.php" method="post">
+        <form action="filtro.php" method="post">
             <div class="main-filters">
                 <div class="radio_filtro">
                     <h3>Filtros Principais:</h3>
