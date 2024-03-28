@@ -8,7 +8,16 @@
     <link rel="stylesheet" href="../assets/css/relatorio-empresa.css">
     <title>Relatório Empresa</title>
 </head>
-<body>
+<body>            
+    <?php 
+        include "../bd_connect.php";
+        $data_inicio = $_GET['data_inicio'];
+        $data_fim = $_GET['data_fim'];
+        $id_empresa = $_GET['id_empresa'];
+        if ($id_empresa = null) {
+            echo"Escolha ao menos uma empresa";
+        };
+    ?>
 
     <div id="content">
 
