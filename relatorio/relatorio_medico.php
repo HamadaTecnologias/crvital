@@ -9,6 +9,15 @@
     <title>Document</title>
 </head>
 <body>
+    <?php 
+        include "../bd_connect.php";
+        $data_inicio = $_GET['data_inicio'];
+        $data_fim = $_GET['data_fim'];
+        $id_medico = $_GET['id_medico'];
+        if ($id_medico = null) {
+            echo"Escolha ao menos um medico";
+        };
+    ?>
     <div id="content">
 
     </div>
