@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js" defer></script>
+    <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/relatorio-empresa.css">
-    <link rel="stylesheet" href="../assets/css/teste-relatorio-empresa.css">
     <title>Relatório Empresa</title>
 </head>
 <body>            
@@ -45,7 +45,7 @@
         ?>
         <div class="empresa">
             <h2><strong>Empresa: </strong><?= $linha['nome_empresa']; ?></h2>
-            <h3 class="cnpj"><strong>CNPJ:</strong> <?= $linha['cnpj']; ?></h3>
+            <h3><strong>CNPJ:</strong> <?= $linha['cnpj']; ?></h3>
             <p><strong>Perfil: </strong><?= $linha['perfil']; ?></p>
             <p><strong>Método de Pagamento: </strong><?= $linha['forma_pagamento']; ?></p>
         </div>
@@ -65,7 +65,7 @@
                 <th>Colaborador</th>
                 <th>Procedimento</th>
                 <th>Valor</th>
-                <th>Realizado em</th>
+                <th>Realizado em:</th>
                 </tr>
             </thead>
             <tbody>
