@@ -70,33 +70,58 @@
             </thead>
             <tbody>
                 <?php 
-                    $query="SELECT A.data, A.nome_paciente, P.nome_procedimento, P.valor
+                    $query="SELECT A.id_atendimento,A.data, A.nome_paciente, P.nome_procedimento, P.valor
                     FROM atendimento A
                     INNER JOIN atendimento_procedimento AP ON A.id_atendimento = AP.id_atendimento
                     INNER JOIN procedimento P ON P.id_procedimento = AP.id_procedimento
                     WHERE A.id_empresa = ".$id_empresa." AND A.data BETWEEN '".$data_inicio."' AND '".$data_fim."'
                     ORDER BY A.data ASC;";
-
-
                     $result = mysqli_query($con,$query);
-
-                    while($linha = mysqli_fetch_assoc($result)){ ?>
+                    $ids = array();
+                    while($linha = mysqli_fetch_assoc($result)){ 
+                        if (!in_array($linha['id_atendimento'], $ids)) {
+                ?>   
                         <tr>
                             <td>
                                 <?= $linha['nome_paciente']; ?>
                             </td>
                             <td>
-                                <?= $linha['nome_procedimento']; ?>
+                                    <?php 
+                                        $query_nome_procedimento = "SELECT P.nome_procedimento,P.valor 
+                                        FROM atendimento A
+                                        INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
+                                        INNER JOIN procedimento P ON P.id_procedimento=AP.id_procedimento
+                                        INNER JOIN empresa E ON E.id_empresa=P.id_empresa
+                                        WHERE A.id_atendimento=".$linha['id_atendimento']." AND A.data BETWEEN '".$data_inicio."' and '".$data_fim."' ORDER BY E.nome_empresa ASC, A.data ASC;";  
+                                        $result_nome = mysqli_query($con,$query_nome_procedimento);
+                                        while($linha_nome = mysqli_fetch_assoc($result_nome)){
+                                            echo  $linha_nome['nome_procedimento']."<br>";
+                                        }
+                                    ?>
                             </td>
                             <td>
-                            <?= $linha['valor']; ?>
+                                    <?php 
+                                        $query_valor_procedimento = "SELECT P.nome_procedimento,P.valor 
+                                        FROM atendimento A
+                                        INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
+                                        INNER JOIN procedimento P ON P.id_procedimento=AP.id_procedimento
+                                        INNER JOIN empresa E ON E.id_empresa=P.id_empresa
+                                        WHERE A.id_atendimento=".$linha['id_atendimento']." AND A.data BETWEEN '".$data_inicio."' and '".$data_fim."' ORDER BY E.nome_empresa ASC, A.data ASC;";  
+                                        $result_valor = mysqli_query($con,$query_valor_procedimento);
+                                        while($linha_valor = mysqli_fetch_assoc($result_valor)){
+                                            echo $linha_valor['valor']."<br>";
+                                        }
+                                    ?>
                             </td>
                             <td>
                                 <?= $linha['data']; ?>
                             </td>
                         </tr>
-                    <?php //FECHANDO WHILE
-                        } ?>  
+                <?php 
+                        } //FECHANDO O IF
+                        array_push($ids,$linha['id_atendimento']);
+                    } //FECHANDO WHILE
+                ?>  
             </tbody>
     </table>
     </div>
