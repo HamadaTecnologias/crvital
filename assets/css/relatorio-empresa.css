@@ -37,10 +37,10 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #488b4a;
+    /* background-color: red; */
     color: white;
     padding: 10px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .main-empresa {
@@ -61,18 +61,12 @@ h2 {
 
 h3 {
     padding-left: 10px;
-    margin-left: 100px;
-}
-
-span {
-    color: var(--red-logo);
 }
 
 h4 {
     padding-left: 10px;
     margin-left: 100px;
     margin-top: 30px;
-    background-color: var(--red-logo);
     color: white;
     border-radius: 5px;
     margin-right: 110px;
@@ -146,4 +140,8 @@ tbody tr:nth-child(odd) {
     margin-left: 480px;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.period {
+    background-color: black;
 }
