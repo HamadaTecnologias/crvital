@@ -17,10 +17,6 @@
         if ($id_empresa = null) {
             echo"Escolha ao menos uma empresa";
         };
-
-        echo $data_inicio;
-        echo $data_fim;
-        
     ?>
 
     <div id="content">
@@ -61,12 +57,12 @@
             </thead>
             <tbody>
                 <?php 
-                    $query = "SELECT A.data, A.nome_paciente, P.nome_procedimento, P.valor, E.nome_empresa, E.perfil, E.cnpj, E.forma_pagamento  
+                    $query = "SELECT A.data,A.nome_paciente,P.nome_procedimento,P.valor,E.nome_empresa,E.perfil,E.cnpj,E.forma_pagamento  
                     FROM atendimento A
-                    INNER JOIN atendimento_procedimento AP ON A.id_atendimento = AP.id_atendimento
-                    INNER JOIN procedimento P ON P.id_procedimento = AP.id_procedimento
-                    INNER JOIN empresa E ON E.id_empresa = A.id_empresa
-                    WHERE E.id_empresa = ? AND A.data BETWEEN ? AND ?
+                    INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
+                    INNER JOIN procedimento P ON  P.id_procedimento=AP.id_procedimento
+                    INNER JOIN empresa E ON E.id_empresa=E.id_empresa
+                    WHERE E.id_empresa=".$id_empresa." AND A.data BETWEEN '".$data_inicio."' and '".$data_fim."' 
                     ORDER BY E.nome_empresa ASC, A.data ASC;";
 
                     $result = mysqli_query($con,$query);
