@@ -9,15 +9,19 @@
     <title>Relatório Empresa</title>
 </head>
 <body>            
-    <?php 
-        include "../bd_connect.php";
-        $data_inicio = $_GET['data_inicio'];
-        $data_fim = $_GET['data_fim'];
-        $id_empresa = $_GET['id_empresa'];
-        if ($id_empresa = null) {
-            echo"Escolha ao menos uma empresa";
-        };
-    ?>
+                <?php 
+                    include "../bd_connect.php";
+                    $data_inicio = $_GET['data_inicio'];
+                    $data_fim = $_GET['data_fim'];
+                    $id_empresa = $_GET['id_empresa'];
+                    $error=FALSE;
+                    if ($id_empresa == null) {
+                        $error=TRUE;
+                    }
+                    if ($error!=FALSE) {
+                        header('location:relatorio.php?error=true');
+                    }        
+                ?>
 
     <div id="content">
 
