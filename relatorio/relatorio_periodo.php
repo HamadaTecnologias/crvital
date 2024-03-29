@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="../assets/css/relatorio_periodo.css">
-    <title>Document</title>
+    <title>Relatório por período</title>
 </head>
-<body>
-    <div id="content">
 
-    <?php 
-        include "../bd_connect.php";
-        
+
+<?php 
+        include "../bd_connect.php";       
         $data_inicio = $_GET['data_inicio'];
         $data_fim = $_GET['data_fim'];
         $erro = FALSE;
@@ -29,34 +25,45 @@
             echo"Confira as datas selecionadas";
         }
 
-        $query_hora="SELECT TIME_FORMAT(CURTIME(), '%H:%i')";
-        $result = mysqli_query($con,$query_hora);
-        $hora = mysqli_fetch_assoc($result);
-        $hora_emissao = $hora["TIME_FORMAT(CURTIME(), '%H:%i')"];
-       
-        //criando array com os ids das empresas
-        $query_valid="select id_empresa from empresa";
-        $empresa = mysqli_query($con,$query_valid);
-        $ids = array();
-        while($linha = mysqli_fetch_assoc($empresa)){
-            array_push($ids,$linha['id_empresa']);
-        }
-
-        
+        $query_data="SELECT DATE_FORMAT(CURDATE(), '%d/%m/%Y')";
+        $result_data = mysqli_query($con,$query_data);
+        $data = mysqli_fetch_assoc($result_data);
+        $data_emissao = $data["DATE_FORMAT(CURDATE(), '%d/%m/%Y')"];
+          
     ?>
+<body class="content" id="content">
+
+    <header>
+    <div class="img">
+        <img src="../assets/logo-crvital-horizontal.png" alt="logo">
+    </div>  
+    <div class="titulo-header">
+            <h2>Relação Exames Realizados</h2>
+            <div class="subtitulo-header">
+            <h4>Relação por período</h4>
+            <h4>Emitido em: </h4>
+            <?=$data_emissao?>
+            </div>
+    </div>
+    </header>
+    
+    <div class="titulo">
+        <h1>Período de: </h1>
+        <h1><?= date('d/m/Y', strtotime($data_inicio)); ?> a <?= date('d/m/Y', strtotime($data_fim)); ?></h1>
+    </div>
+
             <table>
                 <thead>
                     <tr>
                     <th scope="col">Colaborador</th>
                     <th scope="col">Procedimento</th>
-                    <th scope="col">Valor</th>
+                    <th scope="col">Valores</th>
                     <th scope="col">Realizado em</th>
-                    <th scope="col">Empresa</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
-                        $query = "SELECT A.id_atendimento,A.data,A.nome_paciente,E.nome_empresa,E.perfil,E.cnpj 
+                        $query = "SELECT A.id_atendimento,A.data,A.nome_paciente,A.id_empresa,E.nome_empresa,E.perfil,E.cnpj 
                         FROM atendimento A
                         INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
                         INNER JOIN procedimento P ON  P.id_procedimento=AP.id_procedimento
@@ -64,10 +71,20 @@
                         WHERE  A.data BETWEEN '".$data_inicio."' and '".$data_fim."'
                         ORDER BY E.nome_empresa ASC, A.data ASC;";
                         $result = mysqli_query($con,$query);
-                        $ids = array();
+                        $ids_atendimento = array();
+                        $ids_empresa = array();
                         while($linha = mysqli_fetch_assoc($result)){ 
-                            if (!in_array($linha['id_atendimento'], $ids)) {
-                    ?>                          
+                            
+                            if (!in_array($linha['id_atendimento'], $ids_atendimento)) {
+                                if (!in_array($linha['id_empresa'], $ids_empresa)) {
+                                    $cnpj = $linha['cnpj'];
+                                    $cnpj_formatado = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
+                                    echo"<th class='th-empresa'>".$linha['nome_empresa'];
+                                    echo"  CNPJ: ".$cnpj_formatado."</th>";
+                                    array_push($ids_empresa,$linha['id_empresa']);
+                                }
+                    ?>          
+
                                 <tr>
                                     <td>
                                         <?= $linha['nome_paciente']; ?>
@@ -100,22 +117,15 @@
                                     </td>
                                     <td>
                                         <?= $linha['data']; ?>
-                                    </td>
-                                    <td>
-                                        <?= $linha['nome_empresa']; ?>
-                                    </td>
+                                    </td> 
                                 </tr>
                     <?php 
                             } //FECHANDO O IF
-                            array_push($ids,$linha['id_atendimento']);
+                            array_push($ids_atendimento,$linha['id_atendimento']);
                         } //FECHANDO WHILE
                     ?>  
                 </tbody>
             </table> 
-
-
-
-    </div>
-    <button id="generate-pdf">GERAR PDF</button>
+<script>window.print();</script>
 </body>
 </html>
