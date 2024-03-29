@@ -10,19 +10,19 @@
     <title>Relatório Empresa</title>
 </head>
 <body>            
-                <?php 
-                    include "../bd_connect.php";
-                    $data_inicio = $_GET['data_inicio'];
-                    $data_fim = $_GET['data_fim'];
-                    $id_empresa = $_GET['id_empresa'];
-                    $error=FALSE;
-                    if ($id_empresa == null) {
-                        $error=TRUE;
-                    }
-                    if ($error!=FALSE) {
-                        header('location:relatorio.php?error=true');
-                    }        
-                ?>
+    <?php 
+        include "../bd_connect.php";
+        $data_inicio = $_GET['data_inicio'];
+        $data_fim = $_GET['data_fim'];
+        $id_empresa = $_GET['id_empresa'];
+        $error=FALSE;
+        if ($id_empresa == null) {
+            $error=TRUE;
+        }
+        if ($error!=FALSE) {
+            header('location:relatorio.php?error=true');
+        }        
+    ?>
 
     <div id="content">
 
@@ -31,8 +31,11 @@
             <img class="img" src="../assets/crvital-logo.svg">
         </div>
         <h1>Relação de Exames Realizados</h1>
+        <div class="column">
+            <p><strong>Período:</strong> <?= $data_inicio; ?> a <?= $data_fim; ?></p>
+            <p><strong>Data de Emissão:</strong></p>
+    </div>
     </header>
-
 
     <div class="main-empresa">
         <?php
@@ -41,12 +44,10 @@
             $linha = mysqli_fetch_assoc($result);
         ?>
         <div class="empresa">
-            <h2><strong>Empresa:</strong> <?= $linha['nome_empresa']; ?></h2>
-            <h3><strong>CNPJ:</strong> <?= $linha['cnpj']; ?></h3>
-            <h4 class="period"><strong>Período:</strong> <?= $data_inicio; ?> a <?= $data_fim; ?></h4> 
-            <h5><span>Data de Emissão:</span></h5>
-            <h5><span>Perfil: </span><?= $linha['perfil']; ?></h5>
-            <h5><span>Método de Pagamento:</span><?= $linha['forma_pagamento']; ?></h5>
+            <h2><strong>Empresa: </strong><?= $linha['nome_empresa']; ?></h2>
+            <h3 class="cnpj"><strong>CNPJ:</strong> <?= $linha['cnpj']; ?></h3>
+            <p><strong>Perfil: </strong><?= $linha['perfil']; ?></p>
+            <p><strong>Método de Pagamento: </strong><?= $linha['forma_pagamento']; ?></p>
         </div>
     </div>
 
