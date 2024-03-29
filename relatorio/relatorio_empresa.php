@@ -27,13 +27,20 @@
     <div id="content">
 
     <header>
+        <?php
+            $query_data = "SELECT DATE_FORMAT(CURDATE(), '%d/%m/%Y')";
+            $result_data = mysqli_query($con,$query_data);
+            $data = mysqli_fetch_assoc($result_data);
+            $data_emissao = $data['DATE_FORMAT(CURDATE(), \'%d/%m/%Y\')'];
+
+        ?>
         <div>
             <img class="img" src="../assets/crvital-logo.svg">
         </div>
         <h1>Relação de Exames Realizados</h1>
         <div class="column">
-            <p><strong>Período:</strong> <?= $data_inicio; ?> a <?= $data_fim; ?></p>
-            <p><strong>Data de Emissão:</strong></p>
+            <p><strong>Período:</strong> <?= date('d/m/Y', strtotime($data_inicio)); ?> a <?= date('d/m/Y', strtotime($data_fim)); ?></p>
+            <p><strong>Data de Emissão: </strong><?= $data_emissao ?></p>
     </div>
     </header>
 
@@ -42,12 +49,14 @@
             $query="SELECT * FROM empresa WHERE id_empresa = ".$id_empresa.";";
             $result = mysqli_query($con,$query);
             $linha = mysqli_fetch_assoc($result);
+            $cnpj = $linha['cnpj'];
+            $cnpj_formatado = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
         ?>
         <div class="empresa">
-            <h2><strong>Empresa: </strong><?= $linha['nome_empresa']; ?></h2>
-            <h3><strong>CNPJ:</strong> <?= $linha['cnpj']; ?></h3>
-            <p><strong>Perfil: </strong><?= $linha['perfil']; ?></p>
-            <p><strong>Método de Pagamento: </strong><?= $linha['forma_pagamento']; ?></p>
+            <h2><strong>Empresa: </strong><?= strtoupper($linha['nome_empresa']); ?></h2>
+            <h3><strong>CNPJ:</strong> <?= $cnpj_formatado; ?></h3>
+            <p><strong>Perfil: </strong><?= strtoupper($linha['perfil']); ?></p>
+            <p><strong>Método de Pagamento: </strong><?= strtoupper($linha['forma_pagamento']); ?></p>
         </div>
     </div>
 
