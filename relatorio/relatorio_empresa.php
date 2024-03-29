@@ -17,6 +17,10 @@
         if ($id_empresa = null) {
             echo"Escolha ao menos uma empresa";
         };
+
+        echo $data_inicio;
+        echo $data_fim;
+        
     ?>
 
     <div id="content">
@@ -47,31 +51,51 @@
     </div>
 
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Departamento</th>
-                <th>Data de Admissão</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1576</td>
-                <td>CAUÃ NINFA AZEREDO</td>
-                <td>Manutenção</td>
-                <td>04/01/2023</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>ELSON PEREIRA ALVES</td>
-                <td>Administração</td>
-                <td>23/01/2023</td>
-            </tr>
-        </tbody>
+            <thead>
+                <tr>
+                <th>Colaborador</th>
+                <th>Procedimento</th>
+                <th>Valor</th>
+                <th>Realizado em</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    $query = "SELECT A.data, A.nome_paciente, P.nome_procedimento, P.valor, E.nome_empresa, E.perfil, E.cnpj, E.forma_pagamento  
+                    FROM atendimento A
+                    INNER JOIN atendimento_procedimento AP ON A.id_atendimento = AP.id_atendimento
+                    INNER JOIN procedimento P ON P.id_procedimento = AP.id_procedimento
+                    INNER JOIN empresa E ON E.id_empresa = A.id_empresa
+                    WHERE E.id_empresa = ? AND A.data BETWEEN ? AND ?
+                    ORDER BY E.nome_empresa ASC, A.data ASC;";
+
+                    $result = mysqli_query($con,$query);
+
+                    while($linha = mysqli_fetch_assoc($result)){ ?>
+                        <tr>
+                            <td>
+                                <?= $linha['nome_paciente']; ?>
+                            </td>
+                            <td>
+                                <?= $linha['nome_procedimento']; ?>
+                            </td>
+                            <td>
+                            <?= $linha['valor']; ?>
+                            </td>
+                            <td>
+                                <?= $linha['data']; ?>
+                            </td>
+                            <td>
+                                <?= $linha['nome_empresa']; ?>
+                            </td>
+                        </tr>
+                    <?php //FECHANDO WHILE
+                        } ?>  
+                ?>
+            </tbody>
     </table>
 
-    <div>
+    <!-- <div>
         <div class="exame">
             <p class="subheader"><strong>Tipo de Exame</strong>: Demissional</p>
             <p class="subheader"><strong>Total</strong>: 7</p>
@@ -169,10 +193,10 @@
                 <td>23/01/2023</td>
             </tr>
         </tbody>
-    </table>
-
+    </table> -->
+<!-- 
     <h3 class="total">Total de Exames Realizados pela Empresa: 10</h3>
-    </div>
+    </div> -->
     
 </body>
 </html>
