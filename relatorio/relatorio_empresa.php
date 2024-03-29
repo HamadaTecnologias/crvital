@@ -53,7 +53,7 @@
             $cnpj_formatado = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
         ?>
         <div class="empresa">
-            <h2><strong>Empresa: </strong><?= strtoupper($linha['nome_empresa']); ?></h2>
+            <h2><strong>Empresa: <?= strtoupper($linha['nome_empresa']); ?></strong></h2>
             <h3><strong>CNPJ:</strong> <?= $cnpj_formatado; ?></h3>
             <p><strong>Perfil: </strong><?= strtoupper($linha['perfil']); ?></p>
             <p><strong>Método de Pagamento: </strong><?= strtoupper($linha['forma_pagamento']); ?></p>
@@ -62,10 +62,8 @@
 
     <div>
         <div class="exame">
-            <p class="subheader"><strong>Tipo de Exame</strong>: Admissional</p>
-            <p class="subheader"><strong>Total</strong>: 2</p>
+            <p class="subheader"><strong>Tipo de Exame:</strong></p>
         </div>
-        <hr class="exame-separator">
     </div>
 
     <table>

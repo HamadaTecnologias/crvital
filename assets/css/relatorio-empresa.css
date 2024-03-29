@@ -109,12 +109,14 @@ h5 {
     justify-content: center;
     flex-direction: row;
     margin-top: 30px;
+    max-width: 800px;
 }
 
 .subheader {
     font-size: 20px;
-    margin-top: 30px;
-    margin-right: 100px;
+    margin-top: 10px;
+    text-decoration: underline;
+    margin-bottom: 0px;
 }
 
 .exame-separator {
@@ -122,8 +124,8 @@ h5 {
     width: 100%; 
     border: none;
     border-top: 2px solid black;
-    max-width: 600px;
-    margin-left: 500px;
+    max-width: 900px;
+    margin-left: 300px;
 }
 
 table {
