@@ -2,7 +2,6 @@
 include "../bd_connect.php";
 $id_empresa = $_POST['id_empresa']??null;
 $metodo_pagamento = $_POST['forma_pagamento']??null;
-$tipo_atendimento = $_POST['tipo_atendimento']??null;
 //RETIRANDO % DO TIPO EXAME
 $tipo_exame_antes = $_POST['tipo_exame']??null;
 $tipo_exame = str_replace("%", " ", "$tipo_exame_antes");
@@ -17,8 +16,6 @@ $id_atendimento = $_GET['id_atendimento']??null;
 
 // IF PARA DETERMINAR SE É CHECKIN OU CHECKOUT
 if ($finalizar!=false) {
-    echo $id_atendimento;
-    echo"<br>";
     //EFETUANDO CHECKOUT
     // DEFININDO HORARIO CHECKOUT
     $query_hora_saida="SELECT TIME_FORMAT(CURTIME(), '%H:%i')";
@@ -51,10 +48,10 @@ if ($finalizar!=false) {
 
 
     //QUERY PARA EFETUAR CHECKIN 
-    $query = "INSERT INTO atendimento(tipo_atendimento,tipo_exame,id_medico,hora_checkin,data,nome_paciente,id_empresa,hora_checkout,metodo_pagamento) values('".$tipo_atendimento."','".$tipo_exame."','".$id_medico."','".$hora_checkin."','".$data."','".$nome_paciente."','".$id_empresa."','".$hora_checkout."','".$metodo_pagamento."')";
+    $query = "INSERT INTO atendimento(tipo_exame,id_medico,hora_checkin,data,nome_paciente,id_empresa,hora_checkout,metodo_pagamento) values('".$tipo_exame."','".$id_medico."','".$hora_checkin."','".$data."','".$nome_paciente."','".$id_empresa."','".$hora_checkout."','".$metodo_pagamento."')";
 
     //QUERY PARA DESCOBRIR O ULTIMO CHECKIN EFETUADO
-    $query_idcheckin = "SELECT id_atendimento FROM atendimento WHERE hora_checkin='".$hora_checkin."' AND data='".$data."';";
+    $query_idcheckin = "SELECT id_atendimento FROM atendimento WHERE hora_checkin='".$hora_checkin."' AND data='".$data."' AND nome_paciente='".$nome_paciente."'";
 
 
     //EFETUANDO CHECK-IN
