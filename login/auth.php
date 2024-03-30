@@ -9,12 +9,14 @@ $query = "SELECT name, username, password, level, status FROM users WHERE userna
 $bd_data = mysqli_query($con, $query);
 $login = mysqli_fetch_assoc($bd_data);
 $level = $login['level'];
+$nome = $login['name'];
 
 if($login['username'] === $user_input) {
     if($login['password'] === $senha) {
         session_start();
         $_SESSION['usuario'] = $user_input;
         $_SESSION['nivel'] = $level;
+        $_SESSION['name'] = $nome;
     }
 }
 
