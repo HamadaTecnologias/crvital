@@ -24,7 +24,7 @@ body {
     justify-content: flex-end;
     margin: 90px;
     margin-right: 200px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .img-logo {
@@ -37,6 +37,7 @@ body {
 .img-logo:hover {
     scale: 1.1;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .login-box {
@@ -67,6 +68,7 @@ form {
 form > label {
     font-size: 18px;
     padding: 10px;
+    cursor: pointer;
 }
 
 form > input {
@@ -76,6 +78,7 @@ form > input {
     border-radius: 5px;
     margin: 10px;
     background-color: #488b4a34;
+    cursor: pointer;
 }
 
 button {
@@ -103,3 +106,12 @@ button > img {
     margin-right: 10px;
     vertical-align: middle;
 }
+
+.error-item {
+    color: var(--red-logo);
+    font-size: 20px;
+    font-family: var(--roboto);
+    margin-top: 8px;
+    margin-right: -100px;
+}
+
