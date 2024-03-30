@@ -26,23 +26,27 @@
 
     <div id="content">
 
-    <header>
-        <?php
-            $query_data = "SELECT DATE_FORMAT(CURDATE(), '%d/%m/%Y')";
-            $result_data = mysqli_query($con,$query_data);
-            $data = mysqli_fetch_assoc($result_data);
-            $data_emissao = $data['DATE_FORMAT(CURDATE(), \'%d/%m/%Y\')'];
+    <?php
+        $query_data = "SELECT DATE_FORMAT(CURDATE(), '%d/%m/%Y')";
+        $result_data = mysqli_query($con,$query_data);
+        $data = mysqli_fetch_assoc($result_data);
+        $data_emissao = $data['DATE_FORMAT(CURDATE(), \'%d/%m/%Y\')'];
 
-        ?>
-        <div>
-            <img class="img" src="../assets/crvital-logo.svg">
+    ?>
+
+    <header>
+        <div class="img">
+            <img src="../assets/logo-crvital-horizontal.png" alt="logo">
+        </div>  
+        <div class="titulo-header">
+            <h2>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h2>
+            <div class="subtitulo-header" style="text-align: center;">
+                <p><strong>Data de Emissão:</strong></p>
+                <p><?= $data_emissao ?></p> 
+            </div>
         </div>
-        <h1>Relação de Exames Realizados</h1>
-        <div class="column">
-            <p><strong>Período:</strong> <?= date('d/m/Y', strtotime($data_inicio)); ?> a <?= date('d/m/Y', strtotime($data_fim)); ?></p>
-            <p><strong>Data de Emissão: </strong><?= $data_emissao ?></p>
-    </div>
     </header>
+
 
     <div class="main-empresa">
         <?php
@@ -57,12 +61,6 @@
             <h3><strong>CNPJ:</strong> <?= $cnpj_formatado; ?></h3>
             <p><strong>Perfil: </strong><?= strtoupper($linha['perfil']); ?></p>
             <p><strong>Método de Pagamento: </strong><?= strtoupper($linha['forma_pagamento']); ?></p>
-        </div>
-    </div>
-
-    <div>
-        <div class="exame">
-            <p class="subheader"><strong>Tipo de Exame:</strong></p>
         </div>
     </div>
 
@@ -121,7 +119,7 @@
                                     ?>
                             </td>
                             <td>
-                                <?= $linha['data']; ?>
+                            <?= date('d/m/Y', strtotime($linha['data'])); ?>
                             </td>
                         </tr>
                 <?php 
@@ -131,7 +129,6 @@
                 ?>  
             </tbody>
     </table>
-    </div>
-    <button id="generate-pdf">GERAR PDF</button>
+    <script>window.print();</script>
 </body>
 </html>
