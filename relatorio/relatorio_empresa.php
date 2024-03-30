@@ -51,7 +51,7 @@
         while($linha_valor_empresa = mysqli_fetch_assoc($result_valor_empresa)){
             $valor_empresa = $valor_empresa + $linha_valor_empresa['valor'];
         }
-        number_format($valor_empresa,0,",",".");
+
         //QUERY DADOS DA EMPRESA
         $query_dados_empresa="SELECT * FROM empresa WHERE id_empresa = ".$id_empresa.";";
         $result_empresa = mysqli_query($con,$query_dados_empresa);
@@ -66,18 +66,23 @@
             <img src="../assets/logo-crvital-horizontal.png" alt="logo">
         </div>  
         <div class="titulo-header">
-            <h2><?=strtoupper($linha_empresa['nome_empresa'])?></h2>
-            <div class="subtitulo-header">
-                <h4>CNPJ: <?= $cnpj_formatado; ?></h4>
-                <h4>Perfil: <?= strtoupper($linha_empresa['perfil'])?></h4>
-            </div> 
-            <div class="subtitulo-header">  
-                <h4>Pagamento: <?= strtoupper($linha_empresa['forma_pagamento']); ?></h4>
-                <h4>Emitido em: <?=$data_emissao?></h4>                 
-            </div> 
+            <div class="border">
+                <div class="subtitulo-header">
+                    <h4>CNPJ: <?= $cnpj_formatado; ?></h4>
+                    <h4>Perfil: <?= strtoupper($linha_empresa['perfil'])?></h4>
+                </div> 
+                <div class="subtitulo-header">  
+                    <h4>Pagamento: <?= strtoupper($linha_empresa['forma_pagamento']); ?></h4>
+                    <h4>Emitido em: <?=$data_emissao?></h4>                 
+                </div> 
+                <div class="subtitulo-header">
+                    <h4>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h4>
+                </div>
+            </div>
         </div>
+        
     </header>
-
+    <h2><?=strtoupper($linha_empresa['nome_empresa'])?></h2>
     <table>
             <thead>
                 <tr>
@@ -395,6 +400,6 @@
 
     </table>
 
-<script>window.print();</script>
+<!-- <script>window.print();</script> -->
 </body>
 </html>
