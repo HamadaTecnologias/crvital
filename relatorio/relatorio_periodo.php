@@ -59,7 +59,7 @@
                     <?=$data_emissao?>
                 </div>
                 <div class="valor_geral">
-                    <?="O valor total dos procedimentos do período é: R$ ".$valor_geral?>
+                    <?="O valor total dos procedimentos do período é: R$ ".number_format($valor_geral,2,",",".")?>
                 </div>
         </div>
     </header>
