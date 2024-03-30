@@ -1,6 +1,7 @@
 <?php
     session_start();
     $user_input = $_SESSION['usuario'];
+    $nome_usuario = $_SESSION['name'];
 
     if (!isset($_SESSION['usuario'])){
         header('Location:../index.php?erro_login_access=true');
@@ -88,7 +89,7 @@
                         </span>
                     </button>
                 </a>
-                <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário logado:</strong> <?php echo $user_input; ?></p>
+                <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário logado:</strong> <?=$nome_usuario?></p>
             </nav>
         </aside>
         
