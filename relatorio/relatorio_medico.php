@@ -8,13 +8,48 @@
 </head>
 
 <?php 
-        include "../bd_connect.php";
+        include "../bd_connect.php";       
         $data_inicio = $_GET['data_inicio'];
         $data_fim = $_GET['data_fim'];
         $id_medico = $_GET['id_medico'];
-        if ($id_medico = null) {
-            echo"Escolha ao menos um medico";
-        };
+        $valor_medico = 0;
+        $erro = FALSE;
+        if(empty($data_inicio)){
+            $erro=TRUE;            
+        }
+        if(empty($data_fim)){
+            $erro=TRUE;        
+        }
+        if(empty($id_medico)){
+            $erro=TRUE;           
+        }
+        if ($erro != FALSE) {
+            header('location:relatorio.php?error=true');
+        }
+        //SELEÇÃO DA DATA DE EMISSÃO
+        $query_data="SELECT DATE_FORMAT(CURDATE(), '%d/%m/%Y')";
+        $result_data = mysqli_query($con,$query_data);
+        $data = mysqli_fetch_assoc($result_data);
+        $data_emissao = $data["DATE_FORMAT(CURDATE(), '%d/%m/%Y')"];
+        
+        //SOMATÓRIO DO VALOR DE TODOS OS EXAMES POR PERÍODO
+        $query_valor_medico = 
+        "SELECT P.valor 
+        FROM atendimento A
+        INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
+        INNER JOIN procedimento P ON P.id_procedimento=AP.id_procedimento
+        INNER JOIN empresa E ON E.id_empresa=P.id_empresa
+        INNER JOIN medico M ON M.id_medico=A.id_medico
+        WHERE A.data BETWEEN '".$data_inicio."' and '".$data_fim."' AND  A.id_medico=".$id_medico;  
+        $result_valor_medico = mysqli_query($con,$query_valor_medico);
+        while($linha_valor_medico = mysqli_fetch_assoc($result_valor_medico)){
+            $valor_medico = $valor_medico + $linha_valor_medico['valor'];
+        }    
+        
+        //BUSCANDO DADOS DO MÉDICO
+        $query_medico = "SELECT nome_medico,sigla_conselho,registro_conselho FROM medico WHERE id_medico=".$id_medico;
+        $result_medico = mysqli_query($con,$query_medico);
+        $linha_medico = mysqli_fetch_assoc($result_medico)
 ?>
 
 <body>
@@ -24,17 +59,19 @@
             <img src="../assets/logo-crvital-horizontal.png" alt="logo">
         </div>  
         <div class="titulo-header">
-                <h2>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h2>           
+                <h2><?=strtoupper($linha_medico['nome_medico'])?></h2>          
                 <div class="subtitulo-header">
-                    <h4>Relação por período</h4>
-                    <h4>Emitido em: </h4>
-                    <?=$data_emissao?>
-                </div>
-                <div class="valor_geral">
-                    <?="O valor total dos procedimentos do período é: R$ ".number_format($valor_geral,2,",",".")?>
+                    <h4><?=$linha_medico['sigla_conselho']." : ".$linha_medico['registro_conselho'] ?></h4>
+                </div> 
+                <div class="subtitulo-header">  
+                    <h4>Emitido em: <?=$data_emissao?></h4>                 
+                </div> 
+                <div class="subtitulo-header">
+                    <h4>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h4>
                 </div>
         </div>
     </header>
+
     
             <table>
                 <thead>
@@ -52,7 +89,8 @@
                         INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
                         INNER JOIN procedimento P ON  P.id_procedimento=AP.id_procedimento
                         INNER JOIN empresa E ON E.id_empresa=P.id_empresa
-                        WHERE  A.data BETWEEN '".$data_inicio."' and '".$data_fim."'
+                        INNER JOIN medico M ON M.id_medico=A.id_medico
+                        WHERE A.id_medico=".$id_medico." AND A.data BETWEEN '".$data_inicio."' and '".$data_fim."'
                         ORDER BY E.nome_empresa ASC, A.data ASC;";
                         $result = mysqli_query($con,$query);
                         $ids_atendimento = array();
@@ -79,7 +117,6 @@
 
                                     echo"<th class='quebra'>".$linha['nome_empresa']."</th>";
                                     echo"<th> CNPJ: ".$cnpj."</th>";
-                                    echo"<th>R$ ".$valor_empresa."</th>";
                                     array_push($ids_empresa,$linha['id_empresa']);
                                 }
                     ?>          
@@ -125,8 +162,11 @@
                         } //FECHANDO WHILE
                     ?>   
                 </tbody>
+                    <th>
+                        <?="O valor total do período é: R$ ".number_format($valor_medico,2,",",".");?>
+                    </th>
             </table> 
-<script>window.print();</script>
+<!-- <script>window.print();</script> -->
 <?php
 function formatCnpjCpf($value){
         $CPF_LENGTH = 11;

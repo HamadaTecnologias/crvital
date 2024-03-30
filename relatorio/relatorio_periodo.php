@@ -107,7 +107,7 @@
 
                                     echo"<th class='quebra'>".$linha['nome_empresa']."</th>";
                                     echo"<th> CNPJ: ".$cnpj."</th>";
-                                    echo"<th>R$ ".$valor_empresa."</th>";
+                                    echo"<th>R$ ".number_format($valor_empresa,2,",",".")."</th>";
                                     array_push($ids_empresa,$linha['id_empresa']);
                                 }
                     ?>          
