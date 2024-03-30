@@ -1,3 +1,11 @@
+@media print {
+    @page {
+        margin: 0;
+    }
+    header, footer {
+        display: none;
+    }
+}
 
 body{
     display: flex;
