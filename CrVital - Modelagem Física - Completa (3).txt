@@ -27,7 +27,6 @@ create TABLE atendimento (
 CREATE TABLE medico (
     id_medico integer AUTO_INCREMENT PRIMARY KEY,
     nome_medico varchar(50),
-    status boolean,
     cpf varchar(11),
     nis varchar(11),
     sigla_conselho varchar(10),
