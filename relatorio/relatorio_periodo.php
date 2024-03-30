@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt_br">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,7 @@
         if ($erro != FALSE) {
             header('location:relatorio.php?error=true');
         }
-
+        //SELEÇÃO DA DATA DE EMISSÃO
         $query_data="SELECT DATE_FORMAT(CURDATE(), '%d/%m/%Y')";
         $result_data = mysqli_query($con,$query_data);
         $data = mysqli_fetch_assoc($result_data);
@@ -48,20 +48,20 @@
 <body>
 
     <header>
-    <div class="img">
-        <img src="../assets/logo-crvital-horizontal.png" alt="logo">
-    </div>  
-    <div class="titulo-header">
-            <h2>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h2>           
-            <div class="subtitulo-header">
-                <h4>Relação por período</h4>
-                <h4>Emitido em: </h4>
-                <?=$data_emissao?>
-            </div>
-            <div class="valor_geral">
-                <?="O valor total dos procedimentos do período é: R$ ".$valor_geral?>
-            </div>
-    </div>
+        <div class="img">
+            <img src="../assets/logo-crvital-horizontal.png" alt="logo">
+        </div>  
+        <div class="titulo-header">
+                <h2>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h2>           
+                <div class="subtitulo-header">
+                    <h4>Relação por período</h4>
+                    <h4>Emitido em: </h4>
+                    <?=$data_emissao?>
+                </div>
+                <div class="valor_geral">
+                    <?="O valor total dos procedimentos do período é: R$ ".number_format($valor_geral,2,",",".")?>
+                </div>
+        </div>
     </header>
     
             <table>
