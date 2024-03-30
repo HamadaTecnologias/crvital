@@ -1,5 +1,5 @@
 
-.content{
+body{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -46,14 +46,7 @@ justify-content: center;
 margin-top: -30px;
 }
 
-.titulo{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    border: 1px solid black; 
-    border-radius: 4px;
-    width: 650px;
-}
+
 
 table {
     border-collapse: collapse;
@@ -67,9 +60,8 @@ th, td {
     border-bottom: 1px solid black;
     padding: 10px;
     text-align: left;
-    width: auto;
+    min-width: 100%;
 }
-
 
 th {
     background-color: rgb(255, 255, 255);

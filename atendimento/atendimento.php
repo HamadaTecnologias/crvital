@@ -97,10 +97,11 @@
                 <select name="id_empresa" id="id_empresa" required>
                     <option value="">Selecione uma Empresa</option>
                     <?php
-                        $query="select id_empresa,nome_empresa from empresa ORDER BY nome_empresa ASC";
+                        $query="select id_empresa,nome_empresa,cnpj from empresa ORDER BY nome_empresa ASC";
                         $empresas = mysqli_query($con,$query);
-                        while($linha = mysqli_fetch_assoc($empresas)){?>
-                            <option value="<?=$linha['id_empresa'];?>"><?=$linha['nome_empresa'];?></option>
+                        while($linha = mysqli_fetch_assoc($empresas)){
+                            $cnpj_select = formatCnpjCpf($linha['cnpj']) ;?>
+                            <option value="<?=$linha['id_empresa'];?>"><?=$linha['nome_empresa'];?><?=" CNPJ: ".$cnpj_select;?></option>
                     <?php } ?>  
                 </select>   
                 <button type="submit" value="selecionar">Selecionar</button>           

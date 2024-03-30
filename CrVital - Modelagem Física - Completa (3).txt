@@ -1,0 +1,82 @@
+create table users(
+username varchar(50) not null,
+password varchar(20) not null,
+name varchar(30),
+cpf varchar(12),
+level varchar(2) not null,
+status boolean default 1,
+primary key (username)
+);
+
+insert into users(username, password, name, cpf, level) values ('Gagliano7', '1234', 'Juliana Gagliano', '20286221721', 'A');
+insert into users(username, password, name, cpf, level) values ('Minoro7', '1234', 'Minoro Hamada', '09315660706', 'F');
+insert into users(username, password, name, cpf, level) values ('João7', '1234', 'João Silva', '09387660706', 'R');
+
+create TABLE atendimento (
+    id_atendimento int AUTO_INCREMENT PRIMARY KEY,
+    tipo_exame varchar(40),
+    id_medico integer,
+    hora_checkin varchar(5),
+    data date,
+    nome_paciente varchar(50),
+    id_empresa integer,
+    hora_checkout  varchar(5),
+    metodo_pagamento varchar(20)
+);
+
+CREATE TABLE medico (
+    id_medico integer AUTO_INCREMENT PRIMARY KEY,
+    nome_medico varchar(50),
+    status boolean,
+    cpf varchar(11),
+    nis varchar(11),
+    sigla_conselho varchar(10),
+    registro_conselho varchar(20),
+    categoria varchar(30)       
+);
+
+CREATE TABLE empresa (
+    id_empresa integer AUTO_INCREMENT PRIMARY Key,
+    nome_empresa varchar(80),
+    cnpj varchar(14),
+    perfil varchar(20),
+    forma_pagamento varchar(20),
+    status boolean
+);
+
+CREATE TABLE atendimento_procedimento (
+        id_atendimento_procedimento integer AUTO_INCREMENT PRIMARY KEY,
+        id_atendimento integer,
+        id_procedimento integer
+);
+
+CREATE TABLE procedimento (
+    id_procedimento integer AUTO_INCREMENT PRIMARY KEY,
+    nome_procedimento varchar (30),
+    valor double(10,2),
+    id_empresa  integer
+);
+
+
+ALTER TABLE atendimento ADD CONSTRAINT restricao_atendimento_medico
+FOREIGN KEY (id_medico) REFERENCES medico(id_medico)
+ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE procedimento ADD CONSTRAINT restricao_empresa_procedimento
+FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE atendimento_procedimento ADD CONSTRAINT restricao_id_procedimento
+FOREIGN KEY (id_procedimento) REFERENCES procedimento(id_procedimento)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE atendimento_procedimento ADD CONSTRAINT restricao_id_atendimento
+FOREIGN KEY (id_atendimento) REFERENCES atendimento(id_atendimento)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE atendimento ADD CONSTRAINT restricao_id_empresa
+FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
