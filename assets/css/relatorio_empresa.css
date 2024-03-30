@@ -25,17 +25,43 @@ header {
     align-items: center;
 }
 
-.img {
+.img{
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 170px;
-    height: 235px;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    border-radius: 8px;
+    width: 250px;
+    height: 100px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
 }
 
-.column {
+.img img{
+    width: 200px;
+    height: 90px;
+}
+
+.titulo-header{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.titulo-header h2{
+    border: 1px solid black; 
+    padding: 6px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.subtitulo-header{
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 10px;
 }
 
 h1 {
@@ -52,7 +78,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -40px;
+    margin-top: 40px;
 }
 
 .empresa {
@@ -62,10 +88,6 @@ h1 {
 
 .cnpj {
     margin-left: 0;
-}
-
-.sub-title-empresa {
-    font-size: 15px;
 }
 
 p {
@@ -103,56 +125,23 @@ h5 {
     margin-left: 100px;
 }
 
-.exame {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 30px;
-    max-width: 800px;
-}
-
-.subheader {
-    font-size: 20px;
-    margin-top: 10px;
-    text-decoration: underline;
-    margin-bottom: 0px;
-}
-
-.exame-separator {
-    display: inline-block;
-    width: 100%; 
-    border: none;
-    border-top: 2px solid black;
-    max-width: 900px;
-    margin-left: 300px;
-}
-
 table {
-    width: 60%;
     border-collapse: collapse;
     margin-top: 30px;
-    margin-left: 300px;
+    width: auto;
 }
 
+
 th, td {
-    border: 1px solid #333333;
-    padding: 8px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px;
     text-align: left;
+    min-width: 100%;
 }
 
 th {
-    background-color: rgba(0, 0, 0, 0.642);
-    color: white;
-    font-size: 20px;
-    padding: 15px;
+    background-color: rgb(255, 255, 255);
 }
 
-tbody tr:nth-child(even) {
-    background-color: #999999; 
-}
-
-tbody tr:nth-child(odd) {
-    background-color: #DDDDDD; 
-}
 
