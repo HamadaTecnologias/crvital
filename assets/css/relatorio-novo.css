@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --red-logo: #9b1a2e;
+    --green-logo: #488b4a;
+    --roboto: "Roboto", sans-serif;
+    --body:#4ed28e50;
+    --sidebar:#61CE70;
+}
+
+body {
+    margin: 0;
+    font-family: var(--roboto);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.main{
+    margin-top: 3%;
+    border-radius: 10px;
+    padding: 50px;
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 32%;
+}
+
+.atual {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    color: #fff;
+    margin-left: 45px;
+}
+
+.filtros{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(175, 173, 173, 0.795);
+    /* border: 0.8px solid black; */
+    border-radius: 4px;
+    padding: 40px;
+    gap: 40px;
+}
+
+.main-filters {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 17px;
+}
+
+.radio_filtro{
+    border: 0.8px solid black;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: -50px;
+}
+
+.radio_filtro input[type="radio"] {
+    transform: scale(1.4);
+    border: 1px solid black; 
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+h3 {
+    padding: 5px;
+    color: black;
+    font-size: 18px;
+}
+
+.new-report-label {
+    font-size: 18px;
+    font-family: var(--roboto);
+    font-weight: bolder;
+    color: var(--red-logo);
+    cursor: pointer;
+}
+
+.date {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-right: -50px;
+}
+
+.beggining {
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.end {
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.date input[type="date"] {
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 18px; 
+}
+
+.secondary-filters {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+select{
+    width: 400px;
+    font-family: var(--roboto);
+    font-size:18px;
+    border-radius: 10px; 
+}
+
+main button {
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--red-logo);
+    color: white;
+    font-size: 19px;
+    font-family: var(--roboto);
+    cursor: pointer;
+    border: none;
+}
+
+main button:hover {
+    background-color: var(--green-logo);
+}
+
+main button > img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+ 

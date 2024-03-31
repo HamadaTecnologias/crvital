@@ -16,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/logo-favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/relatorio.css">
+    <!-- <link rel="stylesheet" href="../assets/css/relatorio.css"> -->
+    <link rel="stylesheet" href="../assets/css/relatorio-novo.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -126,7 +127,7 @@
         <form action="filtro.php" method="post">
             <div class="main-filters">
                 <div class="radio_filtro">
-                    <h3>Filtros Principais:</h3>
+                    <h3>Relatório</h3>
                     <label class="new-report-label" for="empresa">
                     <input type="radio" name="filtro_principal" value="empresa">
                     Empresa</label>
@@ -148,7 +149,7 @@
                 <div class="select_empresa">
                     <h3>Filtro por Empresa:</h3>
                     <select name="id_empresa" id="id_empresa">
-                        <option value="">Selecione uma Empresa (pode ser nulo)</option>
+                        <option value="">Selecione em caso de "Relatório por Empresa"</option>
                         <?php
                             $query="select id_empresa,nome_empresa,cnpj from empresa ORDER BY nome_empresa ASC";
                             $result = mysqli_query($con,$query);
@@ -162,7 +163,7 @@
                 <div class="select_medico">
                     <h3>Filtro por Médico:</h3>
                     <select name="id_medico" id="id_medico">
-                        <option value="">Selecione um Médico (pode ser nulo)</option>
+                        <option value="">Selecione em caso de "Relatório por Médico"</option>
                         <?php
                             $query="select id_medico,nome_medico from medico ORDER BY nome_medico ASC";
                             $result = mysqli_query($con,$query);
