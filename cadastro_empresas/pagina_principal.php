@@ -154,10 +154,20 @@
         $nome_error = $_GET['nome']??null;
         $perfil_error = $_GET['perfil']??null;
         $apagar = $_GET['apagar']??false;
+        $cadastro = $_GET['cadastro']??false;
+        $excluido = $_GET['excluido']??false;
     ?>
 
 
     <main class="main">
+        <?php 
+        if ($excluido != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Empresa Excluida Com Sucesso</h3>
+        <?php } ?> 
+        <?php 
+        if ($cadastro != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Empresa Cadastrada Com Sucesso</h3>
+        <?php } ?> 
         <?php 
         if ($cnpj_error != false) {?>
             <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Confira os 14 números em CNPJ</h3>

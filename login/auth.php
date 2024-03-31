@@ -13,10 +13,13 @@ $nome = $login['name'];
 
 if($login['username'] === $user_input) {
     if($login['password'] === $senha) {
-        session_start();
-        $_SESSION['usuario'] = $user_input;
-        $_SESSION['nivel'] = $level;
-        $_SESSION['name'] = $nome;
+        if ($login['status']==true) {
+            session_start();
+            $_SESSION['usuario'] = $user_input;
+            $_SESSION['nivel'] = $level;
+            $_SESSION['name'] = $nome;
+        }
+
     }
 }
 

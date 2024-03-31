@@ -150,7 +150,7 @@
                     <select name="id_empresa" id="id_empresa">
                         <option value="">Selecione em caso de "Relatório por Empresa"</option>
                         <?php
-                            $query="select id_empresa,nome_empresa,cnpj from empresa ORDER BY nome_empresa ASC";
+                            $query="SELECT id_empresa,nome_empresa,cnpj FROM empresa WHERE status=true ORDER BY nome_empresa ASC";
                             $result = mysqli_query($con,$query);
                             while($empresa = mysqli_fetch_assoc($result)){
                                 $cnpj_select = formatCnpjCpf($empresa['cnpj']) ;?>
