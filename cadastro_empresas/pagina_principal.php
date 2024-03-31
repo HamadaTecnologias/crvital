@@ -34,19 +34,20 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/user-icon.png">Usuários
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
                 <?php if($nivel != 'F') { ?>
                     <a href="../cadastro_empresas/pagina_principal.php">
-                        <button class="sidebar-nav-button">
-                            <span class="sidebar-nav-button-span">
-                                <span class="sidebar-nav-button-span2">
-                                    <img class="icons-main" src="../assets/company.png">Empresas
-                                </span>
-                            </span>
-                        </button>
+                    <button class="sidebar-nav-button">
+                        <span style="background: #61CE70;">                   
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/company.png">Empresas
+                            </span>                   
+                        </span>
+                    </button>
                     </a>
                 <?php } ?>
                     
@@ -58,10 +59,12 @@
                                     <img class="icons-main" src="../assets/calendar.png">Atendimentos
                                 </span>
                                 <i class="atual fa-solid fa-location-dot"></i>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'F') { ?>
                     <a href="../cadastro_exames/pagina_principal.php">
@@ -69,11 +72,13 @@
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
+
                                 </span>
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'F') { ?>
                     <a href="../medico/doctor.php">
@@ -82,10 +87,12 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/doctor.png">Médicos
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'R') { ?>
                     <a href="../relatorio/relatorio.php">
