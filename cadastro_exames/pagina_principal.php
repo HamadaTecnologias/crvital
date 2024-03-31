@@ -36,6 +36,7 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/user-icon.png">Usuários
                                 </span>
+
                             </span>
                         </button>
                     </a>
@@ -67,13 +68,13 @@
 
                 <?php if($nivel != 'F') { ?>
                     <a href="../cadastro_exames/pagina_principal.php">
-                        <button class="sidebar-nav-button">
-                            <span class="sidebar-nav-button-span">
-                                <span class="sidebar-nav-button-span2">
-                                    <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
-                                </span>
+                    <button class="sidebar-nav-button">
+                        <span style="background: #61CE70;">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
                             </span>
-                        </button>
+                        </span>
+                    </button>
                     </a>
                 <?php } ?>
 
@@ -83,11 +84,13 @@
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/doctor.png">Médicos
+
                                 </span>
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'R') { ?>
                     <a href="../relatorio/relatorio.php">
@@ -96,11 +99,13 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/report.png">Relatórios
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
-                    
+
+                  
                 <a href="../login/logout.php">
                     <button class="sidebar-nav-button">
                         <span class="sidebar-nav-button-span">

@@ -35,6 +35,7 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/user-icon.png">Usuários
                                 </span>
+
                             </span>
                         </button>
                     </a>
@@ -53,15 +54,14 @@
                     
                 <?php if($nivel != 'F') { ?>
                     <a href="../atendimento/atendimento.php">
-                        <button class="sidebar-nav-button">
-                            <span class="sidebar-nav-button-span">
-                                <span class="sidebar-nav-button-span2">
-                                    <img class="icons-main" src="../assets/calendar.png">Atendimentos
-                                </span>
-                                <i class="atual fa-solid fa-location-dot"></i>
-                            </span>
-                        </button>
-                    </a>
+                    <button class="sidebar-nav-button">
+                        <span style="background: #61CE70;">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/calendar.png">Atendimentos
+                            </span>                   
+                        </span>
+                    </button>
+                </a>
                 <?php } ?>
 
                 <?php if($nivel != 'F') { ?>
@@ -71,10 +71,12 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'F') { ?>
                     <a href="../medico/doctor.php">
@@ -82,11 +84,13 @@
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/doctor.png">Médicos
+
                                 </span>
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'R') { ?>
                     <a href="../relatorio/relatorio.php">
@@ -95,10 +99,12 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/report.png">Relatórios
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
                     
                 <a href="../login/logout.php">
                     <button class="sidebar-nav-button">

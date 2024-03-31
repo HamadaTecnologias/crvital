@@ -60,6 +60,7 @@
                                     <img class="icons-main" src="../assets/calendar.png">Atendimentos
                                 </span>
                                 <i class="atual fa-solid fa-location-dot"></i>
+
                             </span>
                         </button>
                     </a>
@@ -91,13 +92,14 @@
 
                 <?php if($nivel != 'R') { ?>
                     <a href="../relatorio/relatorio.php">
-                        <button class="sidebar-nav-button">
-                            <span class="sidebar-nav-button-span">
-                                <span class="sidebar-nav-button-span2">
-                                    <img class="icons-main" src="../assets/report.png">Relatórios
-                                </span>
+                    <button class="sidebar-nav-button">
+                        <span style="background: #61CE70;">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/report.png">Relatórios            
                             </span>
-                        </button>
+                        </span>
+                    </button>
+
                     </a>
                 <?php } ?>
                     

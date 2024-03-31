@@ -44,6 +44,7 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/company.png">Empresas
                                 </span>
+
                             </span>
                         </button>
                     </a>
@@ -76,13 +77,13 @@
 
                 <?php if($nivel != 'F') { ?>
                     <a href="../medico/doctor.php">
-                        <button class="sidebar-nav-button">
-                            <span class="sidebar-nav-button-span">
-                                <span class="sidebar-nav-button-span2">
-                                    <img class="icons-main" src="../assets/doctor.png">Médicos
-                                </span>
+                    <button class="sidebar-nav-button">
+                        <span style="background: #61CE70;">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/doctor.png">Médicos
                             </span>
-                        </button>
+                        </span>
+                    </button>
                     </a>
                 <?php } ?>
 
@@ -93,10 +94,12 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/report.png">Relatórios
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
                     
                 <a href="../login/logout.php">
                     <button class="sidebar-nav-button">

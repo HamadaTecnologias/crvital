@@ -62,13 +62,6 @@ label {
     flex-direction: column;
     gap: 20px;
 }
-.atual {
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-    color: #fff;
-    margin-left: 15px;
-}
 
 .checkin{
     display: flex;

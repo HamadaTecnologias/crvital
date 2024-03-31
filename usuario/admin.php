@@ -20,7 +20,7 @@
     <title>Usuários</title>
 </head>
 <body>
-    <aside class="sidebar">
+<aside class="sidebar">
             <header class="sidebar-header">
                 <img class="img-logo" src="../assets/logo-crvital.png">
             </header>
@@ -28,13 +28,14 @@
             <nav class="sidebar-nav">
                 <?php if($nivel != 'R' && $nivel != 'F') { ?>
                     <a href="../usuario/admin.php">
-                        <button class="sidebar-nav-button">
-                            <span class="sidebar-nav-button-span">
-                                <span class="sidebar-nav-button-span2">
-                                    <img class="icons-main" src="../assets/user-icon.png">Usuários
-                                </span>
-                            </span>
-                        </button>
+
+                    <button class="sidebar-nav-button">
+                        <span style="background: #61CE70;">                    
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/user-icon.png">Usuários
+                            </span>                   
+                        </span>
+                    </button>
                     </a>
                     <?php } ?>
                 <?php if($nivel != 'F') { ?>
@@ -43,10 +44,12 @@
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/company.png">Empresas
+
                                 </span>
                             </span>
                         </button>
                     </a>
+
                 <?php } ?>
                     
                 <?php if($nivel != 'F') { ?>
@@ -57,10 +60,12 @@
                                     <img class="icons-main" src="../assets/calendar.png">Atendimentos
                                 </span>
                                 <i class="atual fa-solid fa-location-dot"></i>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'F') { ?>
                     <a href="../cadastro_exames/pagina_principal.php">
@@ -69,12 +74,15 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
 
                 <?php if($nivel != 'F') { ?>
+
+
                     <a href="../medico/doctor.php">
                         <button class="sidebar-nav-button">
                             <span class="sidebar-nav-button-span">
