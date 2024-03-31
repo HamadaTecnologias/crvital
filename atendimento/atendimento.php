@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../assets/crvital-logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/logo-favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/atendimento.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -111,31 +111,31 @@
                 </a>
                 <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário:</strong> <?=$nome_usuario?></p>
             </nav>
-            
-            </aside>
-            <?php 
-                include "../bd_connect.php";
-                //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
-                $id_empresa= $_GET['id_empresa']??null;
-            ?>
-    
-            <main class="main"> 
-                <!-- FORM DE SELECT DE EMPRESA -->
-                <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
-                    <select name="id_empresa" id="id_empresa" required>
-                        <option value="">Selecione uma Empresa</option>
-                        <?php
-                            $query="select id_empresa,nome_empresa,cnpj from empresa ORDER BY nome_empresa ASC";
-                            $empresas = mysqli_query($con,$query);
-                            while($linha = mysqli_fetch_assoc($empresas)){
-                                $cnpj_select = formatCnpjCpf($linha['cnpj']) ;?>
-                                <option value="<?=$linha['id_empresa'];?>"><?=$linha['nome_empresa'];?><?=" CNPJ: ".$cnpj_select;?></option>
-                        <?php } ?>  
-                    </select>   
-                    <button type="submit" value="selecionar">Selecionar</button>           
-                </form>
-                <!--FIM FORM DE SELECT DE EMPRESA -->     
-                
+
+        </aside>
+        <?php 
+            include "../bd_connect.php";
+            //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
+            $id_empresa= $_GET['id_empresa']??null;
+        ?>
+
+        <main class="main"> 
+            <!-- FORM DE SELECT DE EMPRESA -->
+            <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
+                <select name="id_empresa" id="id_empresa" required>
+                    <option value="">Selecione uma Empresa</option>
+                    <?php
+                        $query="select id_empresa,nome_empresa,cnpj from empresa ORDER BY nome_empresa ASC";
+                        $empresas = mysqli_query($con,$query);
+                        while($linha = mysqli_fetch_assoc($empresas)){
+                            $cnpj_select = formatCnpjCpf($linha['cnpj']) ;?>
+                            <option value="<?=$linha['id_empresa'];?>"><?=$linha['nome_empresa']." CNPJ: ".$cnpj_select;?></option>
+                    <?php } ?>  
+                </select>   
+                <button type="submit" value="selecionar">Selecionar</button>           
+            </form>
+            <!--FIM FORM DE SELECT DE EMPRESA -->        
+               
                 <!-- IF PARA MOSTRAR CAMPOS CHECKIN -->
     <?php 
         //FUNÇÃO PARA FORMATAR CNPJ
