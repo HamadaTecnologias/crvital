@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../assets/logo-favicon.png" type="image/x-icon">

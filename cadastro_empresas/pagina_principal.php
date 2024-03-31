@@ -10,7 +10,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -123,7 +123,7 @@
     padding: 15px;
     gap: 5px;
 }
-.confirmar_exclusao a{
+.confirm a{
     display: inline-block; 
     text-decoration: none;
     background-color: var(--red-logo);
@@ -175,7 +175,10 @@
         if ($apagar != false) {?>
         <div class="confirmar_exclusao">            
             <h3>Deseja confirmar exclusão da empresa?</h3>
-            <a href='apagar.php?id_empresa=<?=$id_empresa?>'>CONFIRMAR</a>
+            <div class="confirm">
+                <a href='apagar.php?id_empresa=<?=$id_empresa?>'>SIM</a>
+                <a href="pagina_principal.php">NÃO</a>
+            </div>
         </div>
         <?php } ?> 
 
@@ -229,14 +232,14 @@
 
     <?php 
             //Exibindo Empresas na tela
-            $query = "select id_empresa,nome_empresa,status from empresa";
+            $query = "select id_empresa,nome_empresa,status,perfil,cnpj from empresa";
             $empresas = mysqli_query($con,$query);?>
             <div class="exibicao">
             <table>
                 <h3>Empresas Cadastradas:</h3>
                 <thead>
                     <tr>
-                    <th scope="col">Razão Social</th>
+                    <th scope="col">Empresa</th>
                     <th scope="col">Apagar</th>
                     <th scope="col">Alterar</th>
                     <th scope="col">Status</th>
@@ -245,8 +248,11 @@
                 <tbody>
                     <?php while($linha = mysqli_fetch_assoc($empresas)){ ?>
                         <tr>
-                            <td>
-                                <?= $linha['nome_empresa']; ?>
+                            <td class="exibicao-empresa">
+                                <?php $cnpj = formatCnpjCpf($linha['cnpj'])?>
+                                <h4><?= $linha['nome_empresa']?></h4> 
+                                <h4><?="CNPJ: ".$cnpj?></h4> 
+                                <h4>Perfil: <?= strtoupper($linha['perfil'])?></h4>
                             </td>
                             <td>
                                 <a href='pagina_principal.php?apagar=true&id_empresa=<?=$linha['id_empresa']?>'><i class="fa-solid fa-trash-can"></i></a>
@@ -274,5 +280,14 @@
     </div>
     </main>
 <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
+<?php
+function formatCnpjCpf($value){
+        $CPF_LENGTH = 11;
+        $cnpj_cpf = preg_replace("/\D/", '', $value);
+        if (strlen($cnpj_cpf) === $CPF_LENGTH) {
+            return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
+        } 
+        return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
+} ?>
 </body>
 </html>

@@ -10,7 +10,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,10 +116,42 @@
             
         </aside>
 
+
+<style>
+.confirmar_exclusao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 4px;
+    padding: 15px;
+    gap: 5px;
+    width: 400px ;
+}
+.confirm a{
+    display: inline-block; 
+    text-decoration: none;
+    background-color: var(--red-logo);
+    border-radius: 8px;
+    padding: 5px; 
+    color: white;
+    max-width: 100%; 
+    box-sizing: border-box; 
+}
+</style>
+
+
     <?php 
+        //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
+        $id_empresa= $_GET['id_empresa']??null;
+        include "../bd_connect.php";
         //RECEBENDO DADOS DE ERROS
         $valor_error = $_GET['valor']??null;
         $nome_error = $_GET['nome']??null;
+        $apagar = $_GET['apagar']??false;
+        $id_procedimento = $_GET['id_procedimento']??null;
     ?>
 
 
@@ -133,11 +165,18 @@
         if ($nome_error != false) {?>
             <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Digite o Procedimento</h3>
        <?php } ?> 
-        <?php 
-            //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
-            $id_empresa= $_GET['id_empresa']??null;
-            include "../bd_connect.php";
-        ?>
+
+       <?php 
+        if ($apagar != false) {?>
+        <div class="confirmar_exclusao">            
+            <h3>Deseja confirmar exclusão da empresa?</h3>
+            <div class="confirm">
+                <a href='apagar.php?id_procedimento=<?= $id_procedimento?>&id_empresa=<?=$id_empresa?>'>SIM</a>
+                <a href='pagina_principal.php?id_empresa=<?=$id_empresa?>'>NÃO</a>
+            </div>
+        </div>
+        <?php } ?> 
+
             <!-- SELETOR DE EMPRESAS -->
         <div class="forms">
             <div class="seletor-empresa">
@@ -221,7 +260,7 @@
                                     <?="R$ ".$linha['valor']; ?>
                                 </td>
                                 <td>
-                                    <a href='apagar.php?id_procedimento=<?= $linha['id_procedimento']?>&id_empresa=<?=$id_empresa?>'>
+                                    <a href='pagina_principal.php?apagar=true&id_procedimento=<?= $linha['id_procedimento']?>&id_empresa=<?=$id_empresa?>'>
                                     <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </td>
