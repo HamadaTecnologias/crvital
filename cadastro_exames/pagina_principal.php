@@ -29,6 +29,18 @@
             </header>
             
             <nav class="sidebar-nav">
+                <?php if($nivel != 'R' && $nivel != 'F') { ?>
+                    <a href="../usuario/admin.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/user-icon.png">Usuários
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
+                <?php if($nivel != 'F') { ?>
                     <a href="../cadastro_empresas/pagina_principal.php">
                         <button class="sidebar-nav-button">
                             <span class="sidebar-nav-button-span">
@@ -38,7 +50,9 @@
                             </span>
                         </button>
                     </a>
+                <?php } ?>
                     
+                <?php if($nivel != 'F') { ?>
                     <a href="../atendimento/atendimento.php">
                         <button class="sidebar-nav-button">
                             <span class="sidebar-nav-button-span">
@@ -49,7 +63,9 @@
                             </span>
                         </button>
                     </a>
-                    
+                <?php } ?>
+
+                <?php if($nivel != 'F') { ?>
                     <a href="../cadastro_exames/pagina_principal.php">
                         <button class="sidebar-nav-button">
                             <span class="sidebar-nav-button-span">
@@ -59,7 +75,9 @@
                             </span>
                         </button>
                     </a>
-                    
+                <?php } ?>
+
+                <?php if($nivel != 'F') { ?>
                     <a href="../medico/doctor.php">
                         <button class="sidebar-nav-button">
                             <span class="sidebar-nav-button-span">
@@ -69,39 +87,32 @@
                             </span>
                         </button>
                     </a>
-                    <?php if($nivel != 'R') { ?>
-                        <a href="../relatorio/relatorio.php">
-                            <button class="sidebar-nav-button">
-                                <span class="sidebar-nav-button-span">
-                                    <span class="sidebar-nav-button-span2">
-                                        <img class="icons-main" src="../assets/report.png">Relatórios
-                                    </span>
-                                </span>
-                            </button>
-                        </a>
-                    <?php } ?>
-                    <?php if($nivel != 'R' && $nivel != 'F') { ?>
-                        <a href="../usuario/admin.php">
-                            <button class="sidebar-nav-button">
-                                <span class="sidebar-nav-button-span">
-                                    <span class="sidebar-nav-button-span2">
-                                        <img class="icons-main" src="../assets/user-icon.png">Usuários
-                                    </span>
-                                </span>
-                            </button>
-                        </a>
-                    <?php } ?>
-                    
-                    <a href="../login/logout.php">
+                <?php } ?>
+
+                <?php if($nivel != 'R') { ?>
+                    <a href="../relatorio/relatorio.php">
                         <button class="sidebar-nav-button">
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
-                                    <img class="icons-main" src="../assets/logout-icon.png">Logout
+                                    <img class="icons-main" src="../assets/report.png">Relatórios
                                 </span>
                             </span>
                         </button>
                     </a>
+                <?php } ?>
+                    
+                <a href="../login/logout.php">
+                    <button class="sidebar-nav-button">
+                        <span class="sidebar-nav-button-span">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/logout-icon.png">Logout
+                            </span>
+                        </span>
+                    </button>
+                </a>
             </nav>
+
+            
         </aside>
 
     <?php 
