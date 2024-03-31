@@ -8,7 +8,7 @@
     $erro = FALSE;
     include "../bd_connect.php";
     echo"<br>";
-    echo"<br>";
+    echo"<br>"; 
     //tratar dados inseridos
     if(empty($nome_procedimento)){
         header('location:pagina_principal.php?nome=true');
@@ -35,7 +35,7 @@
         if (in_array($id_procedimento, $ids)) {
             $query = "update procedimento set nome_procedimento ='".$nome_procedimento."', valor = '".$valor."'where id_procedimento =".$id_procedimento;
             if(mysqli_query($con,$query)){
-                header('location:pagina_principal.php?id_empresa='.$id_empresa);
+                header('location:pagina_principal.php?atualizado=true&id_empresa='.$id_empresa);
             }else{
                 echo "Erro ao Alterar Procedimento: <br>";
                 echo mysqli_error($con);
@@ -44,7 +44,7 @@
         }else{
             $query = "insert into procedimento(nome_procedimento,valor,id_empresa) values ('".$nome_procedimento."','".$valor."','".$id_empresa."')";
             if(mysqli_query($con,$query)){
-                header('location:pagina_principal.php?id_empresa='.$id_empresa);
+                header('location:pagina_principal.php?cadastrado=true&id_empresa='.$id_empresa);
             }else{
             echo"Erro ao cadastrar Procedimento<br>";
             echo mysqli_error($con);
