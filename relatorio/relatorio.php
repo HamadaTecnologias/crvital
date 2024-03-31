@@ -92,7 +92,7 @@
                         </span>
                     </button>
                 </a>
-                <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário logado:</strong> <?=$nome_usuario?></p>
+                <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário:</strong> <?=$nome_usuario?></p>
             </nav>
         </aside>
 
@@ -131,10 +131,12 @@
                     <select name="id_empresa" id="id_empresa">
                         <option value="">Selecione uma Empresa (pode ser nulo)</option>
                         <?php
-                            $query="select id_empresa,nome_empresa from empresa ORDER BY nome_empresa ASC";
+                            $query="select id_empresa,nome_empresa,cnpj from empresa ORDER BY nome_empresa ASC";
                             $result = mysqli_query($con,$query);
-                            while($empresa = mysqli_fetch_assoc($result)){?>
-                                <option value="<?=$empresa['id_empresa'];?>"><?=$empresa['nome_empresa'];?></option>
+                            while($empresa = mysqli_fetch_assoc($result)){
+                                $cnpj_select = formatCnpjCpf($empresa['cnpj']) ;?>
+                                <option value="<?=$empresa['id_empresa'];?>"><?=$empresa['nome_empresa']." CNPJ: ".$cnpj_select;?></option>
+
                         <?php } ?>  
                     </select>
                 </div>
@@ -167,5 +169,14 @@
     });
 </script>
 <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
+<?php
+function formatCnpjCpf($value){
+        $CPF_LENGTH = 11;
+        $cnpj_cpf = preg_replace("/\D/", '', $value);
+        if (strlen($cnpj_cpf) === $CPF_LENGTH) {
+            return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
+        } 
+        return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
+} ?>
 </body>
 </html>
