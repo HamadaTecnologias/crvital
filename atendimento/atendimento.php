@@ -108,7 +108,7 @@
                 <select name="id_empresa" id="id_empresa" required>
                     <option value="">Selecione uma Empresa</option>
                     <?php
-                        $query="select id_empresa,nome_empresa,cnpj from empresa ORDER BY nome_empresa ASC";
+                        $query="SELECT id_empresa,nome_empresa,cnpj from empresa WHERE status=true ORDER BY nome_empresa ASC";
                         $empresas = mysqli_query($con,$query);
                         while($linha = mysqli_fetch_assoc($empresas)){
                             $cnpj_select = formatCnpjCpf($linha['cnpj']) ;?>
