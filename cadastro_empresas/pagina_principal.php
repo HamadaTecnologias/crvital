@@ -159,10 +159,15 @@
         $apagar = $_GET['apagar']??false;
         $cadastro = $_GET['cadastro']??false;
         $excluido = $_GET['excluido']??false;
+        $alterado = $_GET['alterado']??false;
     ?>
 
 
     <main class="main">
+        <?php 
+        if ($alterado != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Empresa Alterada Com Sucesso</h3>
+        <?php } ?> 
         <?php 
         if ($excluido != false) {?>
             <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Empresa Excluida Com Sucesso</h3>
