@@ -152,14 +152,29 @@
         $nome_error = $_GET['nome']??null;
         $apagar = $_GET['apagar']??false;
         $id_procedimento = $_GET['id_procedimento']??null;
+        $atualizado = $_GET['atualizado']??null;
+        $cadastrado = $_GET['cadastrado']??null;
+        $excluido = $_GET['excluido']??null;
     ?>
 
 
     <main class="main">
-    <?php 
+        <?php 
+        if ($excluido!= false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Procedimento Excluido Com Sucesso</h3>
+        <?php } ?> 
+        <?php 
+        if ($cadastrado != false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Procedimento Cadastrado Com Sucesso</h3>
+        <?php } ?> 
+        <?php 
+        if ($atualizado != false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Procedimento Atualizado Com Sucesso</h3>
+        <?php } ?> 
+        <?php 
         if ($valor_error != false) {?>
             <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Digite um Valor</h3>
-       <?php } ?> 
+        <?php } ?> 
 
        <?php 
         if ($nome_error != false) {?>
