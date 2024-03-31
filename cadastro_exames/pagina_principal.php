@@ -36,7 +36,6 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/user-icon.png">Usuários
                                 </span>
-
                             </span>
                         </button>
                     </a>
@@ -60,7 +59,6 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/calendar.png">Atendimentos
                                 </span>
-                                <i class="atual fa-solid fa-location-dot"></i>
                             </span>
                         </button>
                     </a>
@@ -84,7 +82,6 @@
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/doctor.png">Médicos
-
                                 </span>
                             </span>
                         </button>
@@ -99,7 +96,6 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/report.png">Relatórios
                                 </span>
-
                             </span>
                         </button>
                     </a>

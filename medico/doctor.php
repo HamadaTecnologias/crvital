@@ -44,7 +44,6 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/company.png">Empresas
                                 </span>
-
                             </span>
                         </button>
                     </a>
@@ -57,7 +56,6 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/calendar.png">Atendimentos
                                 </span>
-                                <i class="atual fa-solid fa-location-dot"></i>
                             </span>
                         </button>
                     </a>
@@ -94,7 +92,6 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/report.png">Relatórios
                                 </span>
-
                             </span>
                         </button>
                     </a>
