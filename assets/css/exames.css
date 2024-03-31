@@ -25,6 +25,8 @@ body {
     padding: 100px;
     height: auto;
     flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
     gap: 50px;
     width: 75%;
     margin-left: 20.8%;
@@ -48,6 +50,7 @@ body {
     padding: 50px;
     background-color:rgba(175, 173, 173, 0.795);
     border-radius: 4px;
+    min-width: 500px;
 }
 .seletor-empresa select {
     width:100%;
@@ -129,6 +132,7 @@ body {
     background-color:rgba(175, 173, 173, 0.795);
     border-radius: 4px;
     padding: 20px;
+    min-width: 800px;
 
 }
 
