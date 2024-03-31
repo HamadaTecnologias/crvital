@@ -179,7 +179,7 @@
         </div>
         <?php } ?> 
 
-    <h1>Nova Empresa</h1>
+    <h1 style="margin-bottom:8px;">Cadastrar Nova Empresa:</h1>
     <div class="painel">
     <form action="manipular_empresa.php" method="post">
         <div class="form">
@@ -233,6 +233,7 @@
             $empresas = mysqli_query($con,$query);?>
             <div class="exibicao">
             <table>
+                <h3>Empresas Cadastradas:</h3>
                 <thead>
                     <tr>
                     <th scope="col">Razão Social</th>
