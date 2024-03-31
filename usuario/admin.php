@@ -107,6 +107,7 @@
                         </span>
                     </button>
                 </a>
+                <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário:</strong> <?=$nome_usuario?></p>
             </nav>
         </aside>
         
@@ -119,7 +120,7 @@
                         <input class="new-user-input" type="text" name="new_user_username" placeholder="Digite o usuário"><br>
 
                         <label class="new-user-label" for="new_user_full_name">Nome:</label><br>
-                        <input class="new-user-input" type="text" name="new_user_full_name" placeholder="Digite seu nome completo"><br>
+                        <input class="new-user-input" type="text" name="new_user_full_name" placeholder="Digite seu nome e sobrenome"><br>
 
                         <label class="new-user-label" for="new_user_password">Senha:</label><br>
                         <input class="new-user-input" type="password" name="new_user_password" placeholder="Digite sua senha"><br>
@@ -138,38 +139,53 @@
                     </form>
                 </div>
 
+                <?php
+                    function mapearParaPapel($permissao) {
+                        $mapa = array(
+                            'A' => 'Administrador',
+                            'F' => 'Financeiro',
+                            'R' => 'Recepcionista'
+                        );
+                        return isset($mapa[$permissao]) ? $mapa[$permissao] : '';
+                    }
+                ?>
+
                 <div class="registred-users">
-                    <h3>Usuários Cadastrados:</h3>
-                    <table>
-                        <tr>
-                            <th>Login</th>
-                            <th>Nome</th>
-                            <th>Permissão</th>
-                            <th colspan="3">Ações</th>
-                        </tr>
-                        <?php
-                        include '../bd_connect.php';
-                        $query = "SELECT * FROM users";
-                        $result = mysqli_query($con, $query);
-                        if ($result) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<tr>";
-                                echo "<td>" . $row['username'] . "</td>";
-                                echo "<td>" . $row['name'] . "</td>";
-                                echo "<td>" . $row['level'] . "</td>";
-                                echo "<td><a href='delete_user.php?user=".$row['username']."'><i class=\"fa-solid fa-trash-can\"></i></a></td>";
-                                if($row['status']!= false){
-                                    echo "<td><a class='block' href='block_user.php?user=".$row['username']."'><i class=\"fa-solid fa-lock-open\"></a></td>";
-                                } else {
-                                    echo "<td><a class='unblock' href='unblock_user.php?user=".$row['username']."'><i class=\"fa-solid fa-lock\"></i></a></td>";
+                <table>
+                    <?php
+                    include '../bd_connect.php';
+                    $query = "SELECT * FROM users";
+                    $result = mysqli_query($con, $query);
+                    ?>
+                    <div class="registred-users">
+                        <h3>Usuários Cadastrados:</h3>
+                        <table>
+                            <tr>
+                                <th>Login</th>
+                                <th>Nome</th>
+                                <th>Papel</th>
+                                <th colspan="3">Ações</th>
+                            </tr>
+                            <?php
+                            if ($result) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr>";
+                                    echo "<td>" . $row['username'] . "</td>";
+                                    echo "<td>" . $row['name'] . "</td>";
+                                    echo "<td>" . mapearParaPapel($row['level']) . "</td>";
+                                    echo "<td><a href='delete_user.php?user=".$row['username']."'><i class=\"fa-solid fa-trash-can\"></i></a></td>";
+                                    if($row['status'] != false) {
+                                        echo "<td><a class='block' href='block_user.php?user=".$row['username']."'><i class=\"fa-solid fa-lock-open\"></a></td>";
+                                    } else {
+                                        echo "<td><a class='unblock' href='unblock_user.php?user=".$row['username']."'><i class=\"fa-solid fa-lock\"></i></a></td>";
+                                    }
+                                    echo "</tr>";
                                 }
-                                echo "</tr>";
+                            } else {
+                                echo "Erro ao recuperar os usuários.";
                             }
-                        } else {
-                            echo "Erro ao recuperar os usuários.";
-                        }
-                        ?>
-                    </table>
+                            ?>
+                </table>
                 </div>
         </main>
 <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>

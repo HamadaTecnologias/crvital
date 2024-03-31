@@ -110,6 +110,7 @@
                         </span>
                     </button>
                 </a>
+                <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário:</strong> <?=$nome_usuario?></p>
             </nav>
 
             
