@@ -27,35 +27,45 @@
                 <img class="img-logo" src="../assets/logo-crvital.png">
             </header>
             
-            <nav class="sidebar-nav"> 
-                <a href="../usuario/admin.php">
-                    <button class="sidebar-nav-button">
-                        <span class="sidebar-nav-button-span">                      
-                            <span class="sidebar-nav-button-span2">
-                                <img class="icons-main" src="../assets/user-icon.png">Usuários
-                            </span>                       
-                        </span>
-                    </button>
-                </a>
-                <a href="../atendimento/atendimento.php">
-                    <button class="sidebar-nav-button">
-                        <span class="sidebar-nav-button-span">
-                            <span class="sidebar-nav-button-span2">
-                                <img class="icons-main" src="../assets/calendar.png">Atendimentos
-                            </span>                       
-                        </span>
-                    </button>
-                </a>
-                <a href="../cadastro_empresas/pagina_principal.php">
-                    <button class="sidebar-nav-button">
-                        <span class="sidebar-nav-button-span">                      
-                            <span class="sidebar-nav-button-span2">
-                                <img class="icons-main" src="../assets/company.png">Empresas
-                            </span>                       
-                        </span>
-                    </button>
-                </a>
-                <a href="../cadastro_exames/pagina_principal.php">
+            <nav class="sidebar-nav">
+                <?php if($nivel != 'R' && $nivel != 'F') { ?>
+                    <a href="../usuario/admin.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/user-icon.png">Usuários
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
+                <?php if($nivel != 'F') { ?>
+                    <a href="../cadastro_empresas/pagina_principal.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/company.png">Empresas
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
+                    
+                <?php if($nivel != 'F') { ?>
+                    <a href="../atendimento/atendimento.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/calendar.png">Atendimentos
+                                </span>
+                                <i class="atual fa-solid fa-location-dot"></i>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
+
+                <?php if($nivel != 'F') { ?>
+                    <a href="../cadastro_exames/pagina_principal.php">
                     <button class="sidebar-nav-button">
                         <span style="background: #61CE70;">
                             <span class="sidebar-nav-button-span2">
@@ -63,25 +73,33 @@
                             </span>
                         </span>
                     </button>
-                </a>
-                <a href="../medico/doctor.php">
-                    <button class="sidebar-nav-button">
-                        <span class="sidebar-nav-button-span">
-                            <span class="sidebar-nav-button-span2">
-                                <img class="icons-main" src="../assets/doctor.png">Médicos
+                    </a>
+                <?php } ?>
+
+                <?php if($nivel != 'F') { ?>
+                    <a href="../medico/doctor.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/doctor.png">Médicos
+                                </span>
                             </span>
-                        </span>
-                    </button>
-                </a>
-                <a href="../relatorio/relatorio.php">
-                    <button class="sidebar-nav-button">
-                        <span class="sidebar-nav-button-span">
-                            <span class="sidebar-nav-button-span2">
-                                <img class="icons-main" src="../assets/report.png">Relatórios            
+                        </button>
+                    </a>
+                <?php } ?>
+
+                <?php if($nivel != 'R') { ?>
+                    <a href="../relatorio/relatorio.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/report.png">Relatórios
+                                </span>
                             </span>
-                        </span>
-                    </button>
-                </a>
+                        </button>
+                    </a>
+                <?php } ?>
+                    
                 <a href="../login/logout.php">
                     <button class="sidebar-nav-button">
                         <span class="sidebar-nav-button-span">
@@ -93,6 +111,8 @@
                 </a>
                 <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário:</strong> <?=$nome_usuario?></p>
             </nav>
+
+            
         </aside>
 
 
