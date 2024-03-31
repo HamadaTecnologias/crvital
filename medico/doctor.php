@@ -63,11 +63,10 @@
                 </a>
                 <a href="../medico/doctor.php">
                     <button class="sidebar-nav-button">
-                        <span class="sidebar-nav-button-span">
+                        <span style="background: #61CE70;">
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/doctor.png">Médicos
                             </span>
-                            <i class="atual fa-solid fa-location-dot"></i> 
                         </span>
                     </button>
                 </a>

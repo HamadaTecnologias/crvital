@@ -39,11 +39,10 @@
                 </a>
                 <a href="../atendimento/atendimento.php">
                     <button class="sidebar-nav-button">
-                        <span class="sidebar-nav-button-span">
+                        <span style="background: #61CE70;">
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/calendar.png">Atendimentos
-                            </span>  
-                            <i class="atual fa-solid fa-location-dot"></i>                   
+                            </span>                   
                         </span>
                     </button>
                 </a>

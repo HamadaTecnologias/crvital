@@ -39,13 +39,7 @@ body {
     border-radius: 5px;
 } */
 
-.atual {
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-    color: #fff;
-    margin-left: 45px;
-}
+
 .painel{
     background-color:rgba(175, 173, 173, 0.795);
     /* border: 0.8px solid rgb(255, 255, 255); */
