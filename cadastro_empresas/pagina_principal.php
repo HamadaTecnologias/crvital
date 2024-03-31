@@ -58,9 +58,7 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/calendar.png">Atendimentos
                                 </span>
-                                <i class="atual fa-solid fa-location-dot"></i>
-
-                            </span>
+                          </span>
                         </button>
                     </a>
                 <?php } ?>
@@ -72,7 +70,6 @@
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
-
                                 </span>
                             </span>
                         </button>
@@ -87,7 +84,6 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/doctor.png">Médicos
                                 </span>
-
                             </span>
                         </button>
                     </a>
