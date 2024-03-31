@@ -93,7 +93,7 @@
                         </span>
                     </button>
                 </a>
-                <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário logado:</strong> <?=$nome_usuario?></p>
+                <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário:</strong> <?=$nome_usuario?></p>
             </nav>
         </aside>
         <?php 
@@ -112,7 +112,7 @@
                         $empresas = mysqli_query($con,$query);
                         while($linha = mysqli_fetch_assoc($empresas)){
                             $cnpj_select = formatCnpjCpf($linha['cnpj']) ;?>
-                            <option value="<?=$linha['id_empresa'];?>"><?=$linha['nome_empresa'];?><?=" CNPJ: ".$cnpj_select;?></option>
+                            <option value="<?=$linha['id_empresa'];?>"><?=$linha['nome_empresa']." CNPJ: ".$cnpj_select;?></option>
                     <?php } ?>  
                 </select>   
                 <button type="submit" value="selecionar">Selecionar</button>           
