@@ -65,6 +65,7 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    margin-left: -50px;
 }
 
 .radio_filtro input[type="radio"] {
@@ -92,6 +93,7 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 3px;
+    margin-right: -50px;
 }
 
 .beggining {

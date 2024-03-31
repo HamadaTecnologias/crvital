@@ -2,6 +2,7 @@
     session_start();
     $user_input = $_SESSION['usuario'];
     $nome_usuario = $_SESSION['name'];
+    $nivel = $_SESSION['nivel'];
 
     if (!isset($_SESSION['usuario'])){
         header('Location:../index.php?erro_login_access=true');
@@ -35,6 +36,7 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/user-icon.png">Usuários
                                 </span>
+
                             </span>
                         </button>
                     </a>
@@ -82,11 +84,13 @@
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/doctor.png">Médicos
+
                                 </span>
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'R') { ?>
                     <a href="../relatorio/relatorio.php">
@@ -95,11 +99,13 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/report.png">Relatórios
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
-                    
+
+                  
                 <a href="../login/logout.php">
                     <button class="sidebar-nav-button">
                         <span class="sidebar-nav-button-span">

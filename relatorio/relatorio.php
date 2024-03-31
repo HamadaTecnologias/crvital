@@ -2,6 +2,7 @@
     session_start();
     $user_input = $_SESSION['usuario'];
     $nome_usuario = $_SESSION['name'];
+    $nivel = $_SESSION['nivel'];
 
     if (!isset($_SESSION['usuario'])){
         header('Location:../index.php?erro_login_access=true');
@@ -59,6 +60,7 @@
                                     <img class="icons-main" src="../assets/calendar.png">Atendimentos
                                 </span>
                                 <i class="atual fa-solid fa-location-dot"></i>
+
                             </span>
                         </button>
                     </a>
@@ -97,6 +99,7 @@
                             </span>
                         </span>
                     </button>
+
                     </a>
                 <?php } ?>
                     
@@ -125,7 +128,7 @@
         <form action="filtro.php" method="post">
             <div class="main-filters">
                 <div class="radio_filtro">
-                    <h3>Filtros Principais:</h3>
+                    <h3>Relatório</h3>
                     <label class="new-report-label" for="empresa">
                     <input type="radio" name="filtro_principal" value="empresa">
                     Empresa</label>
@@ -147,7 +150,7 @@
                 <div class="select_empresa">
                     <h3>Filtro por Empresa:</h3>
                     <select name="id_empresa" id="id_empresa">
-                        <option value="">Selecione uma Empresa (pode ser nulo)</option>
+                        <option value="">Selecione em caso de "Relatório por Empresa"</option>
                         <?php
                             $query="SELECT id_empresa,nome_empresa,cnpj FROM empresa WHERE status=true ORDER BY nome_empresa ASC";
                             $result = mysqli_query($con,$query);
@@ -161,7 +164,7 @@
                 <div class="select_medico">
                     <h3>Filtro por Médico:</h3>
                     <select name="id_medico" id="id_medico">
-                        <option value="">Selecione um Médico (pode ser nulo)</option>
+                        <option value="">Selecione em caso de "Relatório por Médico"</option>
                         <?php
                             $query="select id_medico,nome_medico from medico ORDER BY nome_medico ASC";
                             $result = mysqli_query($con,$query);

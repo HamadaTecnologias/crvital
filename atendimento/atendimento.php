@@ -2,6 +2,7 @@
     session_start();
     $user_input = $_SESSION['usuario'];
     $nome_usuario = $_SESSION['name'];
+    $nivel = $_SESSION['nivel'];
 
     if (!isset($_SESSION['usuario'])){
         header('Location:../index.php?erro_login_access=true');
@@ -34,6 +35,7 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/user-icon.png">Usuários
                                 </span>
+
                             </span>
                         </button>
                     </a>
@@ -69,10 +71,12 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'F') { ?>
                     <a href="../medico/doctor.php">
@@ -80,11 +84,13 @@
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/doctor.png">Médicos
+
                                 </span>
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'R') { ?>
                     <a href="../relatorio/relatorio.php">
@@ -93,10 +99,12 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/report.png">Relatórios
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
                     
                 <a href="../login/logout.php">
                     <button class="sidebar-nav-button">
@@ -132,44 +140,45 @@
                 </select>   
                 <button type="submit" value="selecionar">Selecionar</button>           
             </form>
-            <!--FIM FORM DE SELECT DE EMPRESA -->     
-            
-            <!-- IF PARA MOSTRAR CAMPOS CHECKIN -->
-<?php 
-    //FUNÇÃO PARA FORMATAR CNPJ
-    function formatCnpjCpf($value){
-        $CPF_LENGTH = 11;
-        $cnpj_cpf = preg_replace("/\D/", '', $value);
-        if (strlen($cnpj_cpf) === $CPF_LENGTH) {
-            return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
-        } 
-        return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
-    }
-    //FIM FUNÇÃO PARA FORAMTAR CNPJ
-    if ($id_empresa!=null) {
-            $query_empresa="select nome_empresa,cnpj,perfil,forma_pagamento from empresa where id_empresa=".$id_empresa;
-            $dados_empresas = mysqli_query($con,$query_empresa);
-            $linha_empresa = mysqli_fetch_assoc($dados_empresas); 
-            $cnpj = formatCnpjCpf($linha_empresa['cnpj']) ;
-            ?>
-
-            
-            <div class="checkin">
-            
-                <div class="dados">
-                <!-- FORM DE CADASTRO DE ATENDIMENTO -->
-                <form action="cadastrar_atendimento.php" method="post">  
-                <!-- DADOS DA EMPRESA SELECIONADA  -->
-                    <div class="empresa">
-                        <div class="dados_1">
-                            <input style="display:none" name="id_empresa" type="number" value="<?=$id_empresa?>">
-                            <label for="nome_empresa">Empresa:</label>
-                            <span><?=$linha_empresa['nome_empresa']?></span>
-                            <label for="perfil">Perfil Credenciamento:</label>
-                            <span><?=$linha_empresa['perfil']?></span>
-                        </div>
-                        <div class="dados_2">
-                            <label for="cnpj">CNPJ:</label>
+            <!--FIM FORM DE SELECT DE EMPRESA -->        
+               
+                <!-- IF PARA MOSTRAR CAMPOS CHECKIN -->
+    <?php 
+        //FUNÇÃO PARA FORMATAR CNPJ
+        function formatCnpjCpf($value){
+            $CPF_LENGTH = 11;
+            $cnpj_cpf = preg_replace("/\D/", '', $value);
+            if (strlen($cnpj_cpf) === $CPF_LENGTH) {
+                return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
+            } 
+            return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
+        }
+        //FIM FUNÇÃO PARA FORAMTAR CNPJ
+        if ($id_empresa!=null) {
+                $query_empresa="select nome_empresa,cnpj,perfil,forma_pagamento from empresa where id_empresa=".$id_empresa;
+                $dados_empresas = mysqli_query($con,$query_empresa);
+                $linha_empresa = mysqli_fetch_assoc($dados_empresas); 
+                $cnpj = formatCnpjCpf($linha_empresa['cnpj']) ;
+                ?>
+    
+                
+                <div class="checkin">
+                
+                    <div class="dados">
+                    <!-- FORM DE CADASTRO DE ATENDIMENTO -->
+                    <form action="cadastrar_atendimento.php" method="post">  
+                    <!-- DADOS DA EMPRESA SELECIONADA  -->
+                        <div class="empresa">
+                            <div class="dados_1">
+                                <input style="display:none" name="id_empresa" type="number" value="<?=$id_empresa?>">
+                                <label for="nome_empresa">Empresa:</label>
+                                <span><?=$linha_empresa['nome_empresa']?></span>
+                                <label for="perfil">Perfil Credenciamento:</label>
+                                <span><?=$linha_empresa['perfil']?></span>
+                            </div>
+                            <div class="dados_2">
+                                <label for="cnpj">CNPJ:</label>
+            </header>
                             <span><?=$cnpj?></span>
                             <label for="forma_pagamento">Método de Pagamento:</label>
                             <select name="forma_pagamento" required>

@@ -2,6 +2,7 @@
     session_start();
     $user_input = $_SESSION['usuario'];
     $nome_usuario = $_SESSION['name'];
+    $nivel = $_SESSION['nivel'];
 
     if (!isset($_SESSION['usuario'])){
         header('Location:../index.php?erro_login_access=true');
@@ -33,6 +34,7 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/user-icon.png">Usuários
                                 </span>
+
                             </span>
                         </button>
                     </a>
@@ -57,10 +59,12 @@
                                     <img class="icons-main" src="../assets/calendar.png">Atendimentos
                                 </span>
                                 <i class="atual fa-solid fa-location-dot"></i>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'F') { ?>
                     <a href="../cadastro_exames/pagina_principal.php">
@@ -68,11 +72,13 @@
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
+
                                 </span>
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'F') { ?>
                     <a href="../medico/doctor.php">
@@ -81,10 +87,12 @@
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/doctor.png">Médicos
                                 </span>
+
                             </span>
                         </button>
                     </a>
                 <?php } ?>
+
 
                 <?php if($nivel != 'R') { ?>
                     <a href="../relatorio/relatorio.php">
@@ -192,7 +200,7 @@
         </div>
         <?php } ?> 
 
-    <h1>Nova Empresa</h1>
+    <h1 style="margin-bottom:8px;">Cadastrar Nova Empresa:</h1>
     <div class="painel">
     <form action="manipular_empresa.php" method="post">
         <div class="form">
@@ -303,6 +311,7 @@
             $empresas = mysqli_query($con,$query);?>
             <div class="exibicao">
             <table>
+                <h3>Empresas Cadastradas:</h3>
                 <thead>
                     <tr>
                         <th scope="col">Empresa</th>
