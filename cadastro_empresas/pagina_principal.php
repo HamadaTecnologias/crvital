@@ -16,6 +16,7 @@
     <link rel="shortcut icon" href="../assets/logo-favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/empresa.css">
+
     <title>Empresas</title>
 </head>
 <body>
@@ -208,21 +209,78 @@
         <button type="submit" value="cadastrar">Cadastrar</button>
         <button type="submit" value="<?=$id_empresa?>">Confirmar Alteração</button>
         </div>
+    </form>
 
-        </form>
+        <!-- MECANISMO DE BUSCA DE EMPRESA -->
+
+            <form class="search-form" action="<?=$_SERVER['PHP_SELF']?>" method="get">
+                <label for="nome_empresa_search"><i class="fa-solid fa-magnifying-glass"></i></label>
+                <input type="search" name="nome_empresa_search">
+                <button type="submit">Buscar</button>
+            </form>
+            <?php 
+                $nome_empresa_search = $_GET['nome_empresa_search']??null;
+                if ($nome_empresa_search !=null) { 
+                    $query_search = "SELECT id_empresa,nome_empresa,status,perfil,cnpj FROM empresa WHERE nome_empresa='".$nome_empresa_search."'";
+                    $empresa = mysqli_query($con,$query_search);?>
+                    <div class="search">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Empresa</th>
+                                    <th scope="col">Apagar</th>
+                                    <th scope="col">Alterar</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <?php while($linha_search = mysqli_fetch_assoc($empresa)){ ?>
+                                <tr>
+                                    <td class="exibicao-empresa">
+                                        <?php $cnpj = formatCnpjCpf($linha_search['cnpj'])?>
+                                        <h4><?= $linha_search['nome_empresa']?></h4> 
+                                        <h4><?="CNPJ: ".$cnpj?></h4> 
+                                        <h4>Perfil: <?= strtoupper($linha_search['perfil'])?></h4>
+                                    </td>
+                                    <td>
+                                        <a href='pagina_principal.php?apagar=true&id_empresa=<?=$linha_search['id_empresa']?>'><i class="fa-solid fa-trash-can"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href='pagina_principal.php?id_empresa=<?=$linha_search['id_empresa']?>'><i class="fa-solid fa-rotate"></i></a>
+                                    </td>
+                                    <?php if($linha_search['status'] != false){?>
+                                        <td>
+                                            <a href='bloquear.php?id_empresa=<?= $linha_search['id_empresa']?>'><i class="fa-solid fa-lock-open"></i></a>
+                                        </td>
+                                    <?php }else{ ?>
+                                        <td>
+                                        <a href='liberar.php?id_empresa=<?= $linha_search['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
+                                        </td>
+                                    <?php } ?>   
+                                </tr>
+                            <?php //FECHANDO WHILE
+                                 }  ?>  
+                        </tbody>
+                    </table> 
+                    </div>
+                <?php //FECHANDO O IF
+                    }?>
+
+
+        <!-- FIM MECANISMO DE BUSCA DE EMPRESA -->
 
     <?php 
             //Exibindo Empresas na tela
-            $query = "select id_empresa,nome_empresa,status,perfil,cnpj from empresa";
+            $query = "select id_empresa,nome_empresa,status,perfil,cnpj from empresa ORDER BY nome_empresa ASC";
             $empresas = mysqli_query($con,$query);?>
             <div class="exibicao">
             <table>
                 <thead>
                     <tr>
-                    <th scope="col">Empresa</th>
-                    <th scope="col">Apagar</th>
-                    <th scope="col">Alterar</th>
-                    <th scope="col">Status</th>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Apagar</th>
+                        <th scope="col">Alterar</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
