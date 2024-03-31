@@ -232,7 +232,7 @@
                     $n_empresa = mysqli_query($con,$query_empresa);
                     $linha_empresa = mysqli_fetch_assoc($n_empresa); 
                     //BUSCANDO PROCEDIMENTOS DA EMPRESA
-                    $query = "select id_procedimento,nome_procedimento,valor from procedimento where id_empresa=".$id_empresa;
+                    $query = "select id_procedimento,nome_procedimento,valor from procedimento where id_empresa=".$id_empresa." ORDER BY nome_procedimento ASC";
                     $procedimentos = mysqli_query($con,$query);
                     $cnpj = formatCnpjCpf($linha_empresa['cnpj']) ;
                     ?>
