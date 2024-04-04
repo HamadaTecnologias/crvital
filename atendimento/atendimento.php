@@ -196,7 +196,7 @@
                         <div class="dados_atendimento">
                             <div class="colaborador">
                                 <label for="nome_paciente">Colaborador:</label>
-                                <input placeholder="Digite o nome do Colaborador" name="nome_paciente" type="text" value="">
+                                <input placeholder="Digite o nome do Colaborador" name="nome_paciente" type="text" required value="">
                             </div>
                             <div class="select_dados">    
                             <label for="tipo_exame">Tipo Exame:</label>

@@ -7,8 +7,6 @@
     $valor= $_POST["valor"];
     $erro = FALSE;
     include "../bd_connect.php";
-    echo"<br>";
-    echo"<br>"; 
     //tratar dados inseridos
     if(empty($nome_procedimento)){
         header('location:pagina_principal.php?nome=true');
