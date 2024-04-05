@@ -144,16 +144,7 @@
                
                 <!-- IF PARA MOSTRAR CAMPOS CHECKIN -->
     <?php 
-        //FUNÇÃO PARA FORMATAR CNPJ
-        function formatCnpjCpf($value){
-            $CPF_LENGTH = 11;
-            $cnpj_cpf = preg_replace("/\D/", '', $value);
-            if (strlen($cnpj_cpf) === $CPF_LENGTH) {
-                return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
-            } 
-            return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
-        }
-        //FIM FUNÇÃO PARA FORAMTAR CNPJ
+
         if ($id_empresa!=null) {
                 $query_empresa="select nome_empresa,cnpj,perfil,forma_pagamento from empresa where id_empresa=".$id_empresa;
                 $dados_empresas = mysqli_query($con,$query_empresa);
@@ -271,7 +262,8 @@
             FROM atendimento 
             INNER JOIN medico ON atendimento.id_medico = medico.id_medico 
             INNER JOIN empresa ON atendimento.id_empresa = empresa.id_empresa 
-            WHERE hora_checkout=0;";
+            WHERE hora_checkout=0
+            ORDER BY hora_checkin ASC";
             $result = mysqli_query($con,$query_ativos);?>
             <table>
                 <thead>
@@ -322,5 +314,17 @@
     });
 </script>
 <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
+<?php 
+//FUNÇÃO PARA FORMATAR CNPJ
+        function formatCnpjCpf($value){
+            $CPF_LENGTH = 11;
+            $cnpj_cpf = preg_replace("/\D/", '', $value);
+            if (strlen($cnpj_cpf) === $CPF_LENGTH) {
+                return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
+            } 
+            return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
+        }
+//FIM FUNÇÃO PARA FORAMTAR CNPJ
+?>
 </body>
 </html>

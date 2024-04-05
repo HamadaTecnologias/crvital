@@ -12,7 +12,7 @@ $data = $_POST['data_atendimento']??null;
 $nome_paciente =$_POST['nome_paciente']??null;
 $finalizar = $_GET['finalizar']??false;
 $id_atendimento = $_GET['id_atendimento']??null;
-$erro = false;
+
 
 
 // IF PARA DETERMINAR SE É CHECKIN OU CHECKOUT
@@ -35,10 +35,7 @@ if ($finalizar!=false) {
     //FIM CHECKOUT    
 }else{
     //DEFININDO PROCEDIMENTOS SELECIONADOS
-    if (empty($nome_paciente)) {
-        $erro = true;
-        header('location:pagina_principal.php?nome=true');
-    }
+
     $id_procedimento=null;
     if (isset($_POST['id_procedimento']))
         $id_procedimento = $_POST['id_procedimento'];
