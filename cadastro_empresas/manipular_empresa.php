@@ -22,13 +22,6 @@
        $erro=TRUE;
         header('location:pagina_principal.php?perfil=true');
     }
-    //criando array com os ids das empresas
-    $query_valid="select id_empresa from empresa";
-    $empresa = mysqli_query($con,$query_valid);
-    $ids = array();
-    while($linha = mysqli_fetch_assoc($empresa)){
-        array_push($ids,$linha['id_empresa']);
-    }
 
     if ($id_empresa == null) {
         //TRATANDO EMPRESAS COM O MESMO NOME
@@ -46,6 +39,16 @@
         }
         // FIM TRATANDO EMPRESAS COM O MESMO NOME
     }
+    
+    //criando array com os ids das empresas
+    $query_valid="select id_empresa from empresa";
+    $empresa = mysqli_query($con,$query_valid);
+    $ids = array();
+    while($linha = mysqli_fetch_assoc($empresa)){
+        array_push($ids,$linha['id_empresa']);
+    }
+
+
 
     if(!$erro){
         //fazendo busca nos arrays de ids para saber se vamos alterar uma empresa ou cadastrar uma nova
