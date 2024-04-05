@@ -159,14 +159,17 @@
         $apagar = $_GET['apagar']??false;
         $cadastro = $_GET['cadastro']??false;
         $excluido = $_GET['excluido']??false;
-
+        $copia = $_GET['copia']??false;
         $existe = $_GET['existe']??false;
-
         $alterado = $_GET['alterado']??false;
     ?>
 
 
     <main class="main">
+        <?php 
+        if ($copia != false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Empresa Copiada com Sucesso</h3>
+        <?php } ?>
         <?php 
         if ($alterado != false) {?>
             <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Empresa Atualizada Com Sucesso</h3>
@@ -275,6 +278,7 @@
                                     <th scope="col">Apagar</th>
                                     <th scope="col">Alterar</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Copiar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -300,7 +304,10 @@
                                         <td>
                                         <a href='liberar.php?id_empresa=<?= $linha_search['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
                                         </td>
-                                    <?php } ?>   
+                                    <?php } ?>  
+                                    <td>
+                                        <a href='duplicar.php?id_empresa=<?=$linha_search['id_empresa']?>'><i class="fa-solid fa-copy"></i></a>
+                                    </td> 
                                 </tr>
                             <?php //FECHANDO WHILE
                                  }  ?>  
