@@ -159,7 +159,9 @@
         $apagar = $_GET['apagar']??false;
         $cadastro = $_GET['cadastro']??false;
         $excluido = $_GET['excluido']??false;
+
         $existe = $_GET['existe']??false;
+
         $alterado = $_GET['alterado']??false;
     ?>
 
@@ -263,7 +265,7 @@
             <?php 
                 $nome_empresa_search = $_GET['nome_empresa_search']??null;
                 if ($nome_empresa_search !=null) { 
-                    $query_search = "SELECT id_empresa,nome_empresa,status,perfil,cnpj FROM empresa WHERE nome_empresa='".$nome_empresa_search."'";
+                    $query_search = "SELECT id_empresa,nome_empresa,status,perfil,cnpj FROM empresa WHERE nome_empresa like '%".$nome_empresa_search."%'";
                     $empresa = mysqli_query($con,$query_search);?>
                     <div class="search">
                         <table>
