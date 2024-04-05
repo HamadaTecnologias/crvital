@@ -28,7 +28,7 @@
     }
     if ($alterar == false) {
         //TRATANDO PROCEDIMENTOS COM O MESMO NOME
-        $query_procedimento_cadastrado = "SELECT id_procedimento,nome_procedimento FROM procedimento WHERE nome_procedimento='".$nome_procedimento."'";
+        $query_procedimento_cadastrado = "SELECT id_procedimento,nome_procedimento FROM procedimento WHERE nome_procedimento='".$nome_procedimento."' AND id_empresa=".$id_empresa;
         $result_procedimento_cadastrado = mysqli_query($con,$query_procedimento_cadastrado);
         $procedimento_cadastrado = mysqli_fetch_assoc($result_procedimento_cadastrado);
         if (!empty($procedimento_cadastrado['id_procedimento'])) {
