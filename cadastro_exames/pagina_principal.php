@@ -156,10 +156,15 @@
         $atualizado = $_GET['atualizado']??null;
         $cadastrado = $_GET['cadastrado']??null;
         $excluido = $_GET['excluido']??null;
+        $existe = $_GET['existe']??null;
     ?>
 
 
     <main class="main">
+        <?php 
+        if ($existe!= false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Procedimento Já Cadastrado</h3>
+        <?php } ?> 
         <?php 
         if ($excluido!= false) {?>
             <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Procedimento Excluido Com Sucesso</h3>
@@ -185,7 +190,7 @@
        <?php 
         if ($apagar != false) {?>
         <div class="confirmar_exclusao">            
-            <h3>Deseja confirmar exclusão da empresa?</h3>
+            <h3>Deseja confirmar exclusão do procedimento?</h3>
             <div class="confirm">
                 <a href='apagar.php?id_procedimento=<?= $id_procedimento?>&id_empresa=<?=$id_empresa?>'>SIM</a>
                 <a href='pagina_principal.php?id_empresa=<?=$id_empresa?>'>NÃO</a>
@@ -235,7 +240,7 @@
                 <label for="Valor">Valor:</label><br>
                 <input name="valor" id="valor" placeholder="Digite o Valor" type="text"  value="<?=$alterar['valor']?>"><br><br>
                 <button type="submit" value="inserir">Inserir</button>
-                <button type="submit" value="alterar">Confirmar Alteração</button>
+                <button type="submit" name="alterar" value="true">Confirmar Alteração</button>
             </form> 
             </div>   
         </div>
