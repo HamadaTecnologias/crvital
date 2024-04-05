@@ -2,6 +2,7 @@
 
     //variáveis dos dados das empresas
     $id_empresa=$_POST["id_empresa"]??null;
+    $cadastrar = $_POST['cadastrar']??false;
     $nome_empresa = $_POST["nome_empresa"];
     $cnpj= $_POST["cnpj"];
     $perfil= $_POST["perfil"];
@@ -30,7 +31,7 @@
         array_push($ids,$linha['id_empresa']);
     }
 
-    if ($id_empresa == null) {
+    if ($cadastrar == true) {
         //TRATANDO EMPRESAS COM O MESMO NOME
         $query_empresa_cadastrada = "SELECT id_empresa,nome_empresa from empresa WHERE nome_empresa='".$nome_empresa."'";
         $result_empresa_cadastrada = mysqli_query($con,$query_empresa_cadastrada);
