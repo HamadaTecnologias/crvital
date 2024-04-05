@@ -159,6 +159,9 @@
         $apagar = $_GET['apagar']??false;
         $cadastro = $_GET['cadastro']??false;
         $excluido = $_GET['excluido']??false;
+
+        $existe = $_GET['existe']??false;
+
         $alterado = $_GET['alterado']??false;
     ?>
 
@@ -166,7 +169,11 @@
     <main class="main">
         <?php 
         if ($alterado != false) {?>
-            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Empresa Alterada Com Sucesso</h3>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Empresa Atualizada Com Sucesso</h3>
+        <?php } ?> 
+        <?php 
+        if ($existe != false) {?>
+            <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Empresa Já Cadastrada</h3>
         <?php } ?> 
         <?php 
         if ($excluido != false) {?>
