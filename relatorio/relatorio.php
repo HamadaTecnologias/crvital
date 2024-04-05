@@ -99,6 +99,18 @@
                         </button>
                     </a>
                 <?php } ?>
+
+                <?php if($nivel != 'R') { ?>
+                    <a href="../historico/pagina_principal.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/historico.svg">Histórico
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
                     
                 <a href="../login/logout.php">
                     <button class="sidebar-nav-button">

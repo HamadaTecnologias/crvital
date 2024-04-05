@@ -1,102 +1,128 @@
+<?php
+    session_start();
+    $user_input = $_SESSION['usuario'];
+    $nome_usuario = $_SESSION['name'];
+    $nivel = $_SESSION['nivel'];
+
+    if (!isset($_SESSION['usuario'])){
+        header('Location:../index.php?erro_login_access=true');
+        exit;
+    }
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/crvital-logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/minoro-sidebar.css">
-    <title>CrVital - Página Inicial</title>
+    <link rel="shortcut icon" href="../assets/logo-favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <title>Médicos</title>
 </head>
 <body>
-    <aside class="sidebar">
+<aside class="sidebar">
             <header class="sidebar-header">
-                <button class="sidebar-header-button">
-                    <span class="sidebar-header-button-span">
-                        <a href="logout.php"><img class="logout-icon" src="assets/logout-icon.png"></a>
-                    </span>
-                </button>
+                <img class="img-logo" src="../assets/logo-crvital.png">
             </header>
-            <img class="img-logo" src="assets/crvital-logo.svg">
+            
             <nav class="sidebar-nav">
-                
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
+                <?php if($nivel != 'R' && $nivel != 'F') { ?>
+                    <a href="../usuario/admin.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/user-icon.png">Usuários
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
+                <?php if($nivel != 'F') { ?>
+                    <a href="../cadastro_empresas/pagina_principal.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/company.png">Empresas
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
+                    
+                <?php if($nivel != 'F') { ?>
+                    <a href="../atendimento/atendimento.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/calendar.png">Atendimentos
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
 
-                        <a href="../usuario/admin.php"><img class="icons-main" src="assets/user-icon.png">
+                <?php if($nivel != 'F') { ?>
+                    <a href="../cadastro_exames/pagina_principal.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/stetoscope.png">Procedimentos
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
 
-                        <span class="sidebar-nav-button-span2">
-                            Usuários
+                <?php if($nivel != 'F') { ?>
+                    <a href="../medico/doctor.php">
+                    <button class="sidebar-nav-button">
+                        <span style="background: #61CE70;">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/doctor.png">Médicos
+                            </span>
                         </span>
-                        </a>
-                    </span>
-                </button>
+                    </button>
+                    </a>
+                <?php } ?>
 
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
+                <?php if($nivel != 'R') { ?>
+                    <a href="../relatorio/relatorio.php">
+                        <button class="sidebar-nav-button">
+                            <span class="sidebar-nav-button-span">
+                                <span class="sidebar-nav-button-span2">
+                                    <img class="icons-main" src="../assets/report.png">Relatórios
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                <?php } ?>
 
-                        <a href="../atendimento/atendimento.php"><img class="icons-main" src="assets/calendar.png">
-
-                        <span class="sidebar-nav-button-span2">
-                            Atendimentos
+                    
+                <a href="../login/logout.php">
+                    <button class="sidebar-nav-button">
+                        <span class="sidebar-nav-button-span">
+                            <span class="sidebar-nav-button-span2">
+                                <img class="icons-main" src="../assets/logout-icon.png">Logout
+                            </span>
                         </span>
-                        </a>
-                    </span>
-                </button>
-
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-                        <a href="cadastro_empresas/pagina_principal.php"><img class="icons-main" src="assets/company.png">
-                        <span class="sidebar-nav-button-span2">
-                            Empresas
-                        </span>
-                        </a>
-                    </span>
-                </button>
-
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-                        <a href="cadastro_exames/pagina_principal.php"><img class="icons-main" src="assets/stetoscope.png">
-                        <span class="sidebar-nav-button-span2">
-                            Procedimentos
-                        </span>
-                        </a>
-                    </span>
-                </button>
-
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-
-                        <a href="../medico/doctor.php"><img class="icons-main" src="assets/doctor.png">
-
-                        <span class="sidebar-nav-button-span2">
-                            Médicos
-                        </span>
-                        </a>
-                    </span>
-                </button>
-
-                <button class="sidebar-nav-button">
-                    <span class="sidebar-nav-button-span">
-
-                        <a href="../relatorio/relatorio.php"><img class="icons-main" src="assets/report.png">
-
-                        <span class="sidebar-nav-button-span2">
-                            Relatórios
-                        </span>
-                        </a>
-                    </span>
-                </button>
+                    </button>
+                </a>
+                <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário:</strong> <?=$nome_usuario?></p>
             </nav>
+
         </aside>
 
         <main class="main">
 
-            <h1>Conteudo Principal</h1>
-            <h1>Conteudo Principal</h1>
-            <h1>Conteudo Principal</h1>
-            <h1>Conteudo Principal</h1>
+
+
+
+
+
+
+
+
 
         </main>
-
+<script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
 </html>
