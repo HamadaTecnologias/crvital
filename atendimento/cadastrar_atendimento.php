@@ -14,6 +14,7 @@ $finalizar = $_GET['finalizar']??false;
 $id_atendimento = $_GET['id_atendimento']??null;
 
 
+
 // IF PARA DETERMINAR SE É CHECKIN OU CHECKOUT
 if ($finalizar!=false) {
     //EFETUANDO CHECKOUT
@@ -34,6 +35,7 @@ if ($finalizar!=false) {
     //FIM CHECKOUT    
 }else{
     //DEFININDO PROCEDIMENTOS SELECIONADOS
+
     $id_procedimento=null;
     if (isset($_POST['id_procedimento']))
         $id_procedimento = $_POST['id_procedimento'];
