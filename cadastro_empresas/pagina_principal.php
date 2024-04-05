@@ -275,6 +275,7 @@
                                     <th scope="col">Apagar</th>
                                     <th scope="col">Alterar</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Copiar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -300,7 +301,10 @@
                                         <td>
                                         <a href='liberar.php?id_empresa=<?= $linha_search['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
                                         </td>
-                                    <?php } ?>   
+                                    <?php } ?>  
+                                    <td>
+                                        <a href='duplicar.php?id_empresa=<?=$linha_search['id_empresa']?>'><i class="fa-solid fa-copy"></i></a>
+                                    </td> 
                                 </tr>
                             <?php //FECHANDO WHILE
                                  }  ?>  
