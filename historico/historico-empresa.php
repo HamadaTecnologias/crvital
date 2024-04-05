@@ -132,46 +132,6 @@
             include "../bd_connect.php";
         ?>
 
-        <h1>Histórico de Atendimentos</h1>
-
-       <div class="filtros">
-        <form action="filtro.php" method="post">
-            <div class="main-filters">
-                <div class="radio_filtro">
-                    <h3>Histórico</h3>
-                    <label class="new-report-label" for="empresa">
-                    <input type="radio" name="filtro_principal" value="empresa">
-                    Empresa</label>
-                    <label class="new-report-label" for="periodo">
-                    <input type="radio" name="filtro_principal" value="periodo">
-                    Período</label>
-                </div>
-                <div class="date">
-                    <label class="beggining" for="start_date">Data de Início:</label>
-                    <input class="input-date" name="data_inicio" type="date" value="0000-00-00"/>
-                    <label class="end" for="end_date">Data do Fim:</label>
-                    <input class="input-date" name="data_fim" type="date" value="0000-00-00"/>
-                </div>
-            </div>
-            <div class="secondary-filters">
-                <div class="select_empresa">
-                    <h3>Filtro por Empresa:</h3>
-                    <select name="id_empresa" id="id_empresa">
-                        <option value="">Selecione em caso de "Relatório por Empresa"</option>
-                        <?php
-                            $query="SELECT id_empresa,nome_empresa,cnpj FROM empresa WHERE status=true ORDER BY nome_empresa ASC";
-                            $result = mysqli_query($con,$query);
-                            while($empresa = mysqli_fetch_assoc($result)){
-                                $cnpj_select = formatCnpjCpf($empresa['cnpj']) ;?>
-                                <option value="<?=$empresa['id_empresa'];?>"><?=$empresa['nome_empresa']." CNPJ: ".$cnpj_select;?></option>
-
-                        <?php } ?>  
-                    </select>
-                </div>
-            </div>
-    </div>
-    <button type="submit"><img src="../assets/search-h.png">Buscar</button>
-    </form>
 </main>
 
 <script>

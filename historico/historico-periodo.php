@@ -16,11 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/logo-favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/historico.css">
+    <link rel="stylesheet" href="../assets/css/historico-periodo.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <title>Histórico</title>
+    <title>Histórico Período</title>
 </head>
 <body>
 <aside class="sidebar">
@@ -127,51 +127,61 @@
 
         </aside>
 
-        <main class="main">
+<main class="main">
         <?php 
             include "../bd_connect.php";
         ?>
+        
+            <?php 
+            $query_ativos = "SELECT id_atendimento,nome_paciente,tipo_exame,data,nome_medico,nome_empresa 
+            FROM atendimento 
+            INNER JOIN medico ON atendimento.id_medico = medico.id_medico 
+            INNER JOIN empresa ON atendimento.id_empresa = empresa.id_empresa 
+            ORDER BY data ASC";
+            $result = mysqli_query($con,$query_ativos);?>
+        <div class="tabela">
+            <table>
+                <thead>
+                    <tr>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Colaborador</th>
+                    <th scope="col">Médico Atendente</th>
+                    <th scope="col">Exame</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while($consulta = mysqli_fetch_assoc($result)){ ?>
+                        <tr>
+                            <td>
+                                <?= $consulta['nome_empresa']; ?>
+                            </td>
+                            <td>
+                                <?= $consulta['nome_paciente']; ?>
+                            </td>
+                            <td>
+                            <?= $consulta['nome_medico']; ?>
+                            </td>
+                            <td>
+                                <?= $consulta['tipo_exame']; ?>
+                            </td>
+                            <td>
+                            <?= $consulta['data']; ?>
+                            </td>
+                            <td>
+                            <a href='editar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'>EDITAR</a>
+                            </td>
+                        </tr>
+                    <?php //FECHANDO WHILE
+                        } 
+                        mysqli_close($con);
+                    ?>  
+                </tbody>
+            </table> 
+        </div>
+       
 
-        <h1>Histórico de Atendimentos</h1>
-
-       <div class="filtros">
-        <form action="filtro.php" method="post">
-            <div class="main-filters">
-                <div class="radio_filtro">
-                    <h3>Histórico</h3>
-                    <label class="new-report-label" for="empresa">
-                    <input type="radio" name="filtro_principal" value="empresa">
-                    Empresa</label>
-                    <label class="new-report-label" for="periodo">
-                    <input type="radio" name="filtro_principal" value="periodo">
-                    Período</label>
-                </div>
-                <div class="date">
-                    <label class="beggining" for="start_date">Data de Início:</label>
-                    <input class="input-date" name="data_inicio" type="date" value="0000-00-00"/>
-                    <label class="end" for="end_date">Data do Fim:</label>
-                    <input class="input-date" name="data_fim" type="date" value="0000-00-00"/>
-                </div>
-            </div>
-            <div class="secondary-filters">
-                <div class="select_empresa">
-                    <h3>Filtro por Empresa:</h3>
-                    <select name="id_empresa" id="id_empresa">
-                        <option value="">Selecione em caso de "Relatório por Empresa"</option>
-                        <?php
-                            $query="SELECT id_empresa,nome_empresa,cnpj FROM empresa WHERE status=true ORDER BY nome_empresa ASC";
-                            $result = mysqli_query($con,$query);
-                            while($empresa = mysqli_fetch_assoc($result)){
-                                $cnpj_select = formatCnpjCpf($empresa['cnpj']) ;?>
-                                <option value="<?=$empresa['id_empresa'];?>"><?=$empresa['nome_empresa']." CNPJ: ".$cnpj_select;?></option>
-
-                        <?php } ?>  
-                    </select>
-                </div>
-            </div>
-    </div>
-    <button type="submit"><img src="../assets/search-h.png">Buscar</button>
-    </form>
 </main>
 
 <script>

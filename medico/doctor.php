@@ -102,7 +102,7 @@
                         <button class="sidebar-nav-button">
                             <span class="sidebar-nav-button-span">
                                 <span class="sidebar-nav-button-span2">
-                                    <img class="icons-main" src="../assets/historico.svg">Histórico
+                                    <img class="icons-main" src="../assets/history.png">Histórico
                                 </span>
                             </span>
                         </button>
