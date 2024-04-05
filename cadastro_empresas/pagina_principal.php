@@ -248,7 +248,7 @@
         </div>
         <div class="button">
         <br>
-        <button type="submit" value="cadastrar">Cadastrar</button>
+        <button type="submit" name="cadastrar" value="true">Cadastrar</button>
         <button type="submit" value="<?=$id_empresa?>">Confirmar Alteração</button>
         </div>
     </form>

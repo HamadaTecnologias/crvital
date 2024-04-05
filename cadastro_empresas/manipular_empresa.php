@@ -2,6 +2,7 @@
 
     //variáveis dos dados das empresas
     $id_empresa=$_POST["id_empresa"]??null;
+    $cadastrar = $_POST['cadastrar']??false;
     $nome_empresa = $_POST["nome_empresa"];
     $cnpj= $_POST["cnpj"];
     $perfil= $_POST["perfil"];
@@ -22,8 +23,15 @@
        $erro=TRUE;
         header('location:pagina_principal.php?perfil=true');
     }
+    //criando array com os ids das empresas
+    $query_valid="select id_empresa from empresa";
+    $empresa = mysqli_query($con,$query_valid);
+    $ids = array();
+    while($linha = mysqli_fetch_assoc($empresa)){
+        array_push($ids,$linha['id_empresa']);
+    }
 
-    if ($id_empresa == null) {
+    if ($cadastrar == true) {
         //TRATANDO EMPRESAS COM O MESMO NOME
         $query_empresa_cadastrada = "SELECT id_empresa,nome_empresa from empresa WHERE nome_empresa='".$nome_empresa."'";
         $result_empresa_cadastrada = mysqli_query($con,$query_empresa_cadastrada);
@@ -39,16 +47,6 @@
         }
         // FIM TRATANDO EMPRESAS COM O MESMO NOME
     }
-    
-    //criando array com os ids das empresas
-    $query_valid="select id_empresa from empresa";
-    $empresa = mysqli_query($con,$query_valid);
-    $ids = array();
-    while($linha = mysqli_fetch_assoc($empresa)){
-        array_push($ids,$linha['id_empresa']);
-    }
-
-
 
     if(!$erro){
         //fazendo busca nos arrays de ids para saber se vamos alterar uma empresa ou cadastrar uma nova
