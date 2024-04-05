@@ -29,14 +29,26 @@
     while($linha = mysqli_fetch_assoc($empresa)){
         array_push($ids,$linha['id_empresa']);
     }
-
-
+    //TRATANDO EMPRESAS COM O MESMO NOME
+    $query_empresa_cadastrada = "SELECT id_empresa,nome_empresa from empresa WHERE nome_empresa='".$nome_empresa."'";
+    $result_empresa_cadastrada = mysqli_query($con,$query_empresa_cadastrada);
+    $empresa_cadastrada = mysqli_fetch_assoc($result_empresa_cadastrada);
+    if (!empty($empresa_cadastrada['id_empresa'])) {
+        $erro=TRUE;
+        header('location:pagina_principal.php?existe=true');
+    }
+    
+    if (!empty($empresa_cadastrada['nome_empresa'])) {
+        $erro=TRUE;
+        header('location:pagina_principal.php?existe=true');
+    }
+    // FIM TRATANDO EMPRESAS COM O MESMO NOME
     if(!$erro){
         //fazendo busca nos arrays de ids para saber se vamos alterar uma empresa ou cadastrar uma nova
         if (in_array($id_empresa, $ids)) {
             $query = "update empresa set nome_empresa ='".$nome_empresa."', cnpj = '".$cnpj."', perfil = '".$perfil."', forma_pagamento = '".$forma_pagamento."'where id_empresa =".$id_empresa;
             if(mysqli_query($con,$query)){
-                header('location:pagina_principal.php?alterado=true');
+                // header('location:pagina_principal.php?alterado=true');
             }else{
                 echo "Erro ao Alterar o dado: <br>";
                 echo mysqli_error($con);
@@ -45,7 +57,7 @@
         }else{
             $query = "insert into empresa(nome_empresa,cnpj,perfil,forma_pagamento,status) values ('".$nome_empresa."','".$cnpj."','".$perfil."','".$forma_pagamento."','".true."')";
             if(mysqli_query($con,$query)){
-                header('location:pagina_principal.php?cadastro=true');
+                // header('location:pagina_principal.php?cadastro=true');
             }else{
             echo"Erro ao cadastrar Empresa<br>";
             echo mysqli_error($con);

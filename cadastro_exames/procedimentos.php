@@ -6,6 +6,7 @@
     $nome_procedimento = $_POST["nome_procedimento"];
     $valor= $_POST["valor"];
     $erro = FALSE;
+    $alterar = $_POST['alterar']??false;
     include "../bd_connect.php";
     //tratar dados inseridos
     if(empty($nome_procedimento)){
@@ -24,6 +25,22 @@
     $ids = array();
     while($linha = mysqli_fetch_assoc($procedimento)){
         array_push($ids,$linha['id_procedimento']);
+    }
+    if ($alterar == false) {
+        //TRATANDO PROCEDIMENTOS COM O MESMO NOME
+        $query_procedimento_cadastrado = "SELECT id_procedimento,nome_procedimento FROM procedimento WHERE nome_procedimento='".$nome_procedimento."'";
+        $result_procedimento_cadastrado = mysqli_query($con,$query_procedimento_cadastrado);
+        $procedimento_cadastrado = mysqli_fetch_assoc($result_procedimento_cadastrado);
+        if (!empty($procedimento_cadastrado['id_procedimento'])) {
+            $erro=TRUE;
+            header('location:pagina_principal.php?existe=true&id_empresa='.$id_empresa);
+        }
+        
+        if (!empty($procedimento_cadastrado['nome_procedimento'])) {
+            $erro=TRUE;
+            header('location:pagina_principal.php?existe=true&id_empresa='.$id_empresa);
+        }
+        // FIM TRATANDO PROCEDIMENTOS COM O MESMO NOME
     }
 
 
