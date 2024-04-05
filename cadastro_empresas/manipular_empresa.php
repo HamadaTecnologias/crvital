@@ -33,7 +33,7 @@
 
     if ($cadastrar == true) {
         //TRATANDO EMPRESAS COM O MESMO NOME
-        $query_empresa_cadastrada = "SELECT id_empresa,nome_empresa from empresa WHERE nome_empresa='".$nome_empresa."'";
+        $query_empresa_cadastrada = "SELECT id_empresa,nome_empresa from empresa WHERE nome_empresa like '%".$nome_empresa."%'";
         $result_empresa_cadastrada = mysqli_query($con,$query_empresa_cadastrada);
         $empresa_cadastrada = mysqli_fetch_assoc($result_empresa_cadastrada);
         if (!empty($empresa_cadastrada['id_empresa'])) {
