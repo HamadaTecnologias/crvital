@@ -232,7 +232,7 @@
                 <!-- FIM DADOS ATENDIMENTO  -->
                     <?php 
                         if ($id_empresa!=null) {
-                        $query="select id_procedimento,nome_procedimento from procedimento WHERE id_empresa=".$id_empresa;
+                        $query="SELECT id_procedimento,nome_procedimento from procedimento WHERE id_empresa=".$id_empresa." ORDER BY nome_procedimento ASC";
                         $resultado = mysqli_query($con,$query);?>
                 <!-- SELEÇÃO PROCEDIMENTOS  -->
                 <div class="procedimentos">
