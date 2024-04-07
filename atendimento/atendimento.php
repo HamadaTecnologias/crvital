@@ -284,6 +284,8 @@
                     <th scope="col">Exame</th>
                     <th scope="col">Check-in</th>
                     <th scope="col">Finalizar</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -306,6 +308,12 @@
                             </td>
                             <td>
                             <a href='cadastrar_atendimento.php?finalizar=true&id_atendimento=<?= $consulta['id_atendimento']; ?>'>FINALIZAR</a>
+                            </td>
+                            <td>
+                            <a href='../historico/editar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento'];?>'>EDITAR</a>
+                            </td>
+                            <td>
+                            <a href='../historico/deletar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento'];?>'>EXCLUIR</a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE
