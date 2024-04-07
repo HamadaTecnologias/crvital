@@ -26,7 +26,7 @@
 <aside class="sidebar">
             <header class="sidebar-header">
                 <img class="img-logo" src="../assets/logo-crvital.png">
-
+            </header>
                 <nav class="sidebar-nav">
                 <?php if($nivel != 'R' && $nivel != 'F') { ?>
                     <a href="../usuario/admin.php">
@@ -180,8 +180,7 @@
                             </div>
                             <div class="dados_2">
                                 <label for="cnpj">CNPJ:</label>
-            </header>
-                            <span><?=$cnpj?></span>
+                                <span><?=$cnpj?></span>
                             <label for="forma_pagamento">Método de Pagamento:</label>
                             <select name="forma_pagamento" required>
                                 <option value="<?=$linha_empresa['forma_pagamento']?>"><?=$linha_empresa['forma_pagamento']?></option>
@@ -258,9 +257,9 @@
                 <!-- FIM SELEÇÃO PROCEDIMENTOS  -->
             </div>
              <!-- FIM DIV CHECKIN  -->
-             <div class="button">
+            <div class="button">
                     <button type="submit" value="cadastrar">Iniciar Atendimento</button>
-                </div>
+            </div>
             </form>
              <!-- FIM DO FORM DE CHECK-IN -->
 <?php }?>

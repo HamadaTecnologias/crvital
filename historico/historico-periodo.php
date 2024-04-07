@@ -149,6 +149,7 @@
                     <th scope="col">Exame</th>
                     <th scope="col">Data</th>
                     <th scope="col">Editar</th>
+                    <th scope="col">Deletar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -171,6 +172,9 @@
                             </td>
                             <td>
                             <a href='editar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'>EDITAR</a>
+                            </td>
+                            <td>
+                            <a href='deletar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE

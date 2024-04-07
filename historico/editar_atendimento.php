@@ -137,7 +137,7 @@
     <?php 
 
       
-                $query_atendimento="SELECT A.data, A.nome_paciente, A.tipo_exame, E.nome_empresa,E.cnpj,E.perfil,A.metodo_pagamento,M.nome_medico
+                $query_atendimento="SELECT A.data, A.nome_paciente, A.tipo_exame,A.id_empresa, E.nome_empresa,E.cnpj,E.perfil,A.metodo_pagamento,M.id_medico,M.nome_medico
                 FROM atendimento A
                 INNER JOIN atendimento_procedimento AP ON A.id_atendimento = AP.id_atendimento
                 INNER JOIN procedimento P ON P.id_procedimento = AP.id_procedimento
@@ -155,7 +155,8 @@
                 
                     <div class="dados">
                     <!-- FORM DE CADASTRO DE ATENDIMENTO -->
-                    <form action="alterar_atendimento.php" method="post">  
+                    <form action="alterar_atendimento.php" method="post"> 
+                    <input style="display:none" name="id_atendimento" type="number" value="<?=$id_atendimento?>">
                     <!-- DADOS DA EMPRESA SELECIONADA  -->
                         <div class="empresa">
                             <div class="dados_1">
@@ -167,17 +168,16 @@
                             </div>
                             <div class="dados_2">
                                 <label for="cnpj">CNPJ:</label>
-            </header>
-                            <span><?=$cnpj?></span>
-                            <label for="forma_pagamento">Método de Pagamento:</label>
-                            <select name="forma_pagamento" required>
-                                <option value="<?=$dados['metodo_pagamento']?>"><?=$dados['metodo_pagamento']?></option>
-                                <option value=Dinheiro>Dinheiro</option>
-                                <option value=Boleto>Boleto</option>
-                                <option value=Faturado>Faturamento</option>
-                                <option value=Credito>Crédito em conta</option>
-                            </select>
-                        </div>               
+                                <span><?=$cnpj?></span>
+                                <label for="forma_pagamento">Método de Pagamento:</label>
+                                <select name="forma_pagamento" required>
+                                    <option value="<?=$dados['metodo_pagamento']?>"><?=$dados['metodo_pagamento']?></option>
+                                    <option value=Dinheiro>Dinheiro</option>
+                                    <option value=Boleto>Boleto</option>
+                                    <option value=Faturado>Faturamento</option>
+                                    <option value=Credito>Crédito em conta</option>
+                                </select>
+                            </div>               
                     </div>
                     <!-- FIM DADOS DA EMPRESA SELECIONADA  -->
                     <!-- DADOS ATENDIMENTO  -->
@@ -200,12 +200,11 @@
                             </select>
                             <label for="id_medico">Médico Examinador:</label>
                             <select name="id_medico" id="id_medico" required>
-                                <option value="">Selecione um Profissional</option>
+                                <option value="<?=$dados['id_medico']?>"><?=$dados['nome_medico']?></option>
                                 <?php
                                     $query_medico="select id_medico,nome_medico from medico ORDER BY nome_medico ASC";
                                     $result_medico = mysqli_query($con,$query_medico);
-                                    while($linha_medico = mysqli_fetch_assoc($result_medico)){?>
-                                        <option value="<?=$dados['nome_medico']?>"><?=$dados['nome_medico']?></option>
+                                    while($linha_medico = mysqli_fetch_assoc($result_medico)){?>                                   
                                         <option value="<?=$linha_medico['id_medico'];?>"><?=$linha_medico['nome_medico'];?></option>
                                 <?php } ?>  
                             </select>
@@ -219,9 +218,33 @@
                 </div>
                 <!-- FIM DADOS ATENDIMENTO  -->
                     <?php 
-                        if ($dados['id_empresa']!=null) {
-                        $query_procedimento="select id_procedimento,nome_procedimento from procedimento WHERE id_empresa=".$dados['id_empresa'];
-                        $result_procedimento= mysqli_query($con,$query_procedimento);?>
+                            $query_procedimentos="SELECT id_procedimento,nome_procedimento from procedimento WHERE id_empresa=".$dados['id_empresa']." ORDER BY nome_procedimento ASC";
+                            $result_procedimento = mysqli_query($con,$query_procedimentos);
+
+
+                                    
+                            $query_procedimento_cadastrado = "SELECT P.id_procedimento,P.nome_procedimento,P.valor 
+                            FROM atendimento A
+                            INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
+                            INNER JOIN procedimento P ON P.id_procedimento=AP.id_procedimento
+                            INNER JOIN empresa E ON E.id_empresa=P.id_empresa
+                            WHERE A.id_atendimento=".$id_atendimento." ORDER BY P.nome_procedimento ASC";  
+                            $result_procedimento_cadastrado = mysqli_query($con,$query_procedimento_cadastrado);
+
+                            //CONTANDO QUANTOS PROCEDIMENTOS TEM CADASTRADOS NO ATENDIMENTO
+                            $count_procedimento = array();
+                            $query_count = "SELECT P.id_procedimento
+                            FROM atendimento A
+                            INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
+                            INNER JOIN procedimento P ON P.id_procedimento=AP.id_procedimento
+                            INNER JOIN empresa E ON E.id_empresa=P.id_empresa
+                            WHERE A.id_atendimento=".$id_atendimento; 
+                            $result_count = mysqli_query($con,$query_count);
+                            while ($linha_count = mysqli_fetch_assoc($result_count)) {
+                                array_push($count_procedimento,$linha_count['id_procedimento']);
+                            }
+                      
+                    ?>
                 <!-- SELEÇÃO PROCEDIMENTOS  -->
                 <div class="procedimentos">
                     <table>
@@ -238,28 +261,48 @@
                         <td><label for="id_procedimento"><?=$procedimento['nome_procedimento']?></label></td>
                         <td><input type="checkbox" name="id_procedimento[]" value="<?=$procedimento['id_procedimento']?>"></td>
                         </tr>     
-                        <?php } ?>  
-                        <?php } ?> 
+                        <?php } ?>                       
                     </tbody>
                     </table>
+
+                    <table>
+                    <thead>
+                        <tr>
+                        <th scope="col">Procedimentos Já Cadastrados</th>
+                        <th scope="col">Remover</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        while($procedimento_cadastrado = mysqli_fetch_assoc($result_procedimento_cadastrado)){
+                        $id_procedimento = $procedimento_cadastrado['id_procedimento']
+                    ?>
+                        <tr>
+                        <td><label for="id_procedimento"><?=$procedimento_cadastrado['nome_procedimento']?></label></td>
+                        <?php if (count($count_procedimento) == 1) {?>
+                        <td><a href="#" onclick="alert('Impossível excluir procedimento, favor adicione um novo procedimento antes de excluir este');"><i class="fa-solid fa-trash-can"></i></a></td>
+                        <?php }else{?>
+                        <td><a href='remover_procedimento.php?id_atendimento=<?=$id_atendimento?>&id_procedimento=<?=$id_procedimento?>'><i class="fa-solid fa-trash-can"></i></a></td>
+                        <?php }?>
+                        </tr>     
+                        <?php } ?>                       
+                    </tbody>
+                    </table>
+
+
                 </div>
                 <!-- FIM SELEÇÃO PROCEDIMENTOS  -->
             </div>
              <!-- FIM DIV CHECKIN  -->
-             <div class="button">
+            <div class="button">
                     <button type="submit" value="cadastrar">Atualizar</button>
-                </div>
+            </div>
             </form>
-             <!-- FIM DO FORM DE CHECK-IN -->
+             <!-- FIM DO FORM DE ATUALIZAR-->
 
 
 </main>
 
-<script>
-    $(document).ready(function() {
-        $('#id_empresa').select2();
-    });
-</script>
 <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 <?php
 function formatCnpjCpf($value){
