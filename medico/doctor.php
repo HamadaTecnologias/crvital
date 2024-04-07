@@ -109,32 +109,49 @@
                 </a>
                 <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário:</strong> <?=$nome_usuario?></p>
             </nav>
-
         </aside>
+
+        <!-- Recebendo dados do médico para alterar -->
+        <?php
+            include "../bd_connect.php";
+            $id_medico = $_GET['id_medico']??null;
+            $alterar['nome_medico'] =null;
+            $alterar['cpf'] =null;
+            if($id_medico !=null){
+                $query = "SELECT nome_medico, cpf from medico where id_medico=".$id_medico;
+                $medico = mysqli_query($con, $query);
+                $alterar = mysqli_fetch_assoc($medico);
+            }
+        ?>
 
         <main class="main">
                 <div class="new-doctor">
                 <h3>Cadastrar Novo Médico:</h3>
-                <form action="new_doctor.php" method="post">
+                <form action="manipular_medico.php" method="post">
+                    <input style="display:none" name="id_medico" id="id_medico" type="number" value="<?=$id_medico?>"><br>
                     <label class="new-doctor-label" for="new_doctor_username">Médico:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_username" placeholder="Digite o nome"><br>
+                    <input class="new-doctor-input" type="text" id="new_doctor_username" name="new_doctor_username" placeholder="Digite o nome" value="<?=$alterar['nome_medico']?>"><br>
+
 
                     <label class="new-doctor-label" for="new_doctor_cpf">CPF:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_cpf" placeholder="Digite o CPF (somente números)"><br>
+                    <input class="new-doctor-input" type="text" id="new_doctor_cpf" name="new_doctor_cpf" placeholder="Digite o CPF (somente números)" value="<?=$alterar['cpf']?>"><br>
 
                     <label class="new-doctor-label" for="new_doctor_nis">NIS:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_nis" placeholder="Digite o número do NIS"><br>
+                    <input class="new-doctor-input" type="text" id="new_doctor_nis" name="new_doctor_nis" placeholder="Digite o número do NIS" value="<?=$alterar['nis']?>"><br>
 
                     <label class="new-doctor-label" for="new_doctor_board">Conselho (SIGLA):</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_board" placeholder="Digite a sigla do conselho"><br>
+                    <input class="new-doctor-input" type="text" id="new_doctor_board" name="new_doctor_board" placeholder="Digite a sigla do conselho" value="<?=$alterar['sigla_conselho']?>"><br>
+
 
                     <label class="new-doctor-label" for="new_doctor_register_board">Registro no Conselho</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_register_board" placeholder="Digite o registro do conselho"><br>
+                    <input class="new-doctor-input" type="text" id="new_doctor_register_board" name="new_doctor_register_board" placeholder="Digite o registro do conselho" value="<?=$alterar['registro_conselho']?>"><br>
 
                     <label class="new-doctor-label" for="new_doctor_category">Categoria</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_category" placeholder="Digite a categoria"><br>
+                    <input class="new-doctor-input" type="text" id="new_doctor_category" name="new_doctor_category" placeholder="Digite a categoria" value="<?=$alterar['categoria']?>"><br>
 
-                    <button type="submit">Cadastrar</button>
+
+                    <button type="submit" name="cadastrar" value="true">Cadastrar</button>
+                    <button type="submit" value="<?=$alterar['id_medico']?>">Confirmar Alteração</button>
                 </form>
                 </div>
 
@@ -146,7 +163,8 @@
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>Categoria</th>
-                        <th>Ações</th>
+                        <th>Apagar</th>
+                        <th>Alterar</th>
                     </tr>
                     <?php
                     function formatCnpjCpf($value)
@@ -172,6 +190,7 @@
                             echo "<td>" . $cpf . "</td>";
                             echo "<td>" . $row['categoria'] . "</td>";
                             echo "<td><a href='delete_doctor.php?id_medico=".$row['id_medico']."'><i class=\"fa-solid fa-trash-can\"></i></a></td>";
+                            echo "<td><a href='doctor.php?id_medico=".$row['id_medico']."'><i class=\"fa-solid fa-rotate\"></i></a></td>";
                             echo "</tr>";
                         }
                     } else {
