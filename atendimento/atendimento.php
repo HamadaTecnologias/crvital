@@ -134,7 +134,12 @@
             include "../bd_connect.php";
             //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
             $id_empresa= $_GET['id_empresa']??null;
+            $error_procedimento = $_GET['error_procedimento']??false;
         ?>
+        <?php 
+        if ($error_procedimento != false) {?>
+            <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;">Escolha ao menos um Procedimento</h3>
+        <?php } ?>
 
         <main class="main"> 
             <!-- FORM DE SELECT DE EMPRESA -->
