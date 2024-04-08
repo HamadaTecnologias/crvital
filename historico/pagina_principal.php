@@ -16,8 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/logo-favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/doctor.css">
-    <title>Médicos</title>
+    <link rel="stylesheet" href="../assets/css/historico.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <title>Histórico</title>
 </head>
 <body>
 <aside class="sidebar">
@@ -76,7 +79,7 @@
                 <?php if($nivel != 'F') { ?>
                     <a href="../medico/doctor.php">
                     <button class="sidebar-nav-button">
-                        <span style="background: #61CE70;">
+                        <span class="sidebar-nav-button-span">
                             <span class="sidebar-nav-button-span2">
                                 <img class="icons-main" src="../assets/doctor.png">Médicos
                             </span>
@@ -97,10 +100,10 @@
                     </a>
                 <?php } ?>
 
-                <?php if($nivel != 'R') { ?>
+                <?php if($nivel != 'F') { ?>
                     <a href="../historico/pagina_principal.php">
                         <button class="sidebar-nav-button">
-                            <span class="sidebar-nav-button-span">
+                            <span style="background: #61CE70;">
                                 <span class="sidebar-nav-button-span2">
                                     <img class="icons-main" src="../assets/history.png">Histórico
                                 </span>
@@ -108,7 +111,8 @@
                         </button>
                     </a>
                 <?php } ?>
-                  
+
+                    
                 <a href="../login/logout.php">
                     <button class="sidebar-nav-button">
                         <span class="sidebar-nav-button-span">
@@ -124,74 +128,66 @@
         </aside>
 
         <main class="main">
-                <div class="new-doctor">
-                <h3>Cadastrar Novo Médico:</h3>
-                <form action="new_doctor.php" method="post">
-                    <label class="new-doctor-label" for="new_doctor_username">Médico:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_username" placeholder="Digite o nome"><br>
+        <?php 
+            include "../bd_connect.php";
+        ?>
 
-                    <label class="new-doctor-label" for="new_doctor_cpf">CPF:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_cpf" placeholder="Digite o CPF (somente números)"><br>
+        <h1>Histórico de Atendimentos</h1>
 
-                    <label class="new-doctor-label" for="new_doctor_nis">NIS:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_nis" placeholder="Digite o número do NIS"><br>
-
-                    <label class="new-doctor-label" for="new_doctor_board">Conselho (SIGLA):</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_board" placeholder="Digite a sigla do conselho"><br>
-
-                    <label class="new-doctor-label" for="new_doctor_register_board">Registro no Conselho</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_register_board" placeholder="Digite o registro do conselho"><br>
-
-                    <label class="new-doctor-label" for="new_doctor_category">Categoria</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_category" placeholder="Digite a categoria"><br>
-
-                    <button type="submit">Cadastrar</button>
-                </form>
+        <div class="filtros">
+        <form action="filtro.php" method="post">
+            <div class="main-filters">
+                <div class="radio_filtro">
+                    <h3>Histórico</h3>
+                    <label class="new-report-label" for="empresa">
+                    <input type="radio" name="filtro_principal" value="empresa">
+                    Empresa</label>
+                    <label class="new-report-label" for="periodo">
+                    <input type="radio" name="filtro_principal" value="periodo">
+                    Período</label>
                 </div>
-
-                <div class="registred-doctors">
-                <h3>Médicos Cadastrados:</h3>
-                <table>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Categoria</th>
-                        <th>Ações</th>
-                    </tr>
-                    <?php
-                    function formatCnpjCpf($value)
-                    {
-                      $CPF_LENGTH = 11;
-                      $cnpj_cpf = preg_replace("/\D/", '', $value);
-                      
-                      if (strlen($cnpj_cpf) === $CPF_LENGTH) {
-                        return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
-                      } 
-                      
-                      return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
-                    }
-                    include "../bd_connect.php";
-                    $query = "SELECT id_medico, nome_medico, cpf, categoria FROM medico;";
-                    $result = mysqli_query($con, $query);
-                    if ($result) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $cpf = formatCnpjCpf($row['cpf']);
-                            echo "<tr>";
-                            echo "<td>" . $row['id_medico'] . "</td>";
-                            echo "<td>" . $row['nome_medico'] . "</td>";
-                            echo "<td>" . $cpf . "</td>";
-                            echo "<td>" . $row['categoria'] . "</td>";
-                            echo "<td><a href='delete_doctor.php?id_medico=".$row['id_medico']."'><i class=\"fa-solid fa-trash-can\"></i></a></td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "Erro ao recuperar os usuários.";
-                    }
-                    ?>
-                </table>
+                <div class="date">
+                    <label class="beggining" for="start_date">Data de Início:</label>
+                    <input class="input-date" name="data_inicio" type="date" value="0000-00-00" required/>
+                    <label class="end" for="end_date">Data do Fim:</label>
+                    <input class="input-date" name="data_fim" type="date" value="0000-00-00" required/>
                 </div>
-        </main>
+            </div>
+            <div class="secondary-filters">
+                <div class="select_empresa">
+                    <h3>Filtro por Empresa:</h3>
+                    <select name="id_empresa" id="id_empresa">
+                        <option value="">Selecione em caso de "Relatório por Empresa"</option>
+                        <?php
+                            $query="SELECT id_empresa,nome_empresa,cnpj FROM empresa WHERE status=true ORDER BY nome_empresa ASC";
+                            $result = mysqli_query($con,$query);
+                            while($empresa = mysqli_fetch_assoc($result)){
+                                $cnpj_select = formatCnpjCpf($empresa['cnpj']) ;?>
+                                <option value="<?=$empresa['id_empresa'];?>"><?=$empresa['nome_empresa']." CNPJ: ".$cnpj_select;?></option>
+
+                        <?php } ?>  
+                    </select>
+                </div>
+            </div>
+        </div>
+            <button type="submit"><img src="../assets/search-h.png">Buscar</button>
+        </form>
+</main>
+
+<script>
+    $(document).ready(function() {
+        $('#id_empresa').select2();
+    });
+</script>
 <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
+<?php
+function formatCnpjCpf($value){
+        $CPF_LENGTH = 11;
+        $cnpj_cpf = preg_replace("/\D/", '', $value);
+        if (strlen($cnpj_cpf) === $CPF_LENGTH) {
+            return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
+        } 
+        return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
+} ?>
 </body>
 </html>
