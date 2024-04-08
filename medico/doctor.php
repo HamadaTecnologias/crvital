@@ -117,8 +117,12 @@
             $id_medico = $_GET['id_medico']??null;
             $alterar['nome_medico'] =null;
             $alterar['cpf'] =null;
+            $alterar['nis'] =null;
+            $alterar['sigla_conselho'] =null;
+            $alterar['registro_conselho'] =null;
+            $alterar['categoria'] =null;
             if($id_medico !=null){
-                $query = "SELECT nome_medico, cpf from medico where id_medico=".$id_medico;
+                $query = "SELECT nome_medico, cpf, nis, sigla_conselho, registro_conselho, categoria from medico where id_medico=".$id_medico;
                 $medico = mysqli_query($con, $query);
                 $alterar = mysqli_fetch_assoc($medico);
             }
@@ -151,7 +155,7 @@
 
 
                     <button type="submit" name="cadastrar" value="true">Cadastrar</button>
-                    <button type="submit" value="<?=$alterar['id_medico']?>">Confirmar Alteração</button>
+                    <button type="submit" value="<?=$id_medico?>">Confirmar Alteração</button>
                 </form>
                 </div>
 

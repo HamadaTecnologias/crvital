@@ -3,7 +3,7 @@
     $cadastrar = $_POST['cadastrar']??false;
     $nome_medico = $_POST["nome_medico"];
     $nis= $_POST["nis"];
-    $conselho = $_POST["conselho"];
+    $sigla_conselho = $_POST["sigla_conselho"];
     $registro_conselho = $_POST["registro_conselho"];
     $categoria = $_POST["categoria"];
     $erro=FALSE;
@@ -11,12 +11,12 @@
 
     if (empty($nome_medico)) {
         $erro=TRUE;
-        header('location:pagina_principal.php?nome=true');
+        header('location:doctor.php?nome=true');
     }
-    if (empty($categoria){
+    if (empty($categoria)){
         $erro=TRUE;
-        header('location:pagina_principal.php?categoria=true');
-    })
+        header('location:doctor.php?categoria=true');
+    }
 
     $query_valid="select id_medico from medico";
     $medico = mysqli_query($con,$query_valid);
@@ -43,7 +43,7 @@
 
     if(!$erro){
         if (in_array($id_medico, $ids)) {
-            $query = "update medico set nome_medico ='".$nome_medico."', nis = '".$nis."', conselho = '".$conselho."', registro_conselho = '".$registro_conselho."', categoria = '".$categoria."' where id_medico =".$id_medico;
+            $query = "update medico set nome_medico ='".$nome_medico."', nis = '".$nis."', sigla_conselho = '".$sigla_conselho."', registro_conselho = '".$registro_conselho."', categoria = '".$categoria."' where id_medico =".$id_medico;
             if(mysqli_query($con,$query)){
                 header('location:doctor.php?alterado=true');
             }else{
