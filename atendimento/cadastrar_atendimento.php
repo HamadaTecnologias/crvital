@@ -40,7 +40,7 @@ if ($finalizar!=false) {
     if (isset($_POST['id_procedimento']))
         $id_procedimento = $_POST['id_procedimento'];
 
-
+    
     // DEFININDO HORARIO CHECKIN
     $query_hora="SELECT TIME_FORMAT(CURTIME(), '%H:%i')";
     $result = mysqli_query($con,$query_hora);
@@ -57,6 +57,9 @@ if ($finalizar!=false) {
 
 
     //EFETUANDO CHECK-IN
+    if ($id_procedimento == NULL) {
+        header('location:atendimento.php?error_procedimento=true');
+    }else{
     if(mysqli_query($con,$query)){
         $result = mysqli_query($con,$query_idcheckin);
         $id = mysqli_fetch_assoc($result);
@@ -73,7 +76,8 @@ if ($finalizar!=false) {
     echo"Erro ao iniciar atendimento<br>";
     echo mysqli_error($con);
     echo "<br>Contate o Suporte";
-    }   
+    }  
+    }
     //FIM CHECK-IN
 }
 
