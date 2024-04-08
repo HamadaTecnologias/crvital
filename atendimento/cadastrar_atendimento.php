@@ -7,7 +7,7 @@ $tipo_exame_antes = $_POST['tipo_exame']??null;
 $tipo_exame = str_replace("%", " ", "$tipo_exame_antes");
 //FIM RETIRANDO % DO TIPO EXAME
 $id_medico = $_POST['id_medico']??null;
-$hora_checkout = null;
+$hora_checkout = '00:00';
 $data = $_POST['data_atendimento']??null;
 $nome_paciente =$_POST['nome_paciente']??null;
 $finalizar = $_GET['finalizar']??false;

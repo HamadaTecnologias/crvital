@@ -82,7 +82,7 @@
                         INNER JOIN procedimento P ON  P.id_procedimento=AP.id_procedimento
                         INNER JOIN empresa E ON E.id_empresa=P.id_empresa
                         WHERE  A.data BETWEEN '".$data_inicio."' and '".$data_fim."'
-                        ORDER BY E.nome_empresa ASC, A.data ASC;";
+                        ORDER BY E.nome_empresa ASC;";
                         $result = mysqli_query($con,$query);
                         $ids_atendimento = array();
                         $ids_empresa = array();
