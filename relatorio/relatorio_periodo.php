@@ -124,7 +124,7 @@
                                             INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
                                             INNER JOIN procedimento P ON P.id_procedimento=AP.id_procedimento
                                             INNER JOIN empresa E ON E.id_empresa=P.id_empresa
-                                            WHERE A.data BETWEEN '".$data_inicio."' and '".$data_fim."' AND  A.id_atendimento=".$linha['id_atendimento'];  
+                                            WHERE A.data BETWEEN '".$data_inicio."' and '".$data_fim."' AND  A.id_atendimento=".$linha['id_atendimento']." ORDER BY P.nome_procedimento ASC";  
                                             $result_nome = mysqli_query($con,$query_nome_procedimento);
                                             while($linha_nome = mysqli_fetch_assoc($result_nome)){
                                             echo  $linha_nome['nome_procedimento']."<br>";
@@ -137,7 +137,7 @@
                                             INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
                                             INNER JOIN procedimento P ON P.id_procedimento=AP.id_procedimento
                                             INNER JOIN empresa E ON E.id_empresa=P.id_empresa
-                                            WHERE A.data BETWEEN '".$data_inicio."' and '".$data_fim."' AND  A.id_atendimento=".$linha['id_atendimento'];  
+                                            WHERE A.data BETWEEN '".$data_inicio."' and '".$data_fim."' AND  A.id_atendimento=".$linha['id_atendimento']." ORDER BY P.nome_procedimento ASC";    
                                             $result_valor = mysqli_query($con,$query_valor_procedimento);
                                             while($linha_valor = mysqli_fetch_assoc($result_valor)){
                                             echo"R$ ".$linha_valor['valor']."<br>";
