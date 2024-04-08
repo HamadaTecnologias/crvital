@@ -100,7 +100,7 @@
                     </a>
                 <?php } ?>
 
-                <?php if($nivel != 'R') { ?>
+                <?php if($nivel != 'F') { ?>
                     <a href="../historico/pagina_principal.php">
                         <button class="sidebar-nav-button">
                             <span style="background: #61CE70;">

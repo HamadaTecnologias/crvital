@@ -6,7 +6,7 @@ $data_fim = $_GET['data_fim'];
 
 $query_delete = "DELETE FROM atendimento WHERE id_atendimento=".$id_atendimento;
 if (mysqli_query($con,$query_delete)) {
-    header('location:historico-periodo.php?data_inicio='.$data_inicio.'&data_fim='.$data_fim);
+    header('location:atendimento.php?excluido=true');
 }else{
     echo"Erro ao iniciar atendimento<br>";
     echo mysqli_error($con);

@@ -100,7 +100,7 @@
                     </a>
                 <?php } ?>
 
-                <?php if($nivel != 'R') { ?>
+                <?php if($nivel != 'F') { ?>
                     <a href="../historico/pagina_principal.php">
                         <button class="sidebar-nav-button">
                             <span style="background: #61CE70;">
@@ -130,6 +130,8 @@
 <main class="main">
         <?php 
             include "../bd_connect.php";
+            $data_inicio =$_GET['data_inicio'];
+            $data_fim = $_GET['data_fim'];
         ?>
         
             <?php 
@@ -137,9 +139,9 @@
             FROM atendimento 
             INNER JOIN medico ON atendimento.id_medico = medico.id_medico 
             INNER JOIN empresa ON atendimento.id_empresa = empresa.id_empresa 
-            ORDER BY data ASC";
+            WHERE data BETWEEN '".$data_inicio."' and '".$data_fim."' ORDER BY data ASC";
             $result = mysqli_query($con,$query_ativos);?>
-        <div class="tabela">
+        <div class="painel">
             <table>
                 <thead>
                     <tr>
@@ -162,19 +164,19 @@
                                 <?= $consulta['nome_paciente']; ?>
                             </td>
                             <td>
-                            <?= $consulta['nome_medico']; ?>
+                                <?= $consulta['nome_medico']; ?>
                             </td>
                             <td>
                                 <?= $consulta['tipo_exame']; ?>
                             </td>
                             <td>
-                            <?= $consulta['data']; ?>
+                                <?= date('d/m/Y', strtotime($consulta['data'])) ?>
                             </td>
                             <td>
-                            <a href='editar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'>EDITAR</a>
+                                <a href='editar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'>EDITAR</a>
                             </td>
                             <td>
-                            <a href='deletar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'><i class="fa-solid fa-trash-can"></i></a>
+                                <a href='deletar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento']?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>'><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE

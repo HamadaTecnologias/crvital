@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/logo-favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/historico.css">
+    <link rel="stylesheet" href="../assets/css/historico-empresa.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -100,7 +100,7 @@
                     </a>
                 <?php } ?>
 
-                <?php if($nivel != 'R') { ?>
+                <?php if($nivel != 'F') { ?>
                     <a href="../historico/pagina_principal.php">
                         <button class="sidebar-nav-button">
                             <span style="background: #61CE70;">
@@ -127,11 +127,67 @@
 
         </aside>
 
-        <main class="main">
-        <?php 
+<main class="main">
+       <?php 
             include "../bd_connect.php";
+            $data_inicio =$_GET['data_inicio'];
+            $data_fim = $_GET['data_fim'];
+            $id_empresa = $_GET['id_empresa']
         ?>
-
+        
+            <?php 
+            $query_ativos = "SELECT A.id_atendimento,A.nome_paciente,A.tipo_exame,A.data,M.nome_medico,E.nome_empresa 
+            FROM atendimento A
+            INNER JOIN medico M ON A.id_medico = M.id_medico 
+            INNER JOIN empresa E ON A.id_empresa = E.id_empresa 
+            WHERE A.id_empresa=".$id_empresa." AND A.data BETWEEN '".$data_inicio."' and '".$data_fim."' ORDER BY data ASC";
+            $result = mysqli_query($con,$query_ativos);?>
+        <div class="painel">
+            <table>
+                <thead>
+                    <tr>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Colaborador</th>
+                    <th scope="col">Médico Atendente</th>
+                    <th scope="col">Exame</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while($consulta = mysqli_fetch_assoc($result)){ ?>
+                        <tr>
+                            <td>
+                                <?= $consulta['nome_empresa']; ?>
+                            </td>
+                            <td>
+                                <?= $consulta['nome_paciente']; ?>
+                            </td>
+                            <td>
+                                <?= $consulta['nome_medico']; ?>
+                            </td>
+                            <td>
+                                <?= $consulta['tipo_exame']; ?>
+                            </td>
+                            <td>
+                                <?= date('d/m/Y', strtotime($consulta['data'])) ?>
+                            </td>
+                            <td>
+                                <a href='editar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'>EDITAR</a>
+                            </td>
+                            <td>
+                                <a href='deletar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento']?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>'><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    <?php //FECHANDO WHILE
+                        } 
+                        mysqli_close($con);
+                    ?>  
+                </tbody>
+            </table> 
+        </div>
+       
 </main>
 
 <script>

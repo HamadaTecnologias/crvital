@@ -268,12 +268,12 @@
 <!-- ATENDIMENTOS ATIVOS -->
             <div class="atendimentos_ativos">
             <?php 
-            $query_ativos = "SELECT id_atendimento,nome_paciente,tipo_exame,hora_checkin,nome_medico,nome_empresa 
-            FROM atendimento 
-            INNER JOIN medico ON atendimento.id_medico = medico.id_medico 
-            INNER JOIN empresa ON atendimento.id_empresa = empresa.id_empresa 
-            WHERE hora_checkout=0
-            ORDER BY hora_checkin ASC";
+            $query_ativos = "SELECT A.id_atendimento,A.nome_paciente,A.tipo_exame,A.hora_checkin,M.nome_medico,E.nome_empresa 
+            FROM atendimento A
+            INNER JOIN medico M ON A.id_medico = M.id_medico 
+            INNER JOIN empresa E ON A.id_empresa = E.id_empresa 
+            WHERE A.hora_checkout='00:00'
+            ORDER BY A.hora_checkin ASC";
             $result = mysqli_query($con,$query_ativos);?>
             <table>
                 <thead>
@@ -313,7 +313,7 @@
                             <a href='../historico/editar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento'];?>'>EDITAR</a>
                             </td>
                             <td>
-                            <a href='../historico/deletar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento'];?>'>EXCLUIR</a>
+                            <a href='../atendimento/deletar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento'];?>'>EXCLUIR</a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE

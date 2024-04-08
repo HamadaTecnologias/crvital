@@ -100,7 +100,7 @@
                     </a>
                 <?php } ?>
 
-                <?php if($nivel != 'R') { ?>
+                <?php if($nivel != 'F') { ?>
                     <a href="../historico/pagina_principal.php">
                         <button class="sidebar-nav-button">
                             <span style="background: #61CE70;">
@@ -134,7 +134,7 @@
 
         <h1>Histórico de Atendimentos</h1>
 
-       <div class="filtros">
+        <div class="filtros">
         <form action="filtro.php" method="post">
             <div class="main-filters">
                 <div class="radio_filtro">
@@ -148,9 +148,9 @@
                 </div>
                 <div class="date">
                     <label class="beggining" for="start_date">Data de Início:</label>
-                    <input class="input-date" name="data_inicio" type="date" value="0000-00-00"/>
+                    <input class="input-date" name="data_inicio" type="date" value="0000-00-00" required/>
                     <label class="end" for="end_date">Data do Fim:</label>
-                    <input class="input-date" name="data_fim" type="date" value="0000-00-00"/>
+                    <input class="input-date" name="data_fim" type="date" value="0000-00-00" required/>
                 </div>
             </div>
             <div class="secondary-filters">
@@ -169,9 +169,9 @@
                     </select>
                 </div>
             </div>
-    </div>
-    <button type="submit"><img src="../assets/search-h.png">Buscar</button>
-    </form>
+        </div>
+            <button type="submit"><img src="../assets/search-h.png">Buscar</button>
+        </form>
 </main>
 
 <script>
