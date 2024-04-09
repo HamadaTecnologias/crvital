@@ -2,6 +2,7 @@
     $id_medico = $_POST['id_medico'];
     $cadastrar = $_POST['cadastrar']??false;
     $nome_medico = $_POST["nome_medico"];
+    $cpf = $_POST["cpf"];               
     $nis= $_POST["nis"];
     $sigla_conselho = $_POST["sigla_conselho"];
     $registro_conselho = $_POST["registro_conselho"];
@@ -25,7 +26,7 @@
         array_push($ids,$linha['id_medico']);
     }
 
-    //tratar médico com mesmo nome?
+    //tratar médico com mesmo nome? não vejo tanta necessidade no momento
     // if ($cadastrar == true) {
     //     $query_medico_cadastrado = "SELECT id_medico,nome_medico from medico WHERE nome_medico like '%".$nome_medico."%'";
     //     $result_medico_cadastrado = mysqli_query($con,$query_medico_cadastrado);
@@ -43,7 +44,7 @@
 
     if(!$erro){
         if (in_array($id_medico, $ids)) {
-            $query = "update medico set nome_medico ='".$nome_medico."', nis = '".$nis."', sigla_conselho = '".$sigla_conselho."', registro_conselho = '".$registro_conselho."', categoria = '".$categoria."' where id_medico =".$id_medico;
+            $query = "update medico set nome_medico ='".$nome_medico."',cpf ='".$cpf."', nis = '".$nis."', sigla_conselho = '".$sigla_conselho."', registro_conselho = '".$registro_conselho."', categoria = '".$categoria."' where id_medico =".$id_medico;
             if(mysqli_query($con,$query)){
                 header('location:doctor.php?alterado=true');
             }else{
@@ -52,7 +53,7 @@
                 echo "<br>Contate o Suporte";
             }   
         }else{
-            $query = "insert into medico(nome_medico,nis,conselho,registro_conselho,categoria) values ('".$nome_medico."','".$nis."','".$conselho."','".$registro_conselho."','".$categoria."')";
+            $query = "insert into medico(nome_medico,cpf,nis,registro_conselho,sigla_conselho,categoria) values ('".$nome_medico."','".$cpf."','".$nis."','".$registro_conselho."','".$sigla_conselho."','".$categoria."')";
             if(mysqli_query($con,$query)){
                 header('location:doctor.php?cadastrado=true');
             }else{

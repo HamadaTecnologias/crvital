@@ -134,28 +134,28 @@
                 <form action="manipular_medico.php" method="post">
                     <input style="display:none" name="id_medico" id="id_medico" type="number" value="<?=$id_medico?>"><br>
                     <label class="new-doctor-label" for="new_doctor_username">Médico:</label><br>
-                    <input class="new-doctor-input" type="text" id="new_doctor_username" name="new_doctor_username" placeholder="Digite o nome" value="<?=$alterar['nome_medico']?>"><br>
+                    <input class="new-doctor-input" type="text" id="nome_medico" name="nome_medico" placeholder="Digite o nome" value="<?=$alterar['nome_medico']?>"><br>
 
 
                     <label class="new-doctor-label" for="new_doctor_cpf">CPF:</label><br>
-                    <input class="new-doctor-input" type="text" id="new_doctor_cpf" name="new_doctor_cpf" placeholder="Digite o CPF (somente números)" value="<?=$alterar['cpf']?>"><br>
+                    <input class="new-doctor-input" type="text" id="cpf" name="cpf" placeholder="Digite o CPF (somente números)" value="<?=$alterar['cpf']?>"><br>
 
                     <label class="new-doctor-label" for="new_doctor_nis">NIS:</label><br>
-                    <input class="new-doctor-input" type="text" id="new_doctor_nis" name="new_doctor_nis" placeholder="Digite o número do NIS" value="<?=$alterar['nis']?>"><br>
+                    <input class="new-doctor-input" type="text" id="nis" name="nis" placeholder="Digite o número do NIS" value="<?=$alterar['nis']?>"><br>
 
                     <label class="new-doctor-label" for="new_doctor_board">Conselho (SIGLA):</label><br>
-                    <input class="new-doctor-input" type="text" id="new_doctor_board" name="new_doctor_board" placeholder="Digite a sigla do conselho" value="<?=$alterar['sigla_conselho']?>"><br>
+                    <input class="new-doctor-input" type="text" id="sigla_conselho" name="sigla_conselho" placeholder="Digite a sigla do conselho" value="<?=$alterar['sigla_conselho']?>"><br>
 
 
                     <label class="new-doctor-label" for="new_doctor_register_board">Registro no Conselho</label><br>
-                    <input class="new-doctor-input" type="text" id="new_doctor_register_board" name="new_doctor_register_board" placeholder="Digite o registro do conselho" value="<?=$alterar['registro_conselho']?>"><br>
+                    <input class="new-doctor-input" type="text" id="registro_conselho" name="registro_conselho" placeholder="Digite o registro do conselho" value="<?=$alterar['registro_conselho']?>"><br>
 
                     <label class="new-doctor-label" for="new_doctor_category">Categoria</label><br>
-                    <input class="new-doctor-input" type="text" id="new_doctor_category" name="new_doctor_category" placeholder="Digite a categoria" value="<?=$alterar['categoria']?>"><br>
+                    <input class="new-doctor-input" type="text" id="categoria" name="categoria" placeholder="Digite a categoria" value="<?=$alterar['categoria']?>"><br>
 
 
                     <button type="submit" name="cadastrar" value="true">Cadastrar</button>
-                    <button type="submit" value="<?=$id_medico?>">Confirmar Alteração</button>
+                    <button style="background-color:red;"type="submit" value="<?=$id_medico?>">Confirmar Alteração</button>
                 </form>
                 </div>
 
