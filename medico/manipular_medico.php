@@ -16,7 +16,12 @@
     }
     if (empty($categoria)){
         $erro=TRUE;
-        header('location:doctor.php?categoria=true');
+        header('location:doctor.php?erro_categoria=true');
+    }
+
+    if(strlen($cpf)!=11){
+        $erro=TRUE;
+        header('location:doctor.php?erro_cpf=true');
     }
 
     $query_valid="select id_medico from medico";
@@ -26,21 +31,21 @@
         array_push($ids,$linha['id_medico']);
     }
 
-    //tratar médico com mesmo nome? não vejo tanta necessidade no momento
-    // if ($cadastrar == true) {
-    //     $query_medico_cadastrado = "SELECT id_medico,nome_medico from medico WHERE nome_medico like '%".$nome_medico."%'";
-    //     $result_medico_cadastrado = mysqli_query($con,$query_medico_cadastrado);
-    //     $medico_cadastrado = mysqli_fetch_assoc($result_medico_cadastrado);
-    //     if (!empty($medico_cadastrado['id_medico'])) {
-    //         $erro=TRUE;
-    //         header('location:pagina_principal.php?existe=true');
-    //     }
+    //tratando médico com mesmo nome
+    if ($cadastrar == true) {
+        $query_medico_cadastrado = "SELECT id_medico,nome_medico from medico WHERE nome_medico like '%".$nome_medico."%'";
+        $result_medico_cadastrado = mysqli_query($con,$query_medico_cadastrado);
+        $medico_cadastrado = mysqli_fetch_assoc($result_medico_cadastrado);
+        if (!empty($medico_cadastrado['id_medico'])) {
+            $erro=TRUE;
+            header('location:doctor.php?existe=true');
+        }
         
-    //     if (!empty($medico_cadastrado['nome_medico'])) {
-    //         $erro=TRUE;
-    //         header('location:pagina_principal.php?existe=true');
-    //     }
-    // }
+        if (!empty($medico_cadastrado['nome_medico'])) {
+            $erro=TRUE;
+            header('location:doctor.php?existe=true');
+        }
+    }
 
     if(!$erro){
         if (in_array($id_medico, $ids)) {

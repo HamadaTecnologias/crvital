@@ -155,7 +155,7 @@
 
 
                     <button type="submit" name="cadastrar" value="true">Cadastrar</button>
-                    <button style="background-color:red;"type="submit" value="<?=$id_medico?>">Confirmar Alteração</button>
+                    <button style="width:200px; margin-top:-500px; margin-right:0px;"type="submit" value="<?=$id_medico?>">Confirmar Alteração</button>
                 </form>
                 </div>
 
