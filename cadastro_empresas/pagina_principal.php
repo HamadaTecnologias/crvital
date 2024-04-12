@@ -102,7 +102,7 @@
                     </a>
                 <?php } ?>
 
-                <?php if($nivel != 'R') { ?>
+
                     <a href="../historico/pagina_principal.php">
                         <button class="sidebar-nav-button">
                             <span class="sidebar-nav-button-span">
@@ -112,7 +112,7 @@
                             </span>
                         </button>
                     </a>
-                <?php } ?>
+
                     
                 <a href="../login/logout.php">
                     <button class="sidebar-nav-button">
