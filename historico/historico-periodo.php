@@ -135,7 +135,7 @@
         ?>
         
             <?php 
-            $query_ativos = "SELECT id_atendimento,nome_paciente,tipo_exame,data,nome_medico,nome_empresa 
+            $query_ativos = "SELECT id_atendimento,nome_paciente,telefone,tipo_exame,data,nome_medico,nome_empresa 
             FROM atendimento 
             INNER JOIN medico ON atendimento.id_medico = medico.id_medico 
             INNER JOIN empresa ON atendimento.id_empresa = empresa.id_empresa 
@@ -147,7 +147,8 @@
                     <tr>
                     <th scope="col">Empresa</th>
                     <th scope="col">Colaborador</th>
-                    <th scope="col">Médico Atendente</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Médico Examinador</th>
                     <th scope="col">Exame</th>
                     <th scope="col">Data</th>
                     <th scope="col">Editar</th>
@@ -162,6 +163,9 @@
                             </td>
                             <td>
                                 <?= $consulta['nome_paciente']; ?>
+                            </td>
+                            <td>
+                                <?= tel($consulta['telefone']); ?>
                             </td>
                             <td>
                                 <?= $consulta['nome_medico']; ?>
@@ -204,6 +208,12 @@ function formatCnpjCpf($value){
             return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
         } 
         return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
-} ?>
+} 
+function tel($number){
+    $number="(".substr($number,0,2).") ".substr($number,2,-4)." - ".substr($number,-4);
+    // primeiro substr pega apenas o DDD e coloca dentro do (), segundo subtr pega os números do 3º até faltar 4, insere o hifem, e o ultimo pega apenas o 4 ultimos digitos
+    return $number;
+}
+?>
 </body>
 </html>

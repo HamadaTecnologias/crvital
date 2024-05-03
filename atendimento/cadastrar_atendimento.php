@@ -12,6 +12,7 @@ $data = $_POST['data_atendimento']??null;
 $nome_paciente =$_POST['nome_paciente']??null;
 $finalizar = $_GET['finalizar']??false;
 $id_atendimento = $_GET['id_atendimento']??null;
+$telefone = $_POST['telefone']??null;
 
 
 
@@ -50,7 +51,7 @@ if ($finalizar!=false) {
 
 
     //QUERY PARA EFETUAR CHECKIN 
-    $query = "INSERT INTO atendimento(tipo_exame,id_medico,hora_checkin,data,nome_paciente,id_empresa,hora_checkout,metodo_pagamento) values('".$tipo_exame."','".$id_medico."','".$hora_checkin."','".$data."','".$nome_paciente."','".$id_empresa."','".$hora_checkout."','".$metodo_pagamento."')";
+    $query = "INSERT INTO atendimento(tipo_exame,id_medico,hora_checkin,data,nome_paciente,telefone,id_empresa,hora_checkout,metodo_pagamento) values('".$tipo_exame."','".$id_medico."','".$hora_checkin."','".$data."','".$nome_paciente."','".$telefone."','".$id_empresa."','".$hora_checkout."','".$metodo_pagamento."')";
 
     //QUERY PARA DESCOBRIR O ULTIMO CHECKIN EFETUADO
     $query_idcheckin = "SELECT id_atendimento FROM atendimento WHERE hora_checkin='".$hora_checkin."' AND data='".$data."' AND nome_paciente='".$nome_paciente."'";
