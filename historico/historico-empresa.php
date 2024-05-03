@@ -136,19 +136,21 @@
         ?>
         
             <?php 
-            $query_ativos = "SELECT A.id_atendimento,A.nome_paciente,A.tipo_exame,A.data,M.nome_medico,E.nome_empresa 
+            $query_ativos = "SELECT A.id_atendimento,A.nome_paciente,A.telefone,A.tipo_exame,A.data,M.nome_medico,E.nome_empresa 
             FROM atendimento A
             INNER JOIN medico M ON A.id_medico = M.id_medico 
             INNER JOIN empresa E ON A.id_empresa = E.id_empresa 
             WHERE A.id_empresa=".$id_empresa." AND A.data BETWEEN '".$data_inicio."' and '".$data_fim."' ORDER BY data ASC";
-            $result = mysqli_query($con,$query_ativos);?>
+            $result = mysqli_query($con,$query_ativos);
+            ?>
         <div class="painel">
             <table>
                 <thead>
                     <tr>
                     <th scope="col">Empresa</th>
                     <th scope="col">Colaborador</th>
-                    <th scope="col">Médico Atendente</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Médico Examinador</th>
                     <th scope="col">Exame</th>
                     <th scope="col">Data</th>
                     <th scope="col">Editar</th>
@@ -163,6 +165,9 @@
                             </td>
                             <td>
                                 <?= $consulta['nome_paciente']; ?>
+                            </td>
+                            <td>
+                                <?= tel($consulta['telefone']); ?>
                             </td>
                             <td>
                                 <?= $consulta['nome_medico']; ?>
@@ -204,6 +209,12 @@ function formatCnpjCpf($value){
             return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $cnpj_cpf);
         } 
         return preg_replace("/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/", "\$1.\$2.\$3/\$4-\$5", $cnpj_cpf);
-} ?>
+} 
+function tel($number){
+    $number="(".substr($number,0,2).") ".substr($number,2,-4)." - ".substr($number,-4);
+    // primeiro substr pega apenas o DDD e coloca dentro do (), segundo subtr pega os números do 3º até faltar 4, insere o hifem, e o ultimo pega apenas o 4 ultimos digitos
+    return $number;
+}
+?>
 </body>
 </html>

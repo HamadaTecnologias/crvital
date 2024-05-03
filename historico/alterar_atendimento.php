@@ -10,6 +10,7 @@ $tipo_exame = str_replace("%", " ", "$tipo_exame_antes");
 //FIM RETIRANDO % DO TIPO EXAME
 $id_medico = $_POST['id_medico']??null;
 $data = $_POST['data_atendimento']??null;
+$telefone = $_POST['telefone']??null;
 
 
 
@@ -26,7 +27,7 @@ $data = $_POST['data_atendimento']??null;
 
 
     //QUERY PARA EFETUAR ALTERAÇÃO
-    $query = "UPDATE atendimento SET tipo_exame ='".$tipo_exame."', id_medico = ".$id_medico.", data = '".$data."', nome_paciente = '".$nome_paciente."',metodo_pagamento = '".$metodo_pagamento."' WHERE id_atendimento = ".$id_atendimento;
+    $query = "UPDATE atendimento SET tipo_exame ='".$tipo_exame."', id_medico = ".$id_medico.", data = '".$data."', nome_paciente = '".$nome_paciente."',telefone = '".$telefone."',metodo_pagamento = '".$metodo_pagamento."' WHERE id_atendimento = ".$id_atendimento;
 
      //ISERINDO NOVOS PROCEDIMENTOS
     if(mysqli_query($con,$query)){
