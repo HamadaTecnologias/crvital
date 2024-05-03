@@ -137,7 +137,7 @@
     <?php 
 
       
-                $query_atendimento="SELECT A.data, A.nome_paciente, A.tipo_exame,A.id_empresa, E.nome_empresa,E.cnpj,E.perfil,A.metodo_pagamento,M.id_medico,M.nome_medico
+                $query_atendimento="SELECT A.data, A.nome_paciente, A.telefone, A.tipo_exame,A.id_empresa, E.nome_empresa,E.cnpj,E.perfil,A.metodo_pagamento,M.id_medico,M.nome_medico
                 FROM atendimento A
                 INNER JOIN atendimento_procedimento AP ON A.id_atendimento = AP.id_atendimento
                 INNER JOIN procedimento P ON P.id_procedimento = AP.id_procedimento
@@ -147,6 +147,7 @@
 
                 $result_atendimento = mysqli_query($con,$query_atendimento);
                 $dados = mysqli_fetch_assoc($result_atendimento); 
+                $dados['telefone']??'(00)00000-0000';
                 $cnpj = formatCnpjCpf($dados['cnpj']) ;
                 ?>
     
@@ -186,6 +187,8 @@
                             <div class="colaborador">
                                 <label for="nome_paciente">Colaborador:</label>
                                 <input placeholder="Digite o nome do Colaborador" name="nome_paciente" type="text" required value="<?=$dados['nome_paciente']?>">
+                                <label for="telefone">Telefone:</label>
+                                <input placeholder="DDD + número" name="telefone" type="text" required value="<?=$dados['telefone']?>">
                             </div>
                             <div class="select_dados">    
                             <label for="tipo_exame">Tipo Exame:</label>

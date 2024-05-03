@@ -203,6 +203,8 @@
                             <div class="colaborador">
                                 <label for="nome_paciente">Colaborador:</label>
                                 <input placeholder="Digite o nome do Colaborador" name="nome_paciente" type="text" required value="">
+                                <label for="telefone">Telefone:</label>
+                                <input placeholder="DDD + número" name="telefone" type="text" required value="">
                             </div>
                             <div class="select_dados">    
                             <label for="tipo_exame">Tipo Exame:</label>
@@ -285,7 +287,7 @@
                     <tr>
                     <th scope="col">Empresa</th>
                     <th scope="col">Colaborador</th>
-                    <th scope="col">Médico Atendente</th>
+                    <th scope="col">Médico Examinador</th>
                     <th scope="col">Exame</th>
                     <th scope="col">Check-in</th>
                     <th scope="col">Finalizar</th>
