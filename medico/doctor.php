@@ -128,7 +128,56 @@
             }
         ?>
 
+        <?php 
+        //RECEBENDO ERROS
+        $error_cpf = $_GET['cpf']??null;
+        $error_nome = $_GET['nome']??null;
+        $error_nis = $_GET['nis']??null;
+        $error_sigla = $_GET['sigla']??null;
+        $error_conselho = $_GET['conselho']??null;
+        $error_categoria = $_GET['categoria']??null;
+
+        $apagar = $_GET['apagar']??false;
+        $excluido = $_GET['excluido']??false;
+        $existe = $_GET['existe']??false;
+        $alterado = $_GET['alterado']??false;
+        ?>
+
+        
         <main class="main">
+                <?php 
+                if ($alterado != false) {?>
+                    <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Médico alterado com sucesso</h3>
+                <?php } ?> 
+                <?php 
+                if ($existe != false) {?>
+                    <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Este médico já foi cadastrado</h3>
+                <?php } ?> 
+                <?php 
+                if ($excluido != false) {?>
+                    <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Médico excluído com sucesso</h3>
+                <?php } ?> 
+                <?php 
+                if ($error_cpf != false) {?>
+                    <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">CPF digitado de forma incorreta</h3>
+                <?php } ?> 
+
+                <?php 
+                if ($error_nome != false) {?>
+                    <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Erro na inserção do campo "nome"</h3>
+                <?php } ?> 
+
+                <div>
+                    <?php
+                        if(isset($_GET['erro_cpf'])) {
+                            echo "<p style='background-color:#9b1a2e;color:white;margin-bottom:900px;padding:10px;border-radius:10px;width:120px;margin-left:9px;'>CPF digitado de forma incorreta</p>";
+                        } 
+                        else {
+                            echo '';
+                        }
+                    ?> 
+                </div>
+
                 <div class="new-doctor">
                 <h3>Cadastrar Novo Médico:</h3>
                 <form action="manipular_medico.php" method="post">
@@ -203,6 +252,7 @@
                     ?>
                 </table>
                 </div>
+
         </main>
 <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
