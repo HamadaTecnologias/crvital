@@ -147,6 +147,9 @@
                     <label class="new-report-label" for="medico">
                     <input type="radio" name="filtro_principal" value="medico">
                     Médico</label>
+                    <label class="new-report-label" for="procedimento">
+                    <input type="radio" name="filtro_principal" value="procedimento">
+                    Procedimento</label>
                 </div>
                 <div class="date">
                     <label class="beggining" for="start_date">Data de Início:</label>
@@ -182,12 +185,42 @@
                         <?php } ?>  
                     </select>
                 </div>
+                <div class="select_procedimento">
+                    <h3>Filtro por Procedimento:</h3>
+                    <select name="nome_procedimento" id="nome_procedimento">
+                        <option value="">Selecione em caso de "Relatório por Procedimento"</option>
+                        <option value="ACIDO FENILGLIXILICO">ACIDO FENILGLIXILICO</option>
+                        <option value="ACIDO HIPURICO">ACIDO HIPURICO</option>
+                        <option value="ACIDO MANDELICO">ACIDO MANDELICO</option>
+                        <option value="ACIDO METIL HIPURICO">ACIDO METIL HIPURICO</option>
+                        <option value="ACIDO TRANS TRANS MUCONICO">ACIDO TRANS TRANS MUCONICO</option>
+                        <option value="ACUIDADE VISUAL">ACUIDADE VISUAL</option>
+                        <option value="ANAMNESE OCUPACIONAL">ANAMNESE OCUPACIONAL</option>
+                        <option value="ANTI HAV">ANTI HAV</option>
+                        <option value="AUDIOMETRIA TONAL">AUDIOMETRIA TONAL</option>
+                        <option value="AVALIAÇÃO PSICOSSOCIAL">AVALIAÇÃO PSICOSSOCIAL</option>
+                        <option value="CARBOXIHEMOGLOBINA">CARBOXIHEMOGLOBINA</option>
+                        <option value="ECG">ECG</option>
+                        <option value="ESPIROMETRIA">ESPIROMETRIA</option>
+                        <option value="GGT">GGT</option>
+                        <option value="GLICEMIA">GLICEMIA</option>
+                        <option value="HEMOGRAMA COMPLETO">HEMOGRAMA COMPLETO</option>
+                        <option value="RAIO X TORAX OIT">RAIO X TORAX OIT</option>
+                        <option value="TESTE ROMBERG">TESTE ROMBERG</option>
+                        <option value="TOXICOLÓGICO">TOXICOLÓGICO</option>
+                    </select>
+                </div>
             </div>
     </div>
     <button type="submit"><img src="../assets/download.png">Gerar Relatório</button>
     </form>
 </main>
 
+<script>
+    $(document).ready(function() {
+        $('#nome_procedimento').select2();
+    });
+</script>
 <script>
     $(document).ready(function() {
         $('#id_empresa').select2();

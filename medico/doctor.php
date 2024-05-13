@@ -120,32 +120,102 @@
                 </a>
                 <p style="margin-top:10px; margin-bottom:10px; color:white;"><strong>Usuário:</strong> <?=$nome_usuario?></p>
             </nav>
-
         </aside>
 
+        <!-- Recebendo dados do médico para alterar -->
+        <?php
+            include "../bd_connect.php";
+            $id_medico = $_GET['id_medico']??null;
+            $alterar['nome_medico'] =null;
+            $alterar['cpf'] =null;
+            $alterar['nis'] =null;
+            $alterar['sigla_conselho'] =null;
+            $alterar['registro_conselho'] =null;
+            $alterar['categoria'] =null;
+            if($id_medico !=null){
+                $query = "SELECT nome_medico, cpf, nis, sigla_conselho, registro_conselho, categoria from medico where id_medico=".$id_medico;
+                $medico = mysqli_query($con, $query);
+                $alterar = mysqli_fetch_assoc($medico);
+            }
+        ?>
+
+        <?php 
+        //RECEBENDO ERROS
+        $error_cpf = $_GET['cpf']??null;
+        $error_nome = $_GET['nome']??null;
+        $error_nis = $_GET['nis']??null;
+        $error_sigla = $_GET['sigla']??null;
+        $error_conselho = $_GET['conselho']??null;
+        $error_categoria = $_GET['categoria']??null;
+
+        $apagar = $_GET['apagar']??false;
+        $excluido = $_GET['excluido']??false;
+        $existe = $_GET['existe']??false;
+        $alterado = $_GET['alterado']??false;
+        ?>
+
+        
         <main class="main">
+                <?php 
+                if ($alterado != false) {?>
+                    <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Médico alterado com sucesso</h3>
+                <?php } ?> 
+                <?php 
+                if ($existe != false) {?>
+                    <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Este médico já foi cadastrado</h3>
+                <?php } ?> 
+                <?php 
+                if ($excluido != false) {?>
+                    <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Médico excluído com sucesso</h3>
+                <?php } ?> 
+                <?php 
+                if ($error_cpf != false) {?>
+                    <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">CPF digitado de forma incorreta</h3>
+                <?php } ?> 
+
+                <?php 
+                if ($error_nome != false) {?>
+                    <h3 style="padding:4px;background-color:#9b1a2e;color:white;border-radius:8px;">Erro na inserção do campo "nome"</h3>
+                <?php } ?> 
+
+                <div>
+                    <?php
+                        if(isset($_GET['erro_cpf'])) {
+                            echo "<p style='background-color:#9b1a2e;color:white;margin-bottom:900px;padding:10px;border-radius:10px;width:120px;margin-left:9px;'>CPF digitado de forma incorreta</p>";
+                        } 
+                        else {
+                            echo '';
+                        }
+                    ?> 
+                </div>
+
                 <div class="new-doctor">
                 <h3>Cadastrar Novo Médico:</h3>
-                <form action="new_doctor.php" method="post">
+                <form action="manipular_medico.php" method="post">
+                    <input style="display:none" name="id_medico" id="id_medico" type="number" value="<?=$id_medico?>"><br>
                     <label class="new-doctor-label" for="new_doctor_username">Médico:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_username" placeholder="Digite o nome"><br>
+                    <input class="new-doctor-input" type="text" id="nome_medico" name="nome_medico" placeholder="Digite o nome" value="<?=$alterar['nome_medico']?>"><br>
+
 
                     <label class="new-doctor-label" for="new_doctor_cpf">CPF:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_cpf" placeholder="Digite o CPF (somente números)"><br>
+                    <input class="new-doctor-input" type="text" id="cpf" name="cpf" placeholder="Digite o CPF (somente números)" value="<?=$alterar['cpf']?>"><br>
 
                     <label class="new-doctor-label" for="new_doctor_nis">NIS:</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_nis" placeholder="Digite o número do NIS"><br>
+                    <input class="new-doctor-input" type="text" id="nis" name="nis" placeholder="Digite o número do NIS" value="<?=$alterar['nis']?>"><br>
 
                     <label class="new-doctor-label" for="new_doctor_board">Conselho (SIGLA):</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_board" placeholder="Digite a sigla do conselho"><br>
+                    <input class="new-doctor-input" type="text" id="sigla_conselho" name="sigla_conselho" placeholder="Digite a sigla do conselho" value="<?=$alterar['sigla_conselho']?>"><br>
+
 
                     <label class="new-doctor-label" for="new_doctor_register_board">Registro no Conselho</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_register_board" placeholder="Digite o registro do conselho"><br>
+                    <input class="new-doctor-input" type="text" id="registro_conselho" name="registro_conselho" placeholder="Digite o registro do conselho" value="<?=$alterar['registro_conselho']?>"><br>
 
                     <label class="new-doctor-label" for="new_doctor_category">Categoria</label><br>
-                    <input class="new-doctor-input" type="text" name="new_doctor_category" placeholder="Digite a categoria"><br>
+                    <input class="new-doctor-input" type="text" id="categoria" name="categoria" placeholder="Digite a categoria" value="<?=$alterar['categoria']?>"><br>
 
-                    <button type="submit">Cadastrar</button>
+
+                    <button type="submit" name="cadastrar" value="true">Cadastrar</button>
+                    <button style="width:200px; margin-top:-500px; margin-right:0px;"type="submit" value="<?=$id_medico?>">Confirmar Alteração</button>
                 </form>
                 </div>
 
@@ -157,7 +227,8 @@
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>Categoria</th>
-                        <th>Ações</th>
+                        <th>Apagar</th>
+                        <th>Alterar</th>
                     </tr>
                     <?php
                     function formatCnpjCpf($value)
@@ -183,6 +254,7 @@
                             echo "<td>" . $cpf . "</td>";
                             echo "<td>" . $row['categoria'] . "</td>";
                             echo "<td><a href='delete_doctor.php?id_medico=".$row['id_medico']."'><i class=\"fa-solid fa-trash-can\"></i></a></td>";
+                            echo "<td><a href='doctor.php?id_medico=".$row['id_medico']."'><i class=\"fa-solid fa-rotate\"></i></a></td>";
                             echo "</tr>";
                         }
                     } else {
@@ -191,6 +263,7 @@
                     ?>
                 </table>
                 </div>
+
         </main>
 <script src="https://kit.fontawesome.com/122585f6ab.js" crossorigin="anonymous"></script>
 </body>
