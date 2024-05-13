@@ -54,7 +54,10 @@
             <img src="../assets/logo-crvital-horizontal.png" alt="logo">
         </div>  
         <div class="titulo-header">
-                <h2>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h2>           
+                <h2><?= $nome_procedimento ?> </h2>         
+                <div class="subtitulo-header">
+                <h4>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?> </h4> 
+                </div>
                 <div class="subtitulo-header">
                     <h4>Relação por procedimento</h4>
                     <h4>Emitido em: </h4>
@@ -111,9 +114,9 @@
                                             INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
                                             INNER JOIN procedimento P ON P.id_procedimento=AP.id_procedimento
                                             INNER JOIN empresa E ON E.id_empresa=P.id_empresa
-                                            WHERE A.data BETWEEN '".$data_inicio."' and '".$data_fim."' AND  A.id_atendimento=".$linha['id_atendimento']." ORDER BY P.nome_procedimento ASC";    
+                                            WHERE P.nome_procedimento like '%".$nome_procedimento."%' AND  A.id_atendimento=".$linha['id_atendimento'];    
                                             $result_valor = mysqli_query($con,$query_valor_procedimento);
-                                            while($linha_valor = mysqli_fetch_assoc($result_valor)){
+                                            $linha_valor = mysqli_fetch_assoc($result_valor);
                                             echo"R$ ".$linha_valor['valor']."<br>";
                                         }?>
                                     </td>
@@ -123,9 +126,9 @@
                                 </tr>                             
                                 
                     <?php 
-                            } //FECHANDO O IF
-                            array_push($ids_atendimento,$linha['id_atendimento']);                   
-                        } //FECHANDO WHILE
+                             array_push($ids_atendimento,$linha['id_atendimento']); 
+                            } 
+                                  
                     ?>   
                 </tbody>
             </table> 
