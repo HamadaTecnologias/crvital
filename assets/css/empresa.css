@@ -11,7 +11,7 @@
     --green-logo: #488b4a;
     --roboto: "Roboto", sans-serif;
     --body:#4ed28e50;
-    --sidebar:#61CE70;
+    --sidebar:#61CE70; 
 }
 
 body {
@@ -164,7 +164,7 @@ flex-direction: column;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 4px;
     padding: 20px;
@@ -203,17 +203,15 @@ table {
     background-color: rgba(252, 252, 252, 0.8);
 }
   
-table th, td {
-text-align: center;
+table th, td{
 border: 0.8px solid black;
 padding: 10px;
+text-align: center;
 }
 
 .exibicao-empresa{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+text-decoration: none;
+text-align: left;
 }
 
 table th {

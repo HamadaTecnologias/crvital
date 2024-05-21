@@ -50,18 +50,15 @@
 
     <header>
         <div class="img">
-            <img src="../assets/logo-crvital-horizontal.png" alt="logo">
-        </div>  
+            <img src="../assets/logo-crvital-horizontal-verde.png" alt="logo">
+            <h1>Relatório de Atendimento</h1>
+        </div> 
+        <div class="nome-empresa">
+            <h2>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h2>  
+            <h4>Emitido em: <?=$data_emissao?> </h4>
+        </div> 
         <div class="titulo-header">
-                <h2>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h2>           
-                <div class="subtitulo-header">
-                    <h4>Relação por período</h4>
-                    <h4>Emitido em: </h4>
-                    <?=$data_emissao?>
-                </div>
-                <div class="valor_geral">
                     <?="O valor total dos procedimentos do período é: R$ ".number_format($valor_geral,2,",",".")?>
-                </div>
         </div>
     </header>
     
@@ -82,7 +79,7 @@
                         INNER JOIN procedimento P ON  P.id_procedimento=AP.id_procedimento
                         INNER JOIN empresa E ON E.id_empresa=P.id_empresa
                         WHERE  A.data BETWEEN '".$data_inicio."' and '".$data_fim."'
-                        ORDER BY E.nome_empresa ASC;";
+                        ORDER BY E.nome_empresa ASC, A.nome_paciente ASC;";
                         $result = mysqli_query($con,$query);
                         $ids_atendimento = array();
                         $ids_empresa = array();
@@ -114,7 +111,7 @@
                     ?>          
 
                                 <tr>
-                                    <td>
+                                    <td class="nome-paciente">
                                         <?= $linha['nome_paciente']; ?>
                                     </td>
                                     <td>

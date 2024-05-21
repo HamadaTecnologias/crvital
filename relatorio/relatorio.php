@@ -136,26 +136,36 @@
        <div class="filtros">
         <form action="filtro.php" method="post">
             <div class="main-filters">
-                <div class="radio_filtro">
-                    <h3>Relatório</h3>
-                    <label class="new-report-label" for="empresa">
-                    <input type="radio" name="filtro_principal" value="empresa">
-                    Empresa</label>
-                    <label class="new-report-label" for="periodo">
-                    <input type="radio" name="filtro_principal" value="periodo">
-                    Período</label>
-                    <label class="new-report-label" for="medico">
-                    <input type="radio" name="filtro_principal" value="medico">
-                    Médico</label>
-                    <label class="new-report-label" for="procedimento">
-                    <input type="radio" name="filtro_principal" value="procedimento">
-                    Procedimento</label>
+                <div class="main-filter">
+                    <div class="radio_filtro">
+                        <h3>Relatório</h3>
+                        <label class="new-report-label" for="empresa">
+                        <input type="radio" name="filtro_principal" value="empresa">
+                        Empresa</label>
+                        <label class="new-report-label" for="periodo">
+                        <input type="radio" name="filtro_principal" value="periodo">
+                        Período</label>
+                        <label class="new-report-label" for="medico">
+                        <input type="radio" name="filtro_principal" value="medico">
+                        Médico</label>
+                        <label class="new-report-label" for="procedimento">
+                        <input type="radio" name="filtro_principal" value="procedimento">
+                        Procedimento</label>
+                    </div>
+                    <div class="date">
+                        <label class="beggining" for="start_date">Data de Início:</label>
+                        <input class="input-date" name="data_inicio" type="date" value="0000-00-00"/>
+                        <label class="end" for="end_date">Data do Fim:</label>
+                        <input class="input-date" name="data_fim" type="date" value="0000-00-00"/>
+                    </div>
                 </div>
-                <div class="date">
-                    <label class="beggining" for="start_date">Data de Início:</label>
-                    <input class="input-date" name="data_inicio" type="date" value="0000-00-00"/>
-                    <label class="end" for="end_date">Data do Fim:</label>
-                    <input class="input-date" name="data_fim" type="date" value="0000-00-00"/>
+                <div class="tipo-relatorio">
+                    <label class="new-report-label" for="parcial">
+                    <input type="radio" name="filtro_relatorio" value="parcial">
+                    Parcial</label>
+                    <label class="new-report-label" for="completo">
+                    <input type="radio" name="filtro_relatorio" value="completo">
+                    Completo</label>
                 </div>
             </div>
             <div class="secondary-filters">
