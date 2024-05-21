@@ -32,37 +32,22 @@
         $result_data = mysqli_query($con,$query_data);
         $data = mysqli_fetch_assoc($result_data);
         $data_emissao = $data["DATE_FORMAT(CURDATE(), '%d/%m/%Y')"];
-
-        //SOMATÓRIO DO VALOR DE TODOS OS EXAMES POR PERÍODO
-        // $query_valor_geral = 
-        // "SELECT P.valor 
-        // FROM atendimento A
-        // INNER JOIN atendimento_procedimento AP ON A.id_atendimento=AP.id_atendimento
-        // INNER JOIN procedimento P ON P.id_procedimento=AP.id_procedimento
-        // INNER JOIN empresa E ON E.id_empresa=P.id_empresa
-        // WHERE A.data BETWEEN '".$data_inicio."' and '".$data_fim."'";  
-        // $result_valor_geral = mysqli_query($con,$query_valor_geral);
-        // while($linha_valor_geral = mysqli_fetch_assoc($result_valor_geral)){
-        //     $valor_geral = $valor_geral + $linha_valor_geral['valor'];
-        // }                                                        
+                                                       
     ?>
 
 <body>
 
     <header>
         <div class="img">
-            <img src="../assets/logo-crvital-horizontal.png" alt="logo">
-        </div>  
+            <img src="../assets/logo-crvital-horizontal-verde.png" alt="logo">
+            <h1>Relatório de Atendimento</h1>
+        </div> 
+        <div class="nome-empresa">
+            <h2><?= $nome_procedimento ?> </h2>
+            <h4>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?> </h4> 
+        </div>   
         <div class="titulo-header">
-                <h2><?= $nome_procedimento ?> </h2>         
-                <div class="subtitulo-header">
-                <h4>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?> </h4> 
-                </div>
-                <div class="subtitulo-header">
-                    <h4>Relação por procedimento</h4>
-                    <h4>Emitido em: </h4>
-                    <?=$data_emissao?>
-                </div>
+            <h4>Emitido em: <?=$data_emissao?> </h4>
         </div>
     </header>
     
@@ -101,10 +86,10 @@
                     ?>          
 
                                 <tr>
-                                    <td>
+                                    <td class="nome-paciente">
                                         <?= $linha['nome_paciente']; ?>
                                     </td>
-                                    <td>
+                                    <td class="nome-paciente">
                                         <?= $linha['nome_medico']; ?>
                                     </td>
                                     <td>

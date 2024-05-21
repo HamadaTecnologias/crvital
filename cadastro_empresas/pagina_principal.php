@@ -296,30 +296,30 @@
                             <tbody>
                                     <?php while($linha_search = mysqli_fetch_assoc($empresa)){ ?>
                                 <tr>
-                                    <td class="exibicao-empresa">
+                                <td class="exibicao-empresa">
                                         <?php $cnpj = formatCnpjCpf($linha_search['cnpj'])?>
                                         <h4><?= $linha_search['nome_empresa']?></h4> 
                                         <h4><?="CNPJ: ".$cnpj?></h4> 
                                         <h4>Perfil: <?= strtoupper($linha_search['perfil'])?></h4>
                                     </td>
-                                    <td>
+                                    <td style="text-align: center;">
                                         <a href='pagina_principal.php?apagar=true&id_empresa=<?=$linha_search['id_empresa']?>'><i class="fa-solid fa-trash-can"></i></a>
                                     </td>
-                                    <td>
+                                    <td style="text-align: center;">
                                         <a href='pagina_principal.php?id_empresa=<?=$linha_search['id_empresa']?>'><i class="fa-solid fa-rotate"></i></a>
                                     </td>
                                     <?php if($linha_search['status'] != false){?>
-                                        <td>
-                                            <a href='bloquear.php?id_empresa=<?= $linha_search['id_empresa']?>'><i class="fa-solid fa-lock-open"></i></a>
+                                        <td style="align-items: center;">
+                                                <a href='bloquear.php?id_empresa=<?= $linha_search['id_empresa']?>'><i class="fa-solid fa-lock-open"></i></a>
                                         </td>
                                     <?php }else{ ?>
-                                        <td>
-                                        <a href='liberar.php?id_empresa=<?= $linha_search['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
+                                        <td style="align-items: center;">
+                                            <a href='liberar.php?id_empresa=<?= $linha_search['id_empresa']?>'><i class="fa-solid fa-lock"></i></a>
                                         </td>
                                     <?php } ?>  
-                                    <td>
-                                        <a href='duplicar.php?id_empresa=<?=$linha_search['id_empresa']?>'><i class="fa-solid fa-copy"></i></a>
-                                    </td> 
+                                        <td style="text-align: center;">
+                                            <a href='duplicar.php?id_empresa=<?=$linha_search['id_empresa']?>'><i class="fa-solid fa-copy"></i></a>
+                                        </td> 
                                 </tr>
                             <?php //FECHANDO WHILE
                                  }  ?>  

@@ -126,15 +126,41 @@
             </nav>
 
         </aside>
+<style>
+.confirmar_exclusao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(102, 102, 102, 0.37);
+    border: 0.8px solid black;
+    border-radius: 4px;
+    padding: 15px;
+    gap: 5px;
+}
+.confirm a{
+    display: inline-block; 
+    text-decoration: none;
+    background-color: var(--red-logo);
+    border-radius: 8px;
+    padding: 5px; 
+    color: white;
+    max-width: 100%; 
+    box-sizing: border-box; 
+}
+</style>
 
 <main class="main">
        <?php 
             include "../bd_connect.php";
             $data_inicio =$_GET['data_inicio'];
             $data_fim = $_GET['data_fim'];
-            $id_empresa = $_GET['id_empresa']
+            $id_empresa = $_GET['id_empresa'];
+            $apagar = $_GET['apagar']??false;
+            $id_at_del = $_GET['id_atendimento']??null;
+            $apagado = $_GET['apagado']??false;
         ?>
-        
+
             <?php 
             $query_ativos = "SELECT A.id_atendimento,A.nome_paciente,A.telefone,A.tipo_exame,A.data,M.nome_medico,E.nome_empresa 
             FROM atendimento A
@@ -182,7 +208,7 @@
                                 <a href='editar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'>EDITAR</a>
                             </td>
                             <td>
-                                <a href='deletar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento']?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>'><i class="fa-solid fa-trash-can"></i></a>
+                                <a href='deletar_atendimento_empresa.php?id_atendimento=<?=$consulta['id_atendimento']?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>&id_empresa=<?=$id_empresa?>'><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE

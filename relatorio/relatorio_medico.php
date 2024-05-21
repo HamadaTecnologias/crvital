@@ -18,7 +18,7 @@
         if(empty($data_inicio)){
             $erro=TRUE;            
         }
-        if(empty($data_fim)){
+        if(empty($data_fim)){ 
             $erro=TRUE;        
         }
         if(empty($id_medico)){
@@ -57,19 +57,16 @@
 
     <header>
         <div class="img">
-            <img src="../assets/logo-crvital-horizontal.png" alt="logo">
-        </div>  
-        <div class="titulo-header">
-                <h2><?=strtoupper($linha_medico['nome_medico'])?></h2>          
-                <div class="subtitulo-header">
-                    <h4><?=$linha_medico['sigla_conselho']." : ".$linha_medico['registro_conselho'] ?></h4>
-                </div> 
-                <div class="subtitulo-header">  
-                    <h4>Emitido em: <?=$data_emissao?></h4>                 
-                </div> 
-                <div class="subtitulo-header">
-                    <h4>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h4>
-                </div>
+            <img src="../assets/logo-crvital-horizontal-verde.png" alt="logo">
+            <h1>Relatório de Atendimento</h1>
+        </div> 
+        <div class="nome-empresa">
+            <h2><?=strtoupper($linha_medico['nome_medico'])?></h2> 
+            <h4><?=$linha_medico['sigla_conselho']." : ".$linha_medico['registro_conselho'] ?></h4>
+        </div> 
+        <div class="titulo-header">              
+            <h4>Emitido em: <?=$data_emissao?></h4>                                
+            <h4>Período de: <?= date('d/m/Y', strtotime($data_inicio)); ?> à <?= date('d/m/Y', strtotime($data_fim)); ?></h4>
         </div>
     </header>
 
@@ -123,7 +120,7 @@
                     ?>          
 
                                 <tr>
-                                    <td>
+                                    <td class="nome-paciente">
                                         <?= $linha['nome_paciente']; ?>
                                     </td>
                                     <td>
@@ -167,7 +164,7 @@
                         <?="O valor total do período é: R$ ".number_format($valor_medico,2,",",".");?>
                     </th>
             </table> 
-<!-- <script>window.print();</script> -->
+<script>window.print();</script>
 <?php
 function formatCnpjCpf($value){
         $CPF_LENGTH = 11;
