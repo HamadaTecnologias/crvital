@@ -85,7 +85,7 @@
                 <th>Colaborador</th>
                 <th>Procedimento</th>
                 <th>Valor</th>
-                <th>Realizado em:</th>
+                <th>Realizado</th>
                 </tr>
             </thead>
             <tbody>
@@ -96,7 +96,7 @@
                     $tituloMRO=FALSE;
                     $tituloP=FALSE;
                     $tituloRT=FALSE;
-                    $query="SELECT A.id_atendimento,A.data, A.nome_paciente, A.tipo_exame, P.nome_procedimento, P.valor
+                    $query="SELECT A.id_atendimento,A.data, A.nome_paciente, A.tipo_exame, P.nome_procedimento, P.valor, A.hora_checkin, A.hora_checkout
                     FROM atendimento A
                     INNER JOIN atendimento_procedimento AP ON A.id_atendimento = AP.id_atendimento
                     INNER JOIN procedimento P ON P.id_procedimento = AP.id_procedimento
@@ -146,7 +146,12 @@
                                             ?>
                                     </td>
                                     <td>
-                                    <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <td style="text-align: center">
+                                        <?= date('H:i', strtotime($linha['hora_checkin'])); ?>
+                                            <p>às</p>
+                                            <?= date('H:i', strtotime($linha['hora_checkout'])); ?>
+                                        </td>
                                     </td>
                                 </tr>
                                 
@@ -192,7 +197,12 @@
                                             ?>
                                     </td>
                                     <td>
-                                    <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <td style="text-align: center">
+                                        <?= date('H:i', strtotime($linha['hora_checkin'])); ?>
+                                            <p>às</p>
+                                            <?= date('H:i', strtotime($linha['hora_checkout'])); ?>
+                                        </td>
                                     </td>
                                 </tr>    
                                 <?php
@@ -237,7 +247,12 @@
                                             ?>
                                     </td>
                                     <td>
-                                    <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <td style="text-align: center">
+                                        <?= date('H:i', strtotime($linha['hora_checkin'])); ?>
+                                            <p>às</p>
+                                            <?= date('H:i', strtotime($linha['hora_checkout'])); ?>
+                                        </td>
                                     </td>
                                 </tr>
                                 <?php
@@ -282,7 +297,12 @@
                                             ?>
                                     </td>
                                     <td>
-                                    <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <td style="text-align: center">
+                                        <?= date('H:i', strtotime($linha['hora_checkin'])); ?>
+                                            <p>às</p>
+                                            <?= date('H:i', strtotime($linha['hora_checkout'])); ?>
+                                        </td>
                                     </td>
                                 </tr>     
                                 <?php
@@ -327,7 +347,12 @@
                                             ?>
                                     </td>
                                     <td>
-                                    <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <td style="text-align: center">
+                                        <?= date('H:i', strtotime($linha['hora_checkin'])); ?>
+                                            <p>às</p>
+                                            <?= date('H:i', strtotime($linha['hora_checkout'])); ?>
+                                        </td>
                                     </td>
                                 </tr>           
                                 <?php
@@ -371,7 +396,12 @@
                                             ?>
                                     </td>
                                     <td>
-                                    <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <?= date('d/m/Y', strtotime($linha['data'])); ?>
+                                        <td style="text-align: center">
+                                        <?= date('H:i', strtotime($linha['hora_checkin'])); ?>
+                                            <p>às</p>
+                                            <?= date('H:i', strtotime($linha['hora_checkout'])); ?>
+                                        </td>
                                     </td>
                                 </tr>
                                 <?php 

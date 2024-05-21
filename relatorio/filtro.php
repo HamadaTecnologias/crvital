@@ -6,17 +6,34 @@ $data_fim = $_POST['data_fim'];
 $id_empresa = $_POST['id_empresa']??null;
 $id_medico = $_POST['id_medico']??null;
 $nome_procedimento = $_POST['nome_procedimento']??null;
+$tipo_relatorio= $_POST['filtro_relatorio']??null;
 
 
 session_start();
 
 switch ($filtro_principal) {
     case 'empresa':
-        header('location:relatorio_empresa.php?data_inicio='.$data_inicio.'&data_fim='.$data_fim.'&id_empresa='.$id_empresa.'');
+        switch ($tipo_relatorio) {
+            case 'completo':
+                header('location:relatorio_empresa_completo.php?data_inicio='.$data_inicio.'&data_fim='.$data_fim.'&id_empresa='.$id_empresa.'');
+                break;
+            
+            default:
+                header('location:relatorio_empresa.php?data_inicio='.$data_inicio.'&data_fim='.$data_fim.'&id_empresa='.$id_empresa.'');
+                break;
+        }
         break;
     
     case 'periodo':
-        header('location:relatorio_periodo.php?data_inicio='.$data_inicio.'&data_fim='.$data_fim.'');
+        switch ($tipo_relatorio) {
+            case 'completo':
+                header('location:relatorio_periodo_completo.php?data_inicio='.$data_inicio.'&data_fim='.$data_fim.'');
+                break;
+            
+            default:
+                header('location:relatorio_periodo.php?data_inicio='.$data_inicio.'&data_fim='.$data_fim.'');
+                break;
+        }
         break;
 
     case 'medico':
