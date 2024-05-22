@@ -130,18 +130,57 @@
             </nav>
 
         </aside>
+        <style>
+            .confirmar_exclusao{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color:rgba(102, 102, 102, 0.37);
+                border: 0.8px solid black;
+                border-radius: 4px;
+                padding: 15px;
+                gap: 5px;
+            }
+            .confirm a{
+                display: inline-block; 
+                text-decoration: none;
+                background-color: var(--red-logo);
+                border-radius: 8px;
+                padding: 5px; 
+                color: white;
+                max-width: 100%; 
+                box-sizing: border-box; 
+            }
+        </style>
         <?php 
             include "../bd_connect.php";
             //RECEBENDO VARIAVEL ID_EMPRESA DO SELECT PHP_SELF
             $id_empresa= $_GET['id_empresa']??null;
             $error_procedimento = $_GET['error_procedimento']??false;
+            $apagar = $_GET['apagar']??false;
+            $id_excluir = $_GET['id_excluir']??null;
         ?>
         <?php 
         if ($error_procedimento != false) {?>
             <h3 style="text-align:center;padding:4px;background-color:#9b1a2e;color:white;">Escolha ao menos um Procedimento</h3>
         <?php } ?>
+        
+
 
         <main class="main"> 
+
+        <?php 
+        if ($apagar != false) {?>
+        <div class="confirmar_exclusao">            
+            <h3>Deseja confirmar exclusão do atendimento?</h3>
+            <div class="confirm">
+                <a href='../atendimento/deletar_atendimento.php?id_atendimento=<?=$id_excluir?>'>SIM</a>
+                <a href="atendimento.php">NÃO</a>
+            </div>
+        </div>
+        <?php } ?> 
+
             <!-- FORM DE SELECT DE EMPRESA -->
             <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
                 <select name="id_empresa" id="id_empresa" required>
@@ -320,7 +359,7 @@
                             <a href='../historico/editar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento'];?>'>EDITAR</a>
                             </td>
                             <td>
-                            <a href='../atendimento/deletar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento'];?>'>EXCLUIR</a>
+                            <a href='atendimento.php?apagar=true&id_excluir=<?=$consulta['id_atendimento']?>'>EXCLUIR</a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE
