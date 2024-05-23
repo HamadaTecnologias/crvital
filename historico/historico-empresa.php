@@ -157,9 +157,19 @@
             $data_fim = $_GET['data_fim'];
             $id_empresa = $_GET['id_empresa'];
             $apagar = $_GET['apagar']??false;
-            $id_at_del = $_GET['id_atendimento']??null;
-            $apagado = $_GET['apagado']??false;
+            $id_excluir = $_GET['id_excluir']??null;
         ?>
+
+        <?php 
+            if ($apagar != false) {?>
+            <div class="confirmar_exclusao">            
+                <h3>Deseja confirmar exclusão do atendimento?</h3>
+                <div class="confirm">
+                    <a href='../historico/deletar_atendimento_empresa.php?id_atendimento=<?=$id_excluir?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>&id_empresa=<?=$id_empresa?>'>SIM</a>
+                    <a href="historico-empresa.php?data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>&id_empresa=<?=$id_empresa?>">NÃO</a>
+                </div>
+            </div>
+        <?php } ?> 
 
             <?php 
             $query_ativos = "SELECT A.id_atendimento,A.nome_paciente,A.telefone,A.tipo_exame,A.data,M.nome_medico,E.nome_empresa 
@@ -208,7 +218,7 @@
                                 <a href='editar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'>EDITAR</a>
                             </td>
                             <td>
-                                <a href='deletar_atendimento_empresa.php?id_atendimento=<?=$consulta['id_atendimento']?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>&id_empresa=<?=$id_empresa?>'><i class="fa-solid fa-trash-can"></i></a>
+                                <a href='historico-empresa.php?apagar=true&id_excluir=<?=$consulta['id_atendimento']?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>&id_empresa=<?=$id_empresa?>'><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE
