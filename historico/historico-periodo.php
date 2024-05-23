@@ -27,7 +27,7 @@
             <header class="sidebar-header">
                 <img class="img-logo" src="../assets/logo-crvital.png">
             </header>
-            
+             
             <nav class="sidebar-nav">
                 <?php if($nivel != 'R' && $nivel != 'F') { ?>
                     <a href="../usuario/admin.php">
@@ -126,13 +126,50 @@
             </nav>
 
         </aside>
+        <style>
+            .confirmar_exclusao{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color:rgba(102, 102, 102, 0.37);
+                border: 0.8px solid black;
+                border-radius: 4px;
+                padding: 15px;
+                gap: 5px;
+            }
+            .confirm a{
+                display: inline-block; 
+                text-decoration: none;
+                background-color: var(--red-logo);
+                border-radius: 8px;
+                padding: 5px; 
+                color: white;
+                max-width: 100%; 
+                box-sizing: border-box; 
+            }
+        </style>
 
 <main class="main">
+
         <?php 
             include "../bd_connect.php";
             $data_inicio =$_GET['data_inicio'];
             $data_fim = $_GET['data_fim'];
+            $apagar = $_GET['apagar']??false;
+            $id_excluir = $_GET['id_excluir']??null;
         ?>
+
+        <?php 
+        if ($apagar != false) {?>
+        <div class="confirmar_exclusao">            
+            <h3>Deseja confirmar exclusão do atendimento?</h3>
+            <div class="confirm">
+                <a href='../historico/deletar_atendimento.php?id_atendimento=<?=$id_excluir?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>'>SIM</a>
+                <a href="historico-periodo.php?data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>">NÃO</a>
+            </div>
+        </div>
+        <?php } ?> 
         
             <?php 
             $query_ativos = "SELECT id_atendimento,nome_paciente,telefone,tipo_exame,data,nome_medico,nome_empresa 
@@ -180,7 +217,7 @@
                                 <a href='editar_atendimento.php?id_atendimento=<?= $consulta['id_atendimento']; ?>'>EDITAR</a>
                             </td>
                             <td>
-                                <a href='deletar_atendimento.php?id_atendimento=<?=$consulta['id_atendimento']?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>'><i class="fa-solid fa-trash-can"></i></a>
+                                <a href='historico-periodo.php?apagar=true&id_excluir=<?=$consulta['id_atendimento']?>&data_inicio=<?=$data_inicio?>&data_fim=<?=$data_fim?>'><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                     <?php //FECHANDO WHILE
